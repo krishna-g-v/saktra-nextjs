@@ -38,7 +38,7 @@ body {
   left: 0;
   height: 100%;
   width: 100%;
-  /* background-color: rgba(0, 0, 0, 0.4); */
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.5), transparent);
 }
 
 .gradient {
@@ -82,25 +82,4 @@ input {
   color: #bbf2ff;
   font-size: 12px;
   outline: none;
-}
-
-.button {
-  position: relative;
-  overflow: hidden;
-}
-
-.button::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0%;
-  height: 100%;
-  background: rgba(#333); /* adjust as needed */
-  transition: width 0.4s ease;
-  z-index: 4;
-}
-
-.button:hover::after {
-  width: 100%;
 }

@@ -11,23 +11,24 @@ export const Section4 = () => {
           </div>
           <div className="gradient flex flex-col">
             <h1 className="gradient2 text-transparent bg-clip-text">
-              Lorem ipsum dolor sit.
+              Shaping the Future of Business,
             </h1>
             <h1 className="gradient2 text-transparent bg-clip-text pb-2">
-              consectetur adipisicing elit
+              Together
             </h1>
             <div className="mt-5">
               <p className="text-[18px] text-black max-w-2/3">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo
-                inventore rem quidem nobis exercitationem quae maiores, nam eum
-                omnis iusto?
+                We’re a global technology and talent solutions company enabling
+                digital disruption across today’s most dynamic industries. From
+                FinTech to Telecom, we empower businesses to scale smarter,
+                innovate faster, and lead with confidence
               </p>
             </div>
             <div className="mt-3">
               <p className="text-[18px] text-black max-w-2/3">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo
-                inventore rem quidem nobis exercitationem quae maiores, nam eum
-                omnis iusto?
+                Our tech-enabled, AI-powered solutions help forward-thinking
+                businesses solve complex challenges through scalable talent,
+                intelligent automation, and future-ready tech strategies.
               </p>
             </div>
             <div className="mt-5 flex gap-3">

@@ -4,7 +4,7 @@ import { Carousel } from "./Carousel";
 export const Section6 = () => {
   return (
     <div className="section3 h-[100vh] w-full relative bg-[#bbf2ff] overflow-hidden">
-      <div className="content absolute top-0 left-0 h-full w-full z-5 pt-30 pl-25 flex-col">
+      <div className="content absolute top-0 left-0 h-full w-full z-5 pt-20 pl-25 flex-col">
         <div className="container text-5xl text-white flex-col gap-35 items-start">
           <div className="flex gap-35">
             <div className="services text-[16px] text-[#28001E] min-w-fit uppercase">
