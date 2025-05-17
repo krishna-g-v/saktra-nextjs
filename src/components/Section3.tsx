@@ -60,10 +60,10 @@ export const Section3 = () => {
       </div>
       <div className="content absolute top-0 left-0 h-full w-full z-5 pt-25 pl-25 flex flex-col">
         <div className="container text-5xl text-white flex gap-30 items-start">
-          <div className="services text-[16px] text-[#BBF2FF] uppercase">
+          <div className="services text-[16px] text-[#BBF2FF] uppercase gilroy-bold">
             Industries
           </div>
-          <div className="gradient flex flex-col">
+          <div className="gradient flex flex-col gilmer-regular">
             <h1 className="gradient text-transparent bg-clip-text">
               Building What’s Next for
             </h1>

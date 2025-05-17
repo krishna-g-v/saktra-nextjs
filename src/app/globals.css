@@ -1,5 +1,47 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Gilroy";
+  src: url("../../public/font/gilroy/Gilroy-Regular.ttf") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("../../public/font/gilroy/Gilroy-Medium.ttf") format("woff2");
+  font-weight: 700;
+  font-style: medium;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("../../public/font/gilroy/Gilroy-Bold.ttf") format("woff2");
+  font-weight: 900;
+  font-style: bold;
+}
+
+@font-face {
+  font-family: "Gilmer";
+  src: url("../../public/font/gilmer/Gilmer-Regular-Trial.woff") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gilmer";
+  src: url("../../public/font/gilmer/Gilmer-Medium-Trial.woff") format("woff2");
+  font-weight: 700;
+  font-style: medium;
+}
+
+@font-face {
+  font-family: "Gilmer";
+  src: url("../../public/font/gilmer/Gilmer-Heavy-Trial.woff") format("woff2");
+  font-weight: 900;
+  font-style: bold;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -41,8 +83,27 @@ body {
   background: linear-gradient(to right, rgba(0, 0, 0, 0.5), transparent);
 }
 
+.gilroy-bold {
+  font-family: "Gilroy";
+  font-weight: 900;
+}
+
+.gilmer-regular {
+  font-family: "Gilmer";
+  font-weight: 400;
+}
+.gilmer-medium {
+  font-family: "Gilmer";
+  font-weight: 700;
+}
+
+.gilmer-bold {
+  font-family: "Gilmer";
+  font-weight: 700;
+}
+
 .gradient {
-  background-image: linear-gradient(56deg, #bbf2ff, white);
+  background-image: linear-gradient(90deg, #bbf2ff, white);
   color: transparent;
   background-clip: text;
 }
@@ -91,4 +152,15 @@ input {
   color: white;
   transform: scale(1.2) translateX(-10%);
   border: 1px solid #bbf2ff;
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  transition: all 0.6s ease-in;
 }

@@ -70,7 +70,7 @@ export const HeroSection = () => {
         </motion.div>
       </AnimatePresence>
       <div className="overlay flex items-left justify-center flex-col h-full w-full">
-        <div className="content container px-10 text-[#BBF2FF] font-extrabold">
+        <div className="content container px-10 text-[#BBF2FF] font-extrabold gilroy-bold">
           <h1 className="text-6xl uppercase max-w-3/4">{Headers1[index]}</h1>
           <h1 className="text-6xl uppercase">{Headers2[index]}</h1>
           <Button text={linkTexts[index]} bgColor="#BBF2FF" />

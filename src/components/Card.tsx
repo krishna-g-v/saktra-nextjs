@@ -2,6 +2,7 @@ import { HiArrowLongRight } from "react-icons/hi2";
 import Bg2 from "../../public/images/cardBg2.jpg";
 import Image from "next/image";
 import classes from "./Card.module.css";
+import { poppins } from "@/app/layout";
 
 type CardType = "card1" | "card2";
 
@@ -16,7 +17,7 @@ export const Card = ({
 }) => {
   const cardType1 = (
     <div
-      className={`${classes.card} h-65 w-60 flex flex-col text-black items-left justify-center relative cursor-pointer overflow-hidden bg-[#e8e8e8] p-2.5`}
+      className={`${classes.card} h-65 w-60 flex flex-col text-black items-left justify-center relative cursor-pointer overflow-hidden bg-[#e8e8e8] p-2.5 ${poppins.className}`}
     >
       <section className="z-10">
         <h1 className="text-[22px] mb-2">{cardHeader}</h1>
@@ -29,7 +30,7 @@ export const Card = ({
           <a className="text-[14px]" href="#">
             Read More
           </a>
-          <HiArrowLongRight className="font-[300]" />
+          <HiArrowLongRight className={`${classes.arrow} text-2xl`} />
         </div>
       </section>
     </div>

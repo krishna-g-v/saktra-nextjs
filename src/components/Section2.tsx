@@ -42,11 +42,11 @@ export const Section2 = () => {
           <div className="services text-[16px] text-[#BBF2FF] uppercase">
             Services
           </div>
-          <div className="gradient flex flex-col">
-            <h1 className="gradient text-transparent bg-clip-text">
+          <div className="gradient flex flex-col gilmer-regular">
+            <h1 className="gradient text-transparent bg-clip-text p-2">
               Empowering Innovation with Talent,
             </h1>
-            <h1 className="gradient text-transparent bg-clip-text">
+            <h1 className="gradient text-transparent bg-clip-text p-2">
               Technology, and Intelligence
             </h1>
           </div>

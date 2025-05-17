@@ -1,4 +1,5 @@
 "use client";
+import { poppins } from "@/app/layout";
 import { Card } from "./Card";
 import { Navigator } from "./Navigator";
 import { SectionData } from "./NavLinks";
@@ -23,18 +24,18 @@ export const Section5 = () => {
     <div className="section3 h-[100vh] w-full relative bg-[#e8e8e8] overflow-hidden">
       <div className="content absolute top-0 left-0 h-full w-full z-5 pt-20 pl-25 flex-col">
         <div className="container text-5xl text-white flex gap-35 items-start">
-          <div className="services text-[16px] text-[#28001E] min-w-fit uppercase">
+          <div className="services text-[16px] text-[#28001E] min-w-fit uppercase gilroy-bold">
             Use Cases
           </div>
-          <div className="gradient flex flex-col">
+          <div className="gradient flex flex-col gilmer-regular">
             <h1 className="gradient2 text-transparent bg-clip-text">
               Real-World Impact.
             </h1>
             <h1 className="gradient2 text-transparent bg-clip-text pb-2">
               Proven Results.
             </h1>
-            <div className="mt-5 max-w-2/3">
-              <p className="text-[18px] text-black max-w-2/3">
+            <div className={`mt-5 max-w-2/3 ${poppins.className}`}>
+              <p className="text-[18px] text-black max-w-3/4">
                 From AI-driven automation to global talent acquisition, we
                 create solutions to solve real-world problems for businesses
                 around the globe. Explore how we help industry leaders

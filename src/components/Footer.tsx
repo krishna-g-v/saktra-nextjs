@@ -2,6 +2,7 @@ import Image from "next/image";
 import Logo from "../../public/images/logo-blue.svg";
 import { HiArrowSmallRight } from "react-icons/hi2";
 import { NavLinks } from "./NavLinks";
+import { poppins } from "@/app/layout";
 export const Footer = () => {
   return (
     <div className="h-[60vh] w-full bg-[#28001E] text-[#BBF2FF]">
@@ -10,7 +11,7 @@ export const Footer = () => {
           <div className="flex items-baseline justify-between">
             <div className="flex flex-col">
               <Image src={Logo} alt="logoImage" />
-              <div className="info mt-12">
+              <div className={`info mt-12 ${poppins.className}`}>
                 <div>+1 925 644 0118</div>
                 <div>info@saktra.com</div>
                 <div className="mt-8">
@@ -23,7 +24,7 @@ export const Footer = () => {
             </div>
             <div className="flex flex-col text-[#BBF2FF]">
               <div className="text-[#BBF2FF] text-[12px]">Quick Links</div>
-              <ul className="mt-8 uppercase">
+              <ul className="mt-8 uppercase gilroy-bold">
                 {NavLinks.map((link) => {
                   return (
                     <li key={link.name}>
@@ -35,7 +36,7 @@ export const Footer = () => {
                 })}
               </ul>
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col gilmer-regular">
               <div className="text-2xl">To subscribe to our newsletter:</div>
               <div className="input flex flex-col mt-8 placeholder-[#bbf2ff]">
                 <input
@@ -69,7 +70,7 @@ export const Footer = () => {
               </div>
             </div>
           </div>
-          <div className="border-t-1 mt-6 border-t-[#bbf2ff] font-light">
+          <div className="border-t-1 mt-6 border-t-[#bbf2ff] font-light gilmer-regular">
             <div className="mt-12 uppercase text-[#bbf2ff] flex flex-row-reverse">
               Copyright © Saktra 2025 All Rights Reserved
             </div>

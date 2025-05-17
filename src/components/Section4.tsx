@@ -1,6 +1,7 @@
 import { Button } from "./Button";
 import { Card } from "./Card";
 import { SectionData } from "./NavLinks";
+import { poppins } from "@/app/layout";
 
 const Section4Data: SectionData[] = [
   {
@@ -25,18 +26,20 @@ export const Section4 = () => {
     <div className="section3 h-[100vh] w-full relative bg-[#F5F5F5] overflow-hidden card">
       <div className="content absolute top-0 left-0 h-full w-full z-5 pt-12 pl-25 flex-col">
         <div className="container text-5xl text-white flex gap-20 items-start">
-          <div className="services text-[16px] text-[#28001E] w-[150px] uppercase">
+          <div className="services text-[16px] text-[#28001E] w-[150px] uppercase gilroy-bold">
             About Us
           </div>
-          <div className="gradient flex flex-col">
-            <h1 className="gradient2 text-transparent bg-clip-text">
+          <div className="gradient flex flex-col gilmer-regular">
+            <h1 className="gradient2 text-transparent bg-clip-text p-2">
               Shaping the Future of Business,
             </h1>
             <h1 className="gradient2 text-transparent bg-clip-text pb-2">
               Together
             </h1>
             <div className="mt-5">
-              <p className="text-[18px] text-black max-w-2/3">
+              <p
+                className={`text-[18px] text-black max-w-2/3 ${poppins.className}`}
+              >
                 We’re a global technology and talent solutions company enabling
                 digital disruption across today’s most dynamic industries. From
                 FinTech to Telecom, we empower businesses to scale smarter,

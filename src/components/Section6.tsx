@@ -3,6 +3,7 @@ import { SectionData } from "./NavLinks";
 import s6Image1 from "../../public/images/s61.png";
 import s6Image2 from "../../public/images/s62.png";
 import s6Image3 from "../../public/images/s63.jpg";
+import { poppins } from "@/app/layout";
 
 const Section6Data: SectionData[] = [
   {
@@ -41,14 +42,16 @@ export const Section6 = () => {
       <div className="content absolute top-0 left-0 h-full w-full z-5 pt-15 pl-25 flex-col">
         <div className="container text-5xl text-white flex-col gap-35 items-start">
           <div className="flex gap-35">
-            <div className="services text-[16px] text-[#28001E] min-w-fit uppercase">
+            <div className="services text-[16px] text-[#28001E] min-w-fit uppercase gilroy-bold">
               Insights
             </div>
             <div className="gradient flex flex-col">
-              <h1 className="gradient2 text-transparent bg-clip-text p-2">
+              <h1 className="gradient2 text-transparent bg-clip-text p-2 gilmer-regular">
                 Expert Insights
               </h1>
-              <p className="ml-2 mt-2.5 text-[18px] text-black max-w-2/3 pb-2">
+              <p
+                className={`ml-2 mt-2.5 text-[18px] text-black max-w-2/3 pb-2 ${poppins.className}`}
+              >
                 Unlock the latest trends, thought leadership, and actionable
                 strategies in technology, talent, and AI. Our insights help you
                 navigate today’s fast-changing digital landscape and make

@@ -21,7 +21,7 @@ export const Carousel = ({ data, hoverColor }: CarouselProps) => {
   };
   console.log(_currIndex);
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col gilmer-regular">
       <div className="carousel flex mt-10 gap-2.5 overflow-hidden shrink-0 flex-1">
         {data.map((d: SectionData, i) => (
           <HoverCard
