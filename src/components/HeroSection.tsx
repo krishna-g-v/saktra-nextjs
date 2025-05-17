@@ -9,6 +9,7 @@ import { HiArrowLongRight } from "react-icons/hi2";
 import { Navigator } from "@/components/Navigator";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { Button } from "./Button";
 
 export const HeroSection = () => {
   const Images = [img1, img2, img3, img4, img5];
@@ -52,10 +53,7 @@ export const HeroSection = () => {
         <div className="content container px-10 text-[#BBF2FF] font-extrabold">
           <h1 className="text-6xl uppercase">Leading the new</h1>
           <h1 className="text-6xl uppercase">Digital World</h1>
-          <button className="uppercase bg-[#BBF2FF]  text-black font-bold text-[14px] p-2 mt-5 px-7 rounded-2xl flex items-center justify-center gap-2 cursor-pointer">
-            Discover More
-            <HiArrowLongRight className="text-2xl" />
-          </button>
+          <Button text="Discover More" bgColor="#BBF2FF" />
         </div>
         <Navigator
           index={index + 1}

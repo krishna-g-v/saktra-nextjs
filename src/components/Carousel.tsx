@@ -6,9 +6,10 @@ import { useState } from "react";
 
 export interface CarouselProps<T> {
   data: T[];
+  hoverColor?: string;
 }
 
-export const Carousel = <T,>({ data }: CarouselProps<T>) => {
+export const Carousel = <T,>({ data, hoverColor }: CarouselProps<T>) => {
   const [currIndex, setCurrIndex] = useState(0);
 
   const nextImg = () => {
@@ -19,18 +20,18 @@ export const Carousel = <T,>({ data }: CarouselProps<T>) => {
   };
   return (
     <div className="flex flex-col">
-      <div className="carousel flex mt-10 gap-2.5">
-        {[1, 2, 3, 4].map((_, i) => (
+      <div className="carousel flex mt-10 gap-2.5 overflow-hidden shrink-0 flex-1">
+        {data.map((_, i) => (
           <HoverCard
             key={i}
             cardContent="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed, eligendi! Quibusdam maiores odio corrupti nesciunt ipsam assumenda a cupiditate nemo! Quibusdam maiores odio corrupti nesciunt ipsam assumenda a cupiditate nemo!"
             cardHeader="Card Header"
-            hoverColor="#BBF2FF"
+            hoverColor={hoverColor ?? "#BBF2FF"}
             imgSrc={hover1}
           />
         ))}
       </div>
-      <Navigator nextImg={nextImg} prevImg={prevImg} />
+      <Navigator buttonColor={hoverColor} nextImg={nextImg} prevImg={prevImg} />
     </div>
   );
 };

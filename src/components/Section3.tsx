@@ -4,7 +4,7 @@ import { Carousel } from "./Carousel";
 
 export const Section3 = () => {
   return (
-    <div className="section3 h-[100vh] w-full relative bg-white overflow-hidden">
+    <div className="section3 h-[100vh] w-full relative bg-[#F5F5F5] overflow-hidden">
       <div className="h-[70vh] overflow-hidden relative">
         <Image
           src={bgImage}

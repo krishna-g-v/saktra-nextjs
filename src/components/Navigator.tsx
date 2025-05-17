@@ -6,6 +6,7 @@ interface NavigatorProps {
   prevImg: () => void;
   index?: number;
   total?: number;
+  buttonColor?: string;
 }
 
 export const Navigator = ({
@@ -13,7 +14,9 @@ export const Navigator = ({
   prevImg,
   index,
   total,
+  buttonColor = "#bbf2ff",
 }: NavigatorProps) => {
+  console.log(buttonColor);
   return (
     <div className="absolute bottom-0 h-20 w-full flex items-center justify-left">
       <div
@@ -34,13 +37,17 @@ export const Navigator = ({
         )}
         <div className="flex gap-2  text-black text-[19px] font-extrabold ">
           <button
-            className="h-10 w-10 bg-cyan-100 rounded-[50%] flex items-center justify-center cursor-pointer"
+            className={`h-10 w-10 bg-[${buttonColor}] rounded-[50%] flex items-center justify-center cursor-pointer ${
+              buttonColor === "white" ? "button-white" : ""
+            }`}
             onClick={prevImg}
           >
             <HiArrowSmallLeft />
           </button>
           <button
-            className="h-10 w-10 bg-cyan-100 rounded-[50%] flex items-center justify-center cursor-pointer"
+            className={`h-10 w-10 bg-[${buttonColor}] rounded-[50%] flex items-center justify-center cursor-pointer ${
+              buttonColor === "white" ? "button-white" : ""
+            }`}
             onClick={nextImg}
           >
             <HiArrowSmallRight />
