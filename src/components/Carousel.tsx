@@ -28,7 +28,7 @@ export const Carousel = <T,>({ data, hoverColor }: CarouselProps<T>) => {
             cardContent={d.cardContent}
             cardHeader={d.header}
             hoverColor={hoverColor ?? "#BBF2FF"}
-            imgSrc={hover1}
+            imgSrc={d.imgLink ?? hover1}
           />
         ))}
       </div>

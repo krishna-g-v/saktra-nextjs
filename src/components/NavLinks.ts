@@ -1,3 +1,5 @@
+import { StaticImageData } from "next/image";
+
 export const NavLinks = [
   { name: "Company" },
   { name: "Talent Solutions" },
@@ -10,4 +12,5 @@ export const NavLinks = [
 export type SectionData = {
   header: string;
   cardContent: string;
+  imgLink?: StaticImageData;
 };

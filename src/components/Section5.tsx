@@ -1,6 +1,20 @@
 "use client";
 import { Card } from "./Card";
 import { Navigator } from "./Navigator";
+import { SectionData } from "./NavLinks";
+
+const Section5Data: SectionData[] = [
+  {
+    header: "Rapid Platform Modernization for a FinTech Company",
+    cardContent:
+      "Our team migrated a legacy banking platform to the cloud. Within 6 months, we helped the client achieve 3x faster transaction processing and seamless integration with digital payment systems.",
+  },
+  {
+    header: "AI-Powered Claims Automation for an Insurance Provider",
+    cardContent:
+      "We helped a leading insurer implement an AI-driven claims processing system, reducing cycle time by 40% and improving customer satisfaction by 60%. Our intelligent workflows and predictive analytics helped minimize fraud and manual effort.",
+  },
+];
 
 export const Section5 = () => {
   const nextImg = () => {};
@@ -28,14 +42,14 @@ export const Section5 = () => {
                 growth through technology and talent
               </p>
             </div>
-            <div className="flex gap-3 mt-15 mb-10">
-              {[1, 2, 3].map((_, i) => {
+            <div className="flex gap-3 mt-7 mb-10">
+              {Section5Data.map((d, i) => {
                 return (
                   <Card
                     cardType="card2"
                     key={i}
-                    cardContent="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed, eligendi! Quibusdam maiores odio corrupti nesciunt ipsam assumenda a cupiditate nemo!"
-                    cardHeader="Card Header"
+                    cardContent={d.cardContent}
+                    cardHeader={d.header}
                   />
                 );
               })}

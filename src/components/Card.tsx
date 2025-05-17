@@ -36,7 +36,7 @@ export const Card = ({
   );
 
   const cardType2 = (
-    <div className="card h-65 w-155 flex flex-col text-black items-left justify-center relative cursor-pointer overflow-hidden p-2.5">
+    <div className="card h-65 w-145 flex flex-col text-black items-left justify-center relative cursor-pointer overflow-hidden p-2.5">
       <Image src={Bg2} alt="cardBackground" fill className="object-cover" />
       <div className={classes.overlay}></div>
       <div className="content z-10 text-white mt-15">

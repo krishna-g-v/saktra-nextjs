@@ -2,22 +2,28 @@ import Image from "next/image";
 import bgImage from "../../public/images/image-3.png";
 import { Carousel } from "./Carousel";
 import { SectionData } from "./NavLinks";
+import img1 from "../../public/images/technology.jpg";
+import img2 from "../../public/images/telecom.jpg";
+import img3 from "../../public/images/Ecommerce.jpg";
 
 const Section3Data: SectionData[] = [
   {
     header: "Technology",
     cardContent:
       "We help tech innovators lead with agile talent and cutting-edge digital solutions. From product development to cloud transformation, we empower software firms, IT service providers, and startups to build faster, scale smarter, and stay ahead of disruption.",
+    imgLink: img1,
   },
   {
     header: "Telecom",
     cardContent:
       "We empower telecom providers to evolve with speed and confidence. From 5G deployment to modernizing legacy networks, we deliver the tools, talent, and technology needed to drive connectivity and innovation at scale.",
+    imgLink: img2,
   },
   {
     header: "Ecommerce",
     cardContent:
       "We help eCommerce businesses elevate both performance and personalization. With scalable platforms and AI-powered technologies, we drive growth across digital marketplaces, improving online customer experiences at every touchpoint.",
+    imgLink: img3,
   },
   {
     header: "FinTech",
