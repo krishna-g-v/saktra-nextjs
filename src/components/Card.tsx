@@ -15,17 +15,23 @@ export const Card = ({
   cardType: CardType;
 }) => {
   const cardType1 = (
-    <div className="card h-65 w-60 flex flex-col text-black items-left justify-center relative cursor-pointer overflow-hidden bg-[#e8e8e8] p-2.5">
-      <h1 className="text-2xl mb-2">{cardHeader}</h1>
-      <div>
-        <p className="text-[14px]">{cardContent}</p>
-      </div>
-      <div className="mt-3 uppercase max-w-fit font-extrabold flex gap-2 items-center link relative">
-        <a className="text-[14px]" href="#">
-          Read More
-        </a>
-        <HiArrowLongRight className="font-[300]" />
-      </div>
+    <div
+      className={`${classes.card} h-65 w-60 flex flex-col text-black items-left justify-center relative cursor-pointer overflow-hidden bg-[#e8e8e8] p-2.5`}
+    >
+      <section className="z-10">
+        <h1 className="text-[22px] mb-2">{cardHeader}</h1>
+        <div>
+          <p className="text-[14px]">{cardContent}</p>
+        </div>
+        <div
+          className={`mt-3 uppercase max-w-fit font-extrabold flex gap-2 items-center ${classes.link} relative`}
+        >
+          <a className="text-[14px]" href="#">
+            Read More
+          </a>
+          <HiArrowLongRight className="font-[300]" />
+        </div>
+      </section>
     </div>
   );
 
@@ -39,7 +45,7 @@ export const Card = ({
           <p className="text-[14px]">{cardContent}</p>
         </div>
         <div
-          className={`mt-3 uppercase max-w-fit font-extrabold flex gap-2 items-center ${classes.linkWhite} relative`}
+          className={`mt-3 uppercase max-w-fit font-extrabold flex gap-2 items-center ${classes.linkWhite}  relative`}
         >
           <a className="text-[14px]" href="#">
             Read More

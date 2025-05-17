@@ -1,6 +1,26 @@
 import Image from "next/image";
 import bgImage from "../../public/images/image-2.jpg";
 import { Carousel } from "./Carousel";
+import { header } from "framer-motion/client";
+import { SectionData } from "./NavLinks";
+
+const Section2Data: SectionData[] = [
+  {
+    header: "Talent Solutions",
+    cardContent:
+      "Scalable and agile talent acquisition strategies built for today’s fast-moving industries. Whether launching a startup or expanding globally, we help you onboard the right skill and talent quickly and cost-effectively, without the fuse",
+  },
+  {
+    header: "Technology",
+    cardContent:
+      "From digital transformation to platform modernization, we engineer future-ready solutions that align technology with business.Our tech expertise fuels growth and enables smarter innovations across Telecom, Insurance, and Supply Chain sectors.",
+  },
+  {
+    header: "AI Services",
+    cardContent:
+      "Transform your business with intelligent solutions that go beyond automation.We harness the power of AI to deliver practical solutions that reduce costs, streamline workflows, and deliver hyper-personalized customer experiences that deliver measurable impact",
+  },
+];
 
 export const Section2 = () => {
   return (
@@ -26,7 +46,7 @@ export const Section2 = () => {
             </h1>
           </div>
         </div>
-        <Carousel data={[1, 2, 3, 4]} />
+        <Carousel data={Section2Data} />
       </div>
     </div>
   );

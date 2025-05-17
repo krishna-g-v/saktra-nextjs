@@ -1,9 +1,28 @@
 import { Button } from "./Button";
 import { Card } from "./Card";
+import { SectionData } from "./NavLinks";
+
+const Section4Data: SectionData[] = [
+  {
+    header: "Global Reach, Cross-Functional Expertise",
+    cardContent:
+      "Our teams blend strategy, engineering, and design to deliver end-to-end value to global enterprises.",
+  },
+  {
+    header: "Scalable Solutions, Tech-Forward Approach",
+    cardContent:
+      "Whether you're launching a new platform or modernizing legacy systems, we bring the people and technology, at scale, to turn bold ideas into real results.",
+  },
+  {
+    header: "Client-Centric Approach, Future-Ready Thinking",
+    cardContent:
+      "We partner with you at every step, solving today’s problems with tomorrow in mind. Our agile, adaptive approach moves your business forward",
+  },
+];
 
 export const Section4 = () => {
   return (
-    <div className="section3 h-[100vh] w-full relative bg-[#F5F5F5] overflow-hidden">
+    <div className="section3 h-[100vh] w-full relative bg-[#F5F5F5] overflow-hidden card">
       <div className="content absolute top-0 left-0 h-full w-full z-5 pt-12 pl-25 flex-col">
         <div className="container text-5xl text-white flex gap-20 items-start">
           <div className="services text-[16px] text-[#28001E] w-[150px] uppercase">
@@ -35,14 +54,14 @@ export const Section4 = () => {
               <Button text="Read More" bgColor="#BBF2FF" />
               <Button text="Our Solutions" bgColor="#F5F5F5" border={true} />
             </div>
-            <div className="flex gap-3 mt-15 mb-10">
-              {[1, 2, 3].map((_, i) => {
+            <div className="flex gap-3 mt-7 mb-10">
+              {Section4Data.map((s, i) => {
                 return (
                   <Card
                     cardType="card1"
                     key={i}
-                    cardContent="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed, eligendi! Quibusdam maiores odio corrupti nesciunt ipsam assumenda a cupiditate nemo!"
-                    cardHeader="Card Header"
+                    cardContent={s.cardContent}
+                    cardHeader={s.header}
                   />
                 );
               })}

@@ -6,3 +6,8 @@ export const NavLinks = [
   { name: "Resources" },
   { name: "Contact Us" },
 ];
+
+export type SectionData = {
+  header: string;
+  cardContent: string;
+};

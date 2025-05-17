@@ -3,9 +3,10 @@ import { HoverCard } from "./HoverCard";
 import hover1 from "../../public/images/hoverCard1.png";
 import { Navigator } from "./Navigator";
 import { useState } from "react";
+import { SectionData } from "./NavLinks";
 
 export interface CarouselProps<T> {
-  data: T[];
+  data: SectionData[];
   hoverColor?: string;
 }
 
@@ -21,11 +22,11 @@ export const Carousel = <T,>({ data, hoverColor }: CarouselProps<T>) => {
   return (
     <div className="flex flex-col">
       <div className="carousel flex mt-10 gap-2.5 overflow-hidden shrink-0 flex-1">
-        {data.map((_, i) => (
+        {data.map((d: SectionData, i) => (
           <HoverCard
             key={i}
-            cardContent="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed, eligendi! Quibusdam maiores odio corrupti nesciunt ipsam assumenda a cupiditate nemo! Quibusdam maiores odio corrupti nesciunt ipsam assumenda a cupiditate nemo!"
-            cardHeader="Card Header"
+            cardContent={d.cardContent}
+            cardHeader={d.header}
             hoverColor={hoverColor ?? "#BBF2FF"}
             imgSrc={hover1}
           />

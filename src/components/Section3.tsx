@@ -1,6 +1,45 @@
 import Image from "next/image";
 import bgImage from "../../public/images/image-3.png";
 import { Carousel } from "./Carousel";
+import { SectionData } from "./NavLinks";
+
+const Section3Data: SectionData[] = [
+  {
+    header: "Technology",
+    cardContent:
+      "We help tech innovators lead with agile talent and cutting-edge digital solutions. From product development to cloud transformation, we empower software firms, IT service providers, and startups to build faster, scale smarter, and stay ahead of disruption.",
+  },
+  {
+    header: "Telecom",
+    cardContent:
+      "We empower telecom providers to evolve with speed and confidence. From 5G deployment to modernizing legacy networks, we deliver the tools, talent, and technology needed to drive connectivity and innovation at scale.",
+  },
+  {
+    header: "Ecommerce",
+    cardContent:
+      "We help eCommerce businesses elevate both performance and personalization. With scalable platforms and AI-powered technologies, we drive growth across digital marketplaces, improving online customer experiences at every touchpoint.",
+  },
+  {
+    header: "FinTech",
+    cardContent:
+      "With a customer-first approach, we help FinTech companies deliver secure, scalable products to market. Our technology solutions help businesses innovate, automate, and launch new products and partnerships faster, for a more nimble time to market.",
+  },
+  {
+    header: "Insurance",
+    cardContent:
+      "We support insurers in modernizing core systems, enhancing policyholder experiences, and managing risk through AI and automation. Our strategic technology and talent solutions empower P&C, life, and health insurance providers to operate smarter and serve faster.",
+  },
+  {
+    header: "Supply Chain",
+    cardContent:
+      "From real-time visibility to intelligent automation, we help supply chain leaders stay agile, efficient, and resilient. Our solutions power end-to-end transformation and help businesses optimize and accelerate their operations.",
+  },
+  {
+    header: "Security",
+    cardContent:
+      "We enable businesses to stay secure in a rapidly evolving threat landscape. Our experts devise robust cybersecurity strategies, facilitate AI-driven threat detection, and deliver compliance-ready frameworks, helping you protect business-critical infrastructure across ecosystems.",
+  },
+];
 
 export const Section3 = () => {
   return (
@@ -27,7 +66,7 @@ export const Section3 = () => {
             </h1>
           </div>
         </div>
-        <Carousel data={[1, 2, 3, 4]} />
+        <Carousel data={Section3Data} />
       </div>
     </div>
   );
