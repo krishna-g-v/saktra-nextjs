@@ -1,4 +1,3 @@
-import { Card } from "./Card";
 import { Carousel } from "./Carousel";
 import { SectionData } from "./NavLinks";
 import s6Image1 from "../../public/images/s61.png";
