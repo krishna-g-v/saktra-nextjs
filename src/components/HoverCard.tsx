@@ -1,6 +1,6 @@
 import Image, { StaticImageData } from "next/image";
 import { HiArrowLongRight } from "react-icons/hi2";
-import { poppins } from "@/app/layout";
+import { poppins } from "@/components/NavLinks";
 
 export interface HoverCardProps {
   hoverColor: string;

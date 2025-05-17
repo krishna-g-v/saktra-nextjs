@@ -2,7 +2,7 @@ import Image from "next/image";
 import Logo from "../../public/images/logo-blue.svg";
 import { HiArrowSmallRight } from "react-icons/hi2";
 import { NavLinks } from "./NavLinks";
-import { poppins } from "@/app/layout";
+import { poppins } from "@/components/NavLinks";
 export const Footer = () => {
   return (
     <div className="h-[60vh] w-full bg-[#28001E] text-[#BBF2FF]">

@@ -1,5 +1,5 @@
 "use client";
-import { poppins } from "@/app/layout";
+import { poppins } from "@/components/NavLinks";
 import { Card } from "./Card";
 import { Navigator } from "./Navigator";
 import { SectionData } from "./NavLinks";

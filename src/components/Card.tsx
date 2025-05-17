@@ -2,7 +2,7 @@ import { HiArrowLongRight } from "react-icons/hi2";
 import Bg2 from "../../public/images/cardBg2.jpg";
 import Image from "next/image";
 import classes from "./Card.module.css";
-import { poppins } from "@/app/layout";
+import { poppins } from "@/components/NavLinks";
 
 type CardType = "card1" | "card2";
 

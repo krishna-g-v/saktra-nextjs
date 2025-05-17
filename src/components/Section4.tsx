@@ -1,7 +1,7 @@
 import { Button } from "./Button";
 import { Card } from "./Card";
 import { SectionData } from "./NavLinks";
-import { poppins } from "@/app/layout";
+import { poppins } from "@/components/NavLinks";
 
 const Section4Data: SectionData[] = [
   {

@@ -3,7 +3,7 @@ import { SectionData } from "./NavLinks";
 import s6Image1 from "../../public/images/s61.png";
 import s6Image2 from "../../public/images/s62.png";
 import s6Image3 from "../../public/images/s63.jpg";
-import { poppins } from "@/app/layout";
+import { poppins } from "@/components/NavLinks";
 
 const Section6Data: SectionData[] = [
   {
