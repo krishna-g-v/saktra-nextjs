@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Logo from "../../public/images/logo-blue.svg";
 import { HiArrowSmallRight } from "react-icons/hi2";
+import { NavLinks } from "./NavLinks";
 export const Footer = () => {
   return (
     <div className="h-[60vh] w-full bg-[#28001E] text-[#BBF2FF]">
@@ -23,39 +24,33 @@ export const Footer = () => {
             <div className="flex flex-col text-[#BBF2FF]">
               <div className="text-[#BBF2FF] text-[12px]">Quick Links</div>
               <ul className="mt-8 uppercase">
-                <li>
-                  <a href="#">About</a>
-                </li>
-                <li>
-                  <a href="#">Talent Solutions</a>
-                </li>
-                <li>
-                  <a href="#">Digital</a>
-                </li>
-                <li>
-                  <a href="#">EPM Solutions</a>
-                </li>
-                <li>
-                  <a href="#">SAP Solutions</a>
-                </li>
-                <li>
-                  <a href="#">PMO</a>
-                </li>
-                <li>
-                  <a href="#">Resources</a>
-                </li>
+                {NavLinks.map((link) => {
+                  return (
+                    <li key={link.name}>
+                      <a className="text-[14px]" href="#">
+                        {link.name}
+                      </a>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
             <div className="flex flex-col">
               <div className="text-2xl">To subscribe to our newsletter:</div>
-              <div className="input flex flex-col mt-8">
-                <input type="text" name="name" id="name" placeholder="Name" />
-                <div className="flex gap-1 items-center justify-between mt-2.5">
+              <div className="input flex flex-col mt-8 placeholder-[#bbf2ff]">
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="Name"
+                  className="placeholder-[#bbf2ff]"
+                />
+                <div className="flex gap-1 items-center justify-between mt-2.5 ">
                   <input
                     type="email"
                     name="email"
                     id="email"
-                    className="w-[80%]"
+                    className="w-[80%] placeholder-[#bbf2ff]"
                     placeholder="Email"
                   />
                   <button
@@ -75,7 +70,7 @@ export const Footer = () => {
             </div>
           </div>
           <div className="border-t-1 mt-6 border-t-[#bbf2ff] font-light">
-            <div className="mt-10 uppercase text-[#bbf2ff] flex flex-row-reverse">
+            <div className="mt-12 uppercase text-[#bbf2ff] flex flex-row-reverse">
               Copyright © Saktra 2025 All Rights Reserved
             </div>
           </div>

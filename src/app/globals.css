@@ -83,3 +83,24 @@ input {
   font-size: 12px;
   outline: none;
 }
+
+.button {
+  position: relative;
+  overflow: hidden;
+}
+
+.button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background: rgba(#333); /* adjust as needed */
+  transition: width 0.4s ease;
+  z-index: 4;
+}
+
+.button:hover::after {
+  width: 100%;
+}

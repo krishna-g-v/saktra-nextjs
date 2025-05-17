@@ -18,7 +18,7 @@ export const Navigator = ({
 }: NavigatorProps) => {
   console.log(buttonColor);
   return (
-    <div className="absolute bottom-0 h-20 w-full flex items-center justify-left">
+    <div className="absolute bottom-10 h-20 w-full flex items-center justify-left">
       <div
         className={`divider ${
           index ? "border-t-cyan-100 border-t-[0.1px]" : ""

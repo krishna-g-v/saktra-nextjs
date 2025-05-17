@@ -1,6 +1,10 @@
+"use client";
 import { Card } from "./Card";
+import { Navigator } from "./Navigator";
 
 export const Section5 = () => {
+  const nextImg = () => {};
+  const prevImg = () => {};
   return (
     <div className="section3 h-[100vh] w-full relative bg-[#e8e8e8] overflow-hidden">
       <div className="content absolute top-0 left-0 h-full w-full z-5 pt-30 pl-25 flex-col">
@@ -36,6 +40,7 @@ export const Section5 = () => {
             </div>
           </div>
         </div>
+        <Navigator nextImg={nextImg} prevImg={prevImg} />
       </div>
     </div>
   );
