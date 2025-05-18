@@ -107,7 +107,7 @@ export const Footer = () => {
               </a>
             </div>
           </div>
-          <div className="border-t-1 border-t-[#bbf2ff] font-light gilmer-regular max-sm:mt-5 md:mt-12">
+          <div className="border-t-1 border-t-[#bbf2ff] font-light gilmer-regular max-sm:mt-5 md:mt-12 max-sm:mb-8">
             <div className="mt-4 uppercase text-[#bbf2ff] flex flex-row-reverse text-[14px]">
               Copyright © Saktra 2025 All Rights Reserved
             </div>
