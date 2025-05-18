@@ -39,10 +39,10 @@ const Section6Data: SectionData[] = [
 export const Section6 = () => {
   return (
     <div className="section3 h-[100vh] w-full relative bg-[#bbf2ff] overflow-hidden">
-      <div className="content absolute top-0 left-0 h-full w-full z-5 pt-15 pl-25 flex-col">
-        <div className="container text-5xl text-white flex-col gap-35 items-start">
-          <div className="flex gap-35">
-            <div className="services text-[16px] text-[#28001E] min-w-fit uppercase gilroy-bold">
+      <div className="content absolute top-0 left-0 h-full w-full z-5  max-sm:pt-7 pt-15 max-sm:pl-5 pl-25 flex-col">
+        <div className="container text-5xl text-white flex-col max-sm:text-[38px] items-start">
+          <div className="flex gap-35 max-sm:flex-col max-sm:gap-15">
+            <div className="services text-[16px] text-[#28001E] min-w-fit uppercase gilroy-bold  ">
               Insights
             </div>
             <div className="gradient flex flex-col">
@@ -50,7 +50,7 @@ export const Section6 = () => {
                 Expert Insights
               </h1>
               <p
-                className={`ml-2 mt-2.5 text-[18px] text-black max-w-2/3 pb-2 ${poppins.className}`}
+                className={`ml-2 mt-2.5 text-[18px] text-black max-w-2/3 max-sm:max-w-[90%] pb-2 ${poppins.className}`}
               >
                 Unlock the latest trends, thought leadership, and actionable
                 strategies in technology, talent, and AI. Our insights help you

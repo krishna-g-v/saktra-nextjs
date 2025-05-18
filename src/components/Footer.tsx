@@ -6,12 +6,12 @@ import { poppins } from "@/components/NavLinks";
 export const Footer = () => {
   return (
     <div className="h-[60vh] w-full bg-[#28001E] text-[#BBF2FF]">
-      <div className="container p-10 h-full w-full">
+      <div className="container p-10 max-sm:p-4 h-full w-full">
         <div className="flex flex-col">
           <div className="flex items-baseline justify-between">
-            <div className="flex flex-col">
-              <Image src={Logo} alt="logoImage" />
-              <div className={`info mt-12 ${poppins.className}`}>
+            <div className="flex flex-col max-sm:text-[12px]">
+              <Image src={Logo} alt="logoImage" className="max-md:size-14" />
+              <div className={`info mt-12 max-sm:mt-5 ${poppins.className}`}>
                 <div>+1 925 644 0118</div>
                 <div>info@saktra.com</div>
                 <div className="mt-8">
@@ -22,7 +22,7 @@ export const Footer = () => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col text-[#BBF2FF]">
+            <div className="flex flex-col text-[#BBF2FF] max-sm:pt-5">
               <div className="text-[#BBF2FF] text-[12px]">Quick Links</div>
               <ul className="mt-8 uppercase gilroy-bold">
                 {NavLinks.map((link) => {
@@ -36,15 +36,17 @@ export const Footer = () => {
                 })}
               </ul>
             </div>
-            <div className="flex flex-col gilmer-regular">
-              <div className="text-2xl">To subscribe to our newsletter:</div>
+            <div className="flex flex-col gilmer-regular max-sm:hidden">
+              <div className="text-2xl max-sm:text-[20px]">
+                To subscribe to our newsletter:
+              </div>
               <div className="input flex flex-col mt-8 placeholder-[#bbf2ff]">
                 <input
                   type="text"
                   name="name"
                   id="name"
                   placeholder="Name"
-                  className="placeholder-[#bbf2ff]"
+                  className="placeholder-[#bbf2ff] max-sm:w-3/5"
                 />
                 <div className="flex gap-1 items-center justify-between mt-2.5 ">
                   <input
@@ -70,8 +72,43 @@ export const Footer = () => {
               </div>
             </div>
           </div>
-          <div className="border-t-1 mt-6 border-t-[#bbf2ff] font-light gilmer-regular">
-            <div className="mt-12 uppercase text-[#bbf2ff] flex flex-row-reverse">
+          <div className="flex flex-col gilmer-regular md:hidden mt-3">
+            <div className="text-2xl max-sm:text-[20px]">
+              To subscribe to our newsletter:
+            </div>
+            <div className="input flex flex-col mt-8 placeholder-[#bbf2ff]">
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Name"
+                className="placeholder-[#bbf2ff] max-sm:w-3/5"
+              />
+              <div className="flex gap-1 items-center justify-between mt-2.5 ">
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  className="w-[80%] placeholder-[#bbf2ff]"
+                  placeholder="Email"
+                />
+                <button
+                  className={`h-10 w-10 bg-[#BBF2FF] rounded-[50%] flex items-center justify-center cursor-pointer text-black
+                                }`}
+                >
+                  <HiArrowSmallRight />
+                </button>
+              </div>
+            </div>
+            <div className="mt-2.5 text-[12px]">
+              By signing up you agree with our{" "}
+              <a className="underline" href="#">
+                Privacy Policy
+              </a>
+            </div>
+          </div>
+          <div className="border-t-1 border-t-[#bbf2ff] font-light gilmer-regular max-sm:mt-5">
+            <div className="mt-4 uppercase text-[#bbf2ff] flex flex-row-reverse text-[14px]">
               Copyright © Saktra 2025 All Rights Reserved
             </div>
           </div>

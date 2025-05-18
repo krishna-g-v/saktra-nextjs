@@ -5,13 +5,29 @@ import { Navigator } from "./Navigator";
 import { useState, useEffect } from "react";
 import { SectionData } from "./NavLinks";
 import { motion, AnimatePresence } from "framer-motion";
+import { Card, SecondaryCardType } from "./Card";
+
+type CardType = "HoverCard" | "Card";
 
 export interface CarouselProps {
   data: SectionData[];
   hoverColor?: string;
+  cardType?: CardType;
+  secondaryCardType?: SecondaryCardType;
+  width?: number;
+  height?: string;
+  navigatorPosition?: boolean;
 }
 
-export const Carousel = ({ data, hoverColor }: CarouselProps) => {
+export const Carousel = ({
+  data,
+  hoverColor,
+  cardType = "HoverCard",
+  secondaryCardType = "card1",
+  width,
+  height,
+  navigatorPosition = false,
+}: CarouselProps) => {
   const [currIndex, setCurrIndex] = useState(0);
   const [direction, setDirection] = useState<"left" | "right">("right");
   const [isMobile, setIsMobile] = useState(false);
@@ -66,12 +82,23 @@ export const Carousel = ({ data, hoverColor }: CarouselProps) => {
               transition={{ duration: 0.3, ease: "easeInOut" }}
               className="w-full flex justify-center"
             >
-              <HoverCard
-                cardContent={data[currIndex].cardContent}
-                cardHeader={data[currIndex].header}
-                hoverColor={hoverColor ?? "#BBF2FF"}
-                imgSrc={data[currIndex].imgLink ?? hover1}
-              />
+              {cardType === "HoverCard" ? (
+                <HoverCard
+                  cardContent={data[currIndex].cardContent}
+                  cardHeader={data[currIndex].header}
+                  hoverColor={hoverColor ?? "#BBF2FF"}
+                  imgSrc={data[currIndex].imgLink ?? hover1}
+                />
+              ) : (
+                <Card
+                  cardType={secondaryCardType}
+                  key={currIndex}
+                  cardContent={data[currIndex].cardContent}
+                  cardHeader={data[currIndex].header}
+                  width={width}
+                  height={height}
+                />
+              )}
             </motion.div>
           </AnimatePresence>
         ) : (
@@ -84,12 +111,23 @@ export const Carousel = ({ data, hoverColor }: CarouselProps) => {
           >
             {data.map((d, i) => (
               <div key={i}>
-                <HoverCard
-                  cardContent={d.cardContent}
-                  cardHeader={d.header}
-                  hoverColor={hoverColor ?? "#BBF2FF"}
-                  imgSrc={d.imgLink ?? hover1}
-                />
+                {cardType === "HoverCard" ? (
+                  <HoverCard
+                    cardContent={d.cardContent}
+                    cardHeader={d.header}
+                    hoverColor={hoverColor ?? "#BBF2FF"}
+                    imgSrc={d.imgLink ?? hover1}
+                  />
+                ) : (
+                  <Card
+                    cardType={secondaryCardType}
+                    key={i}
+                    cardContent={d.cardContent}
+                    cardHeader={d.header}
+                    width={width}
+                    height={height}
+                  />
+                )}
               </div>
             ))}
           </motion.div>
@@ -100,6 +138,7 @@ export const Carousel = ({ data, hoverColor }: CarouselProps) => {
         buttonColor={hoverColor}
         nextImg={nextImg}
         prevImg={prevImg}
+        navigatorPosition={navigatorPosition}
       />
     </div>
   );

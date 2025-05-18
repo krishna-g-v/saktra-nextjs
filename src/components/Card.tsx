@@ -4,20 +4,28 @@ import Image from "next/image";
 import classes from "./Card.module.css";
 import { poppins } from "@/components/NavLinks";
 
-type CardType = "card1" | "card2";
+export type SecondaryCardType = "card1" | "card2";
 
 export const Card = ({
   cardHeader,
   cardContent,
   cardType,
+  width,
+  height,
 }: {
   cardHeader: string;
   cardContent: string;
-  cardType: CardType;
+  cardType: SecondaryCardType;
+  width?: number;
+  height?: string;
 }) => {
+  const sizes =
+    width !== undefined && height !== undefined
+      ? `h-[${height}] w-${width}`
+      : "h-70 w-90";
   const cardType1 = (
     <div
-      className={`${classes.card} h-65 w-60 flex flex-col text-black items-left justify-center relative cursor-pointer overflow-hidden bg-[#e8e8e8] p-2.5 ${poppins.className}`}
+      className={`${classes.card} h-65 md:w-60 w-90 flex flex-col text-black items-left justify-center relative cursor-pointer overflow-hidden bg-[#e8e8e8] p-2.5 ${poppins.className}`}
     >
       <section className="z-10">
         <h1 className="text-[22px] mb-2">{cardHeader}</h1>
@@ -37,7 +45,9 @@ export const Card = ({
   );
 
   const cardType2 = (
-    <div className="card h-65 w-145 flex flex-col text-black items-left justify-center relative cursor-pointer overflow-hidden p-2.5">
+    <div
+      className={`card ${sizes} flex flex-col text-black items-left justify-center relative cursor-pointer overflow-hidden p-2.5`}
+    >
       <Image src={Bg2} alt="cardBackground" fill className="object-cover" />
       <div className={classes.overlay}></div>
       <div className="content z-10 text-white mt-15">
