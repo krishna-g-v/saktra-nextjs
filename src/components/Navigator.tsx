@@ -11,6 +11,7 @@ interface NavigatorProps {
   buttonColor?: string;
   screenSize?: ScreenSize;
   navigatorPosition?: boolean;
+  section?: string;
 }
 
 export const Navigator = ({
@@ -21,16 +22,19 @@ export const Navigator = ({
   buttonColor = "#bbf2ff",
   screenSize,
   navigatorPosition = false,
+  section = "other",
 }: NavigatorProps) => {
   console.log(buttonColor);
   return (
     <div
       className={`absolute max-sm:bottom-14 h-20 w-full flex items-center justify-left ${
-        navigatorPosition
+        section === "section4"
+          ? "bottom-18"
+          : navigatorPosition
           ? "max-sm:bottom-[-20px]"
           : screenSize === "mobile"
           ? "bottom-30"
-          : "bottom-[-15]"
+          : "bottom-10"
       }`}
     >
       <div

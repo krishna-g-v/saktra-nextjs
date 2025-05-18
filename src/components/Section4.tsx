@@ -57,7 +57,7 @@ export const Section4 = () => {
               <Button text="Read More" bgColor="#BBF2FF" />
               <Button text="Our Solutions" bgColor="#F5F5F5" border={true} />
             </div>
-            <Carousel data={Section4Data} cardType="Card" />
+            <Carousel section="section4" data={Section4Data} cardType="Card" />
           </div>
         </div>
       </div>

@@ -2,6 +2,7 @@
 import { poppins } from "@/components/NavLinks";
 import { SectionData } from "./NavLinks";
 import { Carousel } from "./Carousel";
+import { useEffect, useState } from "react";
 
 const Section5Data: SectionData[] = [
   {
@@ -17,6 +18,15 @@ const Section5Data: SectionData[] = [
 ];
 
 export const Section5 = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Media query detection
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
   return (
     <div className="section3 h-[100vh] w-full relative bg-[#e8e8e8] overflow-hidden">
       <div className="content absolute top-0 left-0 h-full w-full z-5 max-sm:pt-7 pt-20 max-sm:pl-5 pl-25 flex-col">
@@ -48,9 +58,9 @@ export const Section5 = () => {
           data={Section5Data}
           cardType="Card"
           secondaryCardType="card2"
-          width={56}
-          height={"400px"}
-          navigatorPosition={true}
+          width={isMobile ? 56 : undefined}
+          height={isMobile ? "400px" : undefined}
+          navigatorPosition={isMobile}
         />
       </div>
     </div>

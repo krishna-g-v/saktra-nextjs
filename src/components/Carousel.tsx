@@ -17,6 +17,7 @@ export interface CarouselProps {
   width?: number;
   height?: string;
   navigatorPosition?: boolean;
+  section?: string;
 }
 
 export const Carousel = ({
@@ -27,6 +28,7 @@ export const Carousel = ({
   width,
   height,
   navigatorPosition = false,
+  section = "other",
 }: CarouselProps) => {
   const [currIndex, setCurrIndex] = useState(0);
   const [direction, setDirection] = useState<"left" | "right">("right");
@@ -103,7 +105,7 @@ export const Carousel = ({
           </AnimatePresence>
         ) : (
           <motion.div
-            className="flex gap-4 transition-transform ease-in-out duration-500"
+            className="flex gap-4 transition-transform ease-in-out duration-500 md:pl-[200px]"
             style={{
               width: `${data.length * 100}%`,
               transform: `translateX(-${currIndex * (100 / data.length)}%)`,
@@ -139,6 +141,7 @@ export const Carousel = ({
         nextImg={nextImg}
         prevImg={prevImg}
         navigatorPosition={navigatorPosition}
+        section={section}
       />
     </div>
   );
