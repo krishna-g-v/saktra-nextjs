@@ -47,7 +47,7 @@ export const HeroSection = () => {
   };
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
+    <div className=" min-h-lvh relative overflow-hidden">
       <AnimatePresence initial={false} custom={direction}>
         <motion.div
           key={`${index}-${direction}`}
@@ -65,7 +65,7 @@ export const HeroSection = () => {
             sizes="(max-width: 768px) 100vw, 100vw"
             placeholder="blur"
             blurDataURL={Images[index].blurDataURL}
-            className="object-cover"
+            className="object-cover object-[center]"
             priority
           />
         </motion.div>

@@ -9,7 +9,7 @@ export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-[#28001E]/50 max-sm:h-13  w-full text-white absolute z-10 gilroy-bold flex items-center justify-between">
+    <nav className="bg-[#28001E]/50 max-sm:h-13 w-full text-white absolute z-10 gilroy-bold flex items-center justify-between">
       <div className="mx-auto max-sm:h-full w-full flex justify-between items-center">
         <div className="text-black font-extrabold text-2xl bg-[#BBF2FF] max-sm:p-0 max-sm:h-full p-4 px-12 grid items-center">
           <Image
@@ -35,7 +35,7 @@ export const Navbar = () => {
         <div className="md:hidden">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-[#BBF2FF] focus:outline-none"
+            className="text-[#BBF2FF] focus:outline-none pr-2.5"
           >
             <svg
               className="h-6 w-6"
