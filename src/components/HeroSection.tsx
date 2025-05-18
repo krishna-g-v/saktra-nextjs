@@ -62,6 +62,7 @@ export const HeroSection = () => {
             src={Images[index]}
             alt={`Background ${index}`}
             fill
+            style={{ objectPosition: "58% center" }}
             sizes="(max-width: 768px) 100vw, 100vw"
             placeholder="blur"
             blurDataURL={Images[index].blurDataURL}

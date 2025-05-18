@@ -37,9 +37,9 @@ export const Section2 = () => {
         fill
         className="object-cover z-2 opacity-50 mix-blend-color"
       />
-      <div className="content absolute top-0 left-0 h-full w-full z-5 pt-15 pl-25 flex flex-col">
-        <div className="container text-4xl text-white flex gap-30 items-start">
-          <div className="services text-[16px] text-[#BBF2FF] uppercase">
+      <div className="content absolute top-0 left-0 h-full w-full z-5 max-sm:pt-7 pt-15 max-sm:pl-5 pl-25 flex flex-col pb-10">
+        <div className="container text-4xl max-sm:text-[38px] text-white max-sm:flex-col flex max-sm:gap-15 gap-30 items-start">
+          <div className="services text-[16px] text-[#BBF2FF] uppercase max-sm:text-[10px]">
             Services
           </div>
           <div className="gradient flex flex-col gilmer-regular">

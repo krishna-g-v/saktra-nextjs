@@ -51,16 +51,19 @@ export const Section3 = () => {
   return (
     <div className="section3 h-[100vh] w-full relative bg-[#F5F5F5] overflow-hidden">
       <div className="h-[70vh] overflow-hidden relative">
+        <div className="absolute top-0 left-0 h-full w-full bg-black opacity-40 z-4 md:hidden"></div>
         <Image
           src={bgImage}
           alt="background"
+          style={{ objectPosition: "80% center" }}
           fill
-          className="h-[100%] object-cover"
+          className=" object-cover"
         />
       </div>
-      <div className="content absolute top-0 left-0 h-full w-full z-5 pt-25 pl-25 flex flex-col">
-        <div className="container text-5xl text-white flex gap-30 items-start">
-          <div className="services text-[16px] text-[#BBF2FF] uppercase gilroy-bold">
+
+      <div className="content absolute top-0 left-0 h-full w-full z-5 pt-25 pl-25 max-sm:pt-7 flex flex-col max-sm:pl-5">
+        <div className="container text-5xl max-sm:text-[38px] text-white flex max-sm:flex-col gap-30 max-sm:gap-15 items-start max-sm:mb-24">
+          <div className="services text-[16px] max-sm:text-[10px] text-[#BBF2FF] uppercase gilroy-bold">
             Industries
           </div>
           <div className="gradient flex flex-col gilmer-regular">

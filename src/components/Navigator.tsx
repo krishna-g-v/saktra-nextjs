@@ -1,12 +1,15 @@
 "use client";
 import { HiArrowSmallLeft, HiArrowSmallRight } from "react-icons/hi2";
 
+type ScreenSize = "desktop" | "mobile";
+
 interface NavigatorProps {
   nextImg: () => void;
   prevImg: () => void;
   index?: number;
   total?: number;
   buttonColor?: string;
+  screenSize?: ScreenSize;
 }
 
 export const Navigator = ({
@@ -15,10 +18,15 @@ export const Navigator = ({
   index,
   total,
   buttonColor = "#bbf2ff",
+  screenSize,
 }: NavigatorProps) => {
   console.log(buttonColor);
   return (
-    <div className="absolute max-sm:bottom-14 bottom-10 h-20 w-full flex items-center justify-left">
+    <div
+      className={`absolute max-sm:bottom-14 h-20 w-full flex items-center justify-left ${
+        screenSize === "mobile" ? "bottom-30" : "bottom-[-15]"
+      }`}
+    >
       <div
         className={`divider ${
           index ? "border-t-cyan-100 border-t-[0.1px]" : ""
