@@ -1,7 +1,5 @@
 "use client";
 import { poppins } from "@/components/NavLinks";
-import { Card } from "./Card";
-import { Navigator } from "./Navigator";
 import { SectionData } from "./NavLinks";
 import { Carousel } from "./Carousel";
 
@@ -19,8 +17,6 @@ const Section5Data: SectionData[] = [
 ];
 
 export const Section5 = () => {
-  const nextImg = () => {};
-  const prevImg = () => {};
   return (
     <div className="section3 h-[100vh] w-full relative bg-[#e8e8e8] overflow-hidden">
       <div className="content absolute top-0 left-0 h-full w-full z-5 max-sm:pt-7 pt-20 max-sm:pl-5 pl-25 flex-col">
