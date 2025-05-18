@@ -47,11 +47,11 @@ export const HeroSection = () => {
   };
 
   return (
-    <div className="h-[95vh] relative overflow-hidden">
+    <div className="min-h-screen relative overflow-hidden">
       <AnimatePresence initial={false} custom={direction}>
         <motion.div
           key={`${index}-${direction}`}
-          className="absolute top-0 left-0 w-full h-full"
+          className="absolute inset-0 w-full h-full"
           custom={direction}
           initial={{ x: direction > 0 ? "100%" : "-100%" }}
           animate={{ x: 0 }}
@@ -62,6 +62,7 @@ export const HeroSection = () => {
             src={Images[index]}
             alt={`Background ${index}`}
             fill
+            sizes="(max-width: 768px) 100vw, 100vw"
             placeholder="blur"
             blurDataURL={Images[index].blurDataURL}
             className="object-cover"
@@ -70,9 +71,9 @@ export const HeroSection = () => {
         </motion.div>
       </AnimatePresence>
       <div className="overlay flex items-left justify-center flex-col h-full w-full">
-        <div className="content container px-10 text-[#BBF2FF] font-extrabold gilroy-bold">
-          <h1 className="text-6xl uppercase max-w-3/4">{Headers1[index]}</h1>
-          <h1 className="text-6xl uppercase">{Headers2[index]}</h1>
+        <div className="content container px-6 sm:px-10 text-[#BBF2FF]">
+          <h1 className="text-3xl sm:text-6xl uppercase">{Headers1[index]}</h1>
+          <h1 className="text-3xl sm:text-6xl uppercase">{Headers2[index]}</h1>
           <Button text={linkTexts[index]} bgColor="#BBF2FF" />
         </div>
         <Navigator

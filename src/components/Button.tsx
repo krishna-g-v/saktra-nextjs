@@ -12,7 +12,7 @@ export const Button = ({
 }) => {
   return (
     <button
-      className={`uppercase bg-[${bgColor}] text-black font-bold text-[14px] p-2 mt-5 px-7 rounded-3xl flex items-center justify-center gap-2 cursor-pointer ${
+      className={`uppercase bg-[${bgColor}] text-black font-bold text-[10px] md:text-[14px] p-2 mt-5 px-7 rounded-3xl flex items-center justify-center gap-2 cursor-pointer ${
         border ? "border-1 border-black" : ""
       }relative ${classes.button}`}
     >
