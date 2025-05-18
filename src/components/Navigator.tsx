@@ -28,7 +28,9 @@ export const Navigator = ({
   return (
     <div
       className={`absolute max-sm:bottom-14 h-20 w-full flex items-center justify-left ${
-        section === "section4"
+        section === "section4" && screenSize === "mobile"
+          ? "max-sm:bottom-20"
+          : section === "section4"
           ? "bottom-25"
           : navigatorPosition
           ? "max-sm:bottom-[-20px]"
