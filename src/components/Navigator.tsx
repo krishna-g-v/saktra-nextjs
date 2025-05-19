@@ -27,17 +27,19 @@ export const Navigator = ({
   console.log(buttonColor);
   return (
     <div
-      className={`absolute max-sm:bottom-14 h-20 w-full flex items-center justify-left ${
-        section === "section4" && screenSize === "mobile"
-          ? "max-sm:bottom-20"
-          : section === "section4"
-          ? "bottom-25"
-          : navigatorPosition
-          ? "max-sm:bottom-[-20px]"
-          : screenSize === "mobile"
-          ? "bottom-30"
-          : "bottom-10"
-      }`}
+      className={`absolute h-20  w-full flex items-center justify-left 
+        ${
+          section === "section4" && screenSize === "mobile"
+            ? "max-sm:bottom-44"
+            : section === "section4"
+            ? "bottom-25"
+            : navigatorPosition
+            ? "max-sm:bottom-[-20px]"
+            : screenSize === "mobile"
+            ? "bottom-30"
+            : "bottom-10"
+        }
+      `}
     >
       <div
         className={`divider ${

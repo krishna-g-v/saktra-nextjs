@@ -22,7 +22,7 @@ export const HoverCard = ({
       </div>
       <div className="overlay top-0 left-0 w-full h-full bg-black/20"></div>
       <div className="cardContent absolute top-0 left-0 h-full w-full">
-        <h1 className="mt-[60%] ml-6 text-2xl">{cardHeader}</h1>
+        <h1 className="mt-[60%] ml-6 text-2xl text-[#BBF2FF]">{cardHeader}</h1>
       </div>
       <div
         className="hover-content absolute left-0 h-full w-full top-full text-black text-[18px] z-20 flex items-start justify-center flex-col p-2.5 px-4 mb-3"
