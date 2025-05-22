@@ -1,5 +1,6 @@
 import Image from "next/image";
 import BannerImage from "../../../public/images/servicesBanner.jpg";
+import { TabBar } from "@/components/TabBar";
 
 export default function Home() {
   return (
@@ -19,6 +20,9 @@ export default function Home() {
             your business
           </h3>
         </div>
+      </div>
+      <div className="content mt-16 w-full flex justify-center">
+        <TabBar />
       </div>
     </div>
   );
