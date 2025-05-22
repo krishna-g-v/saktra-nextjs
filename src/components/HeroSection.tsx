@@ -6,7 +6,7 @@ import img3 from "../../public/images/bg-3.jpg";
 import img4 from "../../public/images/bg-4.jpg";
 import img5 from "../../public/images/bg-5.jpg";
 import { Navigator } from "@/components/Navigator";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Button } from "./Button";
 
