@@ -54,8 +54,9 @@ const ServicesTabs: Tabs = [
                   Ready to Start Your Next Project?
                 </h2>
                 <p className="text-lg text-slate-600 mb-8">
-                  Let's discuss how our services can help you achieve your
-                  business goals
+                  {
+                    "Let's discuss how our services can help you achieve your business goals"
+                  }
                 </p>
                 <button className="bg-[#0f172a] text-white hover:bg-[#0f172a]/90 h-11 rounded-md px-8 cursor-pointer">
                   Contact Our Team
