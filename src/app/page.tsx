@@ -10,7 +10,6 @@ import { Section6 } from "@/components/Section6";
 export default function Home() {
   return (
     <div>
-      <Navbar />
       <HeroSection />
       <Section2 />
       <Section3 />

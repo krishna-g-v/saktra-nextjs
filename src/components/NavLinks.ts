@@ -2,12 +2,12 @@ import { StaticImageData } from "next/image";
 import { Poppins } from "next/font/google";
 
 export const NavLinks = [
-  { name: "Company" },
-  { name: "Talent Solutions" },
-  { name: "Technology" },
-  { name: "AI Services" },
-  { name: "Resources" },
-  { name: "Contact Us" },
+  { name: "Company", link: "#" },
+  { name: "Talent Solutions", link: "#" },
+  { name: "Technology", link: "#" },
+  { name: "AI Services", link: "/services" },
+  { name: "Resources", link: "#" },
+  { name: "Contact Us", link: "#" },
 ];
 
 export const poppins = Poppins({

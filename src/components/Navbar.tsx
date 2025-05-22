@@ -5,29 +5,32 @@ import { NavLinks } from "./NavLinks";
 import { useState } from "react";
 import { CgClose } from "react-icons/cg";
 import { AnimatePresence, motion } from "framer-motion";
+import Link from "next/link";
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-[#28001E]/50 max-sm:h-13 w-full text-white absolute z-10 gilroy-bold flex items-center justify-between">
+    <nav className="bg-[#28001E]/50 max-sm:h-13 w-full text-white absolute gilroy-bold flex items-center justify-between z-999">
       <div className="mx-auto max-sm:h-full w-full flex justify-between items-center">
         <div className="text-black font-extrabold text-2xl bg-[#BBF2FF] max-sm:p-0 max-sm:h-full p-4 px-12 grid items-center">
-          <Image
-            src={Logo}
-            alt="logoImage"
-            className="mt-[-8px] ml-[-6px] h-6 sm:h-8 w-auto max-sm:mx-2"
-          />
+          <Link href="/">
+            <Image
+              src={Logo}
+              alt="logoImage"
+              className="mt-[-8px] ml-[-6px] h-6 sm:h-8 w-auto max-sm:mx-2 cursor-pointer"
+            />
+          </Link>
         </div>
         <ul className="flex space-x-4 p-4 pr-12 max-sm:hidden">
           {NavLinks.map((link) => {
             return (
               <li key={link.name}>
-                <a
-                  href="#"
+                <Link
+                  href={link.link}
                   className="text-[#BBF2FF] hover:text-gray-300 uppercase text-[12px]"
                 >
                   {link.name}
-                </a>
+                </Link>
               </li>
             );
           })}
