@@ -6,7 +6,7 @@ import img3 from "../../public/images/bg-3.jpg";
 import img4 from "../../public/images/bg-4.jpg";
 import img5 from "../../public/images/bg-5.jpg";
 import { Navigator } from "@/components/Navigator";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Button } from "./Button";
 
@@ -58,24 +58,70 @@ export const HeroSection = () => {
           exit={{ x: direction > 0 ? "-100%" : "100%" }}
           transition={{ duration: 0.6 }}
         >
-          <Image
-            src={Images[index]}
-            alt={`Background ${index}`}
-            fill
-            style={{ objectPosition: "58% center" }}
-            sizes="(max-width: 768px) 100vw, 100vw"
-            placeholder="blur"
-            blurDataURL={Images[index].blurDataURL}
-            className="object-cover object-[center]"
-            priority
-          />
+          <motion.div
+            initial={{ scale: 1.2 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
+            className="relative w-full h-full"
+          >
+            <Image
+              src={Images[index]}
+              alt={`Background ${index}`}
+              fill
+              style={{ objectPosition: "58% center" }}
+              sizes="(max-width: 768px) 100vw, 100vw"
+              placeholder="blur"
+              blurDataURL={Images[index].blurDataURL}
+              className="object-cover"
+              priority
+            />
+          </motion.div>
         </motion.div>
       </AnimatePresence>
       <div className="overlay flex items-left justify-center flex-col h-full w-full">
         <div className="content container px-6 sm:px-10 text-[#BBF2FF]">
-          <h1 className="text-3xl sm:text-6xl uppercase">{Headers1[index]}</h1>
-          <h1 className="text-3xl sm:text-6xl uppercase">{Headers2[index]}</h1>
-          <Button text={linkTexts[index]} bgColor="#BBF2FF" />
+          <motion.h1
+            key={index}
+            initial={{
+              opacity: 0,
+              y: 30,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              duration: 0.4,
+              ease: "easeInOut",
+            }}
+            className="text-3xl sm:text-6xl uppercase"
+          >
+            {Headers1[index]}
+          </motion.h1>
+          <motion.h1
+            key={(index + 1) * 10}
+            initial={{
+              opacity: 0,
+              y: 30,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              delay: 0.2,
+              duration: 0.5,
+              ease: "easeInOut",
+            }}
+            className="text-3xl sm:text-6xl uppercase"
+          >
+            {Headers2[index]}
+          </motion.h1>
+          <Button
+            motionIndex={(index + 1) * 5}
+            text={linkTexts[index]}
+            bgColor="#BBF2FF"
+          />
         </div>
         <Navigator
           index={index + 1}

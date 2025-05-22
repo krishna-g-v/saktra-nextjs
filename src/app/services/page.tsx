@@ -1,10 +1,11 @@
 import Image from "next/image";
 import BannerImage from "../../../public/images/servicesBanner.jpg";
 import { TabBar } from "@/components/TabBar";
+import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="w-[100vw] h-[100vh] bg-white absolute top-0 left-0 text-black">
+    <div className="w-[100vw] min-h-[100vh] bg-white absolute top-0 left-0 text-black">
       <div className="banner w-full h-[45vh] relative">
         <Image
           src={BannerImage}
@@ -24,6 +25,7 @@ export default function Home() {
       <div className="content mt-16 w-full flex justify-center">
         <TabBar />
       </div>
+      <Footer />
     </div>
   );
 }
