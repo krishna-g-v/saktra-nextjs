@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import bgImage from "../../public/images/image-2.jpg";
 import { Carousel } from "./Carousel";

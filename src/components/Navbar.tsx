@@ -8,7 +8,14 @@ import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const spanVariants = {
+    rest: { y: 0 },
+    hover: { y: -40 },
+  };
+  const spanVariants2 = {
+    rest: { y: 40 },
+    hover: { y: 0 },
+  };
   return (
     <nav className="bg-[#28001E]/50 max-sm:h-13 w-full text-white absolute gilroy-bold flex items-center justify-between z-999">
       <div className="mx-auto max-sm:h-full w-full flex justify-between items-center">
@@ -22,14 +29,33 @@ export const Navbar = () => {
           </Link>
         </div>
         <ul className="flex space-x-4 p-4 pr-12 max-sm:hidden">
-          {NavLinks.map((link) => {
+          {NavLinks.map((link, index) => {
             return (
-              <li key={link.name}>
+              <li key={index}>
                 <Link
                   href={link.link}
-                  className="text-[#BBF2FF] hover:text-gray-300 uppercase text-[12px]"
+                  className="text-[#BBF2FF] hover:text-gray-300 uppercase text-[14px]"
                 >
-                  {link.name}
+                  <motion.span
+                    className="inline-block p-1 rounded-sm overflow-hidden relative "
+                    initial="rest"
+                    whileHover="hover"
+                  >
+                    <motion.span
+                      className="inline-block"
+                      variants={spanVariants}
+                      transition={{ delay: 0.2 }}
+                    >
+                      {link.name}
+                    </motion.span>
+                    <motion.span
+                      className="h-full w-full flex justify-center items-center absolute top-0 left-0"
+                      variants={spanVariants2}
+                      transition={{ delay: 0.2 }}
+                    >
+                      {link.name}
+                    </motion.span>
+                  </motion.span>
                 </Link>
               </li>
             );
