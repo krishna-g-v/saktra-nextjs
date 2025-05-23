@@ -56,7 +56,7 @@ export default function Home() {
             </div>
           </div>
           <div className="bg-white p-6 rounded-lg shadow-sm">
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&amp;w=2069&amp;auto=format&amp;fit=crop"
               alt="Office"
               className="w-full h-auto rounded-lg mb-6"

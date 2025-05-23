@@ -140,7 +140,7 @@ const ServicesTabs: Tabs = [
               </p>
               {/* eslint-disable-next-line react/no-unescaped-entities */}
               <p className="max-w-[90%] text-left mt-5 max-sm:text-center">
-                Whether you're launching new digital products, modernizing
+                Whether you&#39re launching new digital products, modernizing
                 legacy systems, or improving data and cloud capabilities, we
                 deliver practical, forward-looking solutions that create real
                 impact and help you stay ahead in a fast-evolving market space..
