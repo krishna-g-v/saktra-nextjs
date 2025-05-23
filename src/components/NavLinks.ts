@@ -7,7 +7,7 @@ export const NavLinks = [
   { name: "Technology", link: "#" },
   { name: "AI Services", link: "/services" },
   { name: "Resources", link: "#" },
-  { name: "Contact Us", link: "#" },
+  { name: "Contact Us", link: "/contact" },
 ];
 
 export const poppins = Poppins({

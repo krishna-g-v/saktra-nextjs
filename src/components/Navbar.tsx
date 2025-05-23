@@ -19,7 +19,7 @@ export const Navbar = () => {
   return (
     <nav className="bg-[#28001E]/50 max-sm:h-13 w-full text-white absolute gilroy-bold flex items-center justify-between z-999">
       <div className="mx-auto max-sm:h-full w-full flex justify-between items-center">
-        <div className="text-black font-extrabold text-2xl bg-[#BBF2FF] max-sm:p-0 max-sm:h-full p-4 px-12 grid items-center">
+        <div className="text-black font-extrabold text-2xl bg-[#BBF2FF] max-sm:p-0 max-sm:h-full h-full p-4 px-12 grid items-center md:min-h-[9vh]">
           <Link href="/">
             <Image
               src={Logo}
@@ -100,7 +100,7 @@ export const Navbar = () => {
               {NavLinks.map((link) => (
                 <li key={link.name}>
                   <a
-                    href="#"
+                    href={link.link}
                     onClick={() => setIsOpen(false)}
                     className="block py-2 text-[#BBF2FF] hover:text-gray-300 uppercase text-sm"
                   >

@@ -1,11 +1,11 @@
 export const GridCard = () => {
   return (
-    <div className="grid grid-cols-3 grid-rows-3 gap-3.5 px-36">
+    <div className="grid grid-cols-3 max-sm:grid-cols-1 grid-rows-3 gap-3.5 px-36 max-sm:px-10">
       {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => {
         return (
           <div
             key={i}
-            className="rounded-lg border-1 border-[#e1e8f0] bg-card text-card-foreground shadow-sm text-left"
+            className="rounded-lg border-1 border-[#e1e8f0] bg-card text-card-foreground shadow-sm text-left max-sm:text-center"
           >
             <div className="flex flex-col space-y-1.5 p-6">
               <div className="mb-2 w-12 h-12 rounded-lg bg-indigo-100 flex items-center justify-center">

@@ -15,8 +15,10 @@ export default function Home() {
         />
         <div className="bg-[#453e94] opacity-70 absolute top-0 left-0 w-full h-full"></div>
         <div className="bannerContent absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center z-10">
-          <h1 className="text-6xl font-extrabold text-white">Our Services</h1>
-          <h3 className="text-3xl font-medium text-white mt-5">
+          <h1 className="text-6xl font-extrabold text-white max-sm:text-4xl">
+            Our Services
+          </h1>
+          <h3 className="text-3xl font-medium text-white mt-5 max-sm:text-[18px] max-sm:px-2.5 max-sm:text-center">
             Comprehensive IT solutions tailored to meet the unique challenges of
             your business
           </h3>

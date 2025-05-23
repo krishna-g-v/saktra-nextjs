@@ -24,27 +24,27 @@ const ServicesTabs: Tabs = [
             designed to provide skilled professionals across various technology
             domains.
           </p>
-          <div className="imageText mt-10 mb-10 flex items-center justify-around px-36 gap-10 rounded-[14px]">
-            <Image
-              src={BannerImage}
-              className="w-[800px] h-[240px] object-cover rounded-[14px]"
-              alt=""
-            />
-            <div className="flex flex-col w-full items-start justify-center">
-              <h3 className="text-[30px] font-extrabold text-left mb-4">
+          <div className="imageText mt-10 mb-10 flex flex-row-reverse max-sm:flex-col items-center justify-around px-36 max-sm:px-18  gap-10 rounded-[14px]">
+            <div className="flex flex-col w-full items-start max-sm:items-center justify-center">
+              <h3 className="text-[30px] font-extrabold text-left mb-4 max-sm:text-center">
                 Expert Talent Acquisition
               </h3>
-              <p className="max-w-[90%] text-left">
+              <p className="max-w-[90%] text-left max-sm:text-center max-sm:max-w-95%">
                 Our staffing experts identify and connect you with the perfect
                 talent for your specific needs, ensuring the right fit for your
                 projects and organizational culture.
               </p>
-              <p className="max-w-[90%] text-left mt-5">
+              <p className="max-w-[90%] text-left mt-5 max-sm:text-center">
                 With an extensive network of tech professionals and rigorous
                 vetting processes, we deliver candidates who excel both
                 technically and culturally.
               </p>
             </div>
+            <Image
+              src={BannerImage}
+              className="w-[800px] h-[240px] object-cover rounded-[14px]"
+              alt=""
+            />
           </div>
           <GridCard />
           <section className="py-16 bg-slate-50 w-[100vw]">
@@ -80,27 +80,27 @@ const ServicesTabs: Tabs = [
             designed to provide skilled professionals across various technology
             domains.
           </p>
-          <div className="imageText mt-10 mb-10 flex items-center justify-around px-36 gap-10 rounded-[14px]">
-            <Image
-              src={BannerImage}
-              className="w-[800px] h-[240px] object-cover rounded-[14px]"
-              alt=""
-            />
-            <div className="flex flex-col w-full items-start justify-center">
-              <h3 className="text-[30px] font-extrabold text-left mb-4">
+          <div className="imageText mt-10 mb-10 flex flex-row-reverse max-sm:flex-col items-center justify-around px-36 max-sm:px-18  gap-10 rounded-[14px]">
+            <div className="flex flex-col w-full items-start max-sm:items-center justify-center">
+              <h3 className="text-[30px] font-extrabold text-left mb-4 max-sm:text-center">
                 Expert Talent Acquisition
               </h3>
-              <p className="max-w-[90%] text-left">
+              <p className="max-w-[90%] text-left max-sm:text-center max-sm:max-w-95%">
                 Our staffing experts identify and connect you with the perfect
                 talent for your specific needs, ensuring the right fit for your
                 projects and organizational culture.
               </p>
-              <p className="max-w-[90%] text-left mt-5">
+              <p className="max-w-[90%] text-left mt-5 max-sm:text-center">
                 With an extensive network of tech professionals and rigorous
                 vetting processes, we deliver candidates who excel both
                 technically and culturally.
               </p>
             </div>
+            <Image
+              src={BannerImage}
+              className="w-[800px] h-[240px] object-cover rounded-[14px]"
+              alt=""
+            />
           </div>
           <GridCard />
           <section className="py-16 bg-slate-50 w-[100vw]">
@@ -136,27 +136,27 @@ const ServicesTabs: Tabs = [
             designed to provide skilled professionals across various technology
             domains.
           </p>
-          <div className="imageText mt-10 mb-10 flex items-center justify-around px-36 gap-10 rounded-[14px]">
-            <Image
-              src={BannerImage}
-              className="w-[800px] h-[240px] object-cover rounded-[14px]"
-              alt=""
-            />
-            <div className="flex flex-col w-full items-start justify-center">
-              <h3 className="text-[30px] font-extrabold text-left mb-4">
+          <div className="imageText mt-10 mb-10 flex flex-row-reverse max-sm:flex-col items-center justify-around px-36 max-sm:px-18  gap-10 rounded-[14px]">
+            <div className="flex flex-col w-full items-start max-sm:items-center justify-center">
+              <h3 className="text-[30px] font-extrabold text-left mb-4 max-sm:text-center">
                 Expert Talent Acquisition
               </h3>
-              <p className="max-w-[90%] text-left">
+              <p className="max-w-[90%] text-left max-sm:text-center max-sm:max-w-95%">
                 Our staffing experts identify and connect you with the perfect
                 talent for your specific needs, ensuring the right fit for your
                 projects and organizational culture.
               </p>
-              <p className="max-w-[90%] text-left mt-5">
+              <p className="max-w-[90%] text-left mt-5 max-sm:text-center">
                 With an extensive network of tech professionals and rigorous
                 vetting processes, we deliver candidates who excel both
                 technically and culturally.
               </p>
             </div>
+            <Image
+              src={BannerImage}
+              className="w-[800px] h-[240px] object-cover rounded-[14px]"
+              alt=""
+            />
           </div>
           <GridCard />
           <section className="py-16 bg-slate-50 w-[100vw]">
@@ -192,13 +192,15 @@ export const TabBar = () => {
             <div
               onClick={() => setActiveTab(index)}
               key={index}
-              className={`tab cursor-pointer min-w-[290px] text-center transition-all rounded-[4px] hover:scale-[1.03] py-2 ${
+              className={`tab cursor-pointer md:min-w-[290px] max-sm:min-w-[100px] max-sm:px-2  text-center transition-all rounded-[4px] hover:scale-[1.03] py-2 ${
                 index === activeTab
                   ? "bg-[#ffffff] text-[#020817]"
                   : "text-[#64758b]"
               }`}
             >
-              <div className="text-[16px]">{tab.tabText}</div>
+              <div className="text-[16px] max-sm:text-[14px]">
+                {tab.tabText}
+              </div>
             </div>
           );
         })}
