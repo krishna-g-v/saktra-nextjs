@@ -1,10 +1,18 @@
-export const GridCard = () => {
+export type CardData = {
+  cardHeader: string;
+  cardSubHeader: string;
+  cardContent: string;
+};
+type GridCardProps = {
+  cards: CardData[];
+};
+export const GridCard = ({ cards }: GridCardProps) => {
   return (
-    <div className="grid grid-cols-3 max-sm:grid-cols-1 grid-rows-3 gap-3.5 px-36 max-sm:px-10">
-      {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => {
+    <div className="grid grid-cols-3 max-sm:grid-cols-1  gap-3.5 px-36 max-sm:px-10">
+      {cards.map((card, index) => {
         return (
           <div
-            key={i}
+            key={index}
             className="rounded-lg border-1 border-[#e1e8f0] bg-card text-card-foreground shadow-sm text-left max-sm:text-center"
           >
             <div className="flex flex-col space-y-1.5 p-6">
@@ -26,19 +34,14 @@ export const GridCard = () => {
                 </svg>
               </div>
               <h3 className="text-2xl font-semibold leading-none tracking-tight">
-                Direct-Hire
+                {card.cardHeader}
               </h3>
               <p className="text-sm text-muted-foreground">
-                Find top talent for long-term roles
+                {card.cardSubHeader}
               </p>
             </div>
             <div className="p-6 pt-0">
-              <p className="text-slate-600">
-                Our recruiters source, evaluate, and present top candidates who
-                fit your role requirements and company culture, ensuring a
-                streamlined hiring process and long-term retention through
-                strategic direct placements.
-              </p>
+              <p className="text-slate-600">{card.cardContent}</p>
             </div>
           </div>
         );
