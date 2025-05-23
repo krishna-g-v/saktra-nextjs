@@ -1,30 +1,62 @@
+"use client";
 import Image from "next/image";
 import BannerImage from "../../../public/images/servicesBanner.jpg";
 import { Footer } from "@/components/Footer";
+import { motion } from "framer-motion";
+import ContactImage from "../../../public/images/contactUs.jpeg";
 
 export default function Home() {
   return (
-    <div className="w-[100vw] min-h-[100vh] bg-white absolute top-0 left-0 text-black">
-      <div className="banner w-full h-[45vh] relative">
+    <div className="w-[100vw] min-h-[100vh] bg-white absolute top-0 left-0 text-black overflow-hidden">
+      <motion.div
+        initial={{ scale: 1.1, filter: "blur(2px)" }}
+        animate={{ scale: 1, filter: "blur(0)" }}
+        transition={{ duration: 1.1, ease: "easeInOut" }}
+        className="banner w-full h-[45vh] relative"
+      >
         <Image
           src={BannerImage}
           alt="Services Page Banner"
           fill
-          className="object-cover bg-purple-400"
+          className="object-cover bg-purple-400 w-full"
         />
         <div className="bg-[#453e94] opacity-70 absolute top-0 left-0 w-full h-full"></div>
         <div className="bannerContent absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center z-10">
-          <h1 className="text-6xl font-extrabold text-white max-sm:text-4xl">
-            Contact Us
-          </h1>
-          <h3 className="text-3xl font-medium text-white mt-5 max-sm:text-[18px] ax-sm:px-2.5 max-sm:text-center">
-            {"We'd love to hear from you. Get in touch with our team."}
-          </h3>
+          <div className="overflow-hidden">
+            <motion.h1
+              initial={{ y: 100 }}
+              animate={{ y: 0 }}
+              transition={{ duration: 0.7, type: "tween", ease: "easeInOut" }}
+              className="text-6xl font-extrabold text-white max-sm:text-4xl"
+            >
+              Contact Us
+            </motion.h1>
+          </div>
+          <div className="overflow-hidden">
+            <motion.h3
+              initial={{ y: 100 }}
+              animate={{ y: 0 }}
+              transition={{
+                duration: 0.8,
+                type: "tween",
+                ease: "easeInOut",
+                delay: 0.1,
+              }}
+              className="text-3xl font-medium text-white mt-5 max-sm:text-[18px] ax-sm:px-2.5 max-sm:text-center max-sm:px-8"
+            >
+              {"We'd love to hear from you. Get in touch with our team."}
+            </motion.h3>
+          </div>
         </div>
-      </div>
-      <div className="grid md:grid-cols-5 gap-8 px-20 py-10">
+      </motion.div>
+      <div className="grid md:grid-cols-5 gap-8 md:px-20 px-10 py-10">
         <div className="md:col-span-2 space-y-8">
-          <div className="bg-white p-6 rounded-lg shadow-sm">
+          <motion.div
+            initial={{ opacity: 0, x: "-100%" }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.3, ease: "easeIn", delay: 0.5 }}
+            className="bg-white p-6 rounded-lg shadow-sm"
+          >
             <div className="flex items-start space-x-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -54,10 +86,21 @@ export default function Home() {
                 </p>
               </div>
             </div>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-sm">
+          </motion.div>
+          <motion.div
+            initial={{ clipPath: "polygon(0 0, 0 0, 0 100%, 0% 100%)" }}
+            animate={{ clipPath: " polygon(100% 0, 0 0, 0 100%, 100% 100%)" }}
+            transition={{
+              duration: 0.8,
+              type: "tween",
+              ease: "easeInOut",
+              delay: 0.5,
+            }}
+            className="bg-white p-6 rounded-lg shadow-sm relative"
+          >
             <Image
-              src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&amp;w=2069&amp;auto=format&amp;fit=crop"
+              fill
+              src={ContactImage}
               alt="Office"
               className="w-full h-auto rounded-lg mb-6"
             />
@@ -102,7 +145,7 @@ export default function Home() {
                 <p className="text-slate-600 mt-1">+1 (732) 361-4246</p>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
         <div className="md:col-span-3">
           <form className="bg-white p-6 rounded-lg shadow-sm">

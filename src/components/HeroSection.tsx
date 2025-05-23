@@ -48,19 +48,22 @@ export const HeroSection = () => {
 
   return (
     <div className=" min-h-lvh relative overflow-hidden">
-      <AnimatePresence initial={false} custom={direction}>
+      <AnimatePresence initial={true} custom={direction}>
         <motion.div
           key={`${index}-${direction}`}
           className="absolute inset-0 w-full h-full"
           custom={direction}
-          initial={{ x: direction > 0 ? "100%" : "-100%" }}
+          initial={{
+            x: direction === 1 ? 0 : direction > 0 ? "100%" : "-100%",
+          }}
           animate={{ x: 0 }}
           exit={{ x: direction > 0 ? "-100%" : "100%" }}
           transition={{ duration: 0.6 }}
         >
           <motion.div
-            initial={{ scale: 1.2 }}
-            animate={{ scale: 1 }}
+            key={`${index * 10}-${direction}`}
+            initial={{ scale: 1.2, filter: "blur(5px)" }}
+            animate={{ scale: 1, filter: "blur(0)" }}
             transition={{ duration: 1.2, ease: "easeOut" }}
             className="relative w-full h-full"
           >

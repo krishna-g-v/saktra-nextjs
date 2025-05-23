@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Fragment, useState } from "react";
 import BannerImage from "../../public/images/servicesBanner.jpg";
 import { GridCard } from "./CardGrid";
+import { motion } from "framer-motion";
 type Tab = {
   tabText: string;
   tabContent: React.ReactNode;
@@ -17,23 +18,47 @@ const ServicesTabs: Tabs = [
     tabContent: (
       <Fragment>
         <div className="tabContent text-center flex flex-col items-center justify-center mb-5">
-          <h3 className="text-[30px] font-extrabold">Talent Solution</h3>
-          <p className="text-[16px] max-w-[70%] text-center">
+          <div className="overflow-hidden">
+            <motion.h3
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.3, delay: 0.4, ease: "easeOut" }}
+              className="text-[30px] font-extrabold"
+            >
+              Talent Solution
+            </motion.h3>
+          </div>
+          <motion.p
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.3, delay: 0.55, ease: "easeOut" }}
+            className="text-[16px] max-w-[70%] text-center max-sm:max-w-[90%]"
+          >
             Connect your business with the right tech talent to meet your
             project needs and organizational goals. Our staffing services are
             designed to provide skilled professionals across various technology
             domains.
-          </p>
-          <div className="imageText mt-10 mb-10 flex flex-row-reverse max-sm:flex-col items-center justify-around px-36 max-sm:px-18  gap-10 rounded-[14px]">
+          </motion.p>
+          <div className="imageText mt-10 mb-10 flex flex-row-reverse max-sm:flex-col items-center justify-around px-36 max-sm:px-10  gap-10 rounded-[14px]">
             <div className="flex flex-col w-full items-start max-sm:items-center justify-center">
-              <h3 className="text-[30px] font-extrabold text-left mb-4 max-sm:text-center">
+              <motion.h3
+                initial={{ y: 50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.3, delay: 0.5, ease: "easeOut" }}
+                className="text-[30px] font-extrabold text-left mb-4 max-sm:text-center max-sm:text-[24px]"
+              >
                 Building Global Teams Without Borders & Bottlenecks
-              </h3>
-              <p className="max-w-[90%] text-left max-sm:text-center max-sm:max-w-95%">
+              </motion.h3>
+              <motion.p
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.3, delay: 0.55, ease: "easeOut" }}
+                className="max-w-[90%] text-left max-sm:text-center max-sm:max-w-95%"
+              >
                 Find, attract, hire, and retain industry-best talent without the
                 delays or hiring headaches. Our end-to-end Talent Solutions are
                 designed to help you scale quickly and smartly.
-              </p>
+              </motion.p>
               <p className="max-w-[90%] text-left mt-5 max-sm:text-center">
                 Whether you’re growing your team, filling a critical role, or
                 setting up a new offshore operation, we help you find the right
@@ -119,15 +144,27 @@ const ServicesTabs: Tabs = [
     tabContent: (
       <Fragment>
         <div className="tabContent text-center flex flex-col items-center justify-center mb-5">
-          <h3 className="text-[30px] font-extrabold">
-            Technology & Strategy Services
-          </h3>
-          <p className="text-[16px] max-w-[70%] text-center">
+          <div className="overflow-hidden">
+            <motion.h3
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.3, delay: 0.4, ease: "easeOut" }}
+              className="text-[30px] font-extrabold"
+            >
+              Technology & Strategy Services
+            </motion.h3>
+          </div>
+          <motion.p
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.3, delay: 0.55, ease: "easeOut" }}
+            className="text-[16px] max-w-[70%] text-center max-sm:max-w-[90%]"
+          >
             Connect your business with the right tech talent to meet your
             project needs and organizational goals. Our staffing services are
             designed to provide skilled professionals across various technology
             domains.
-          </p>
+          </motion.p>
           <div className="imageText mt-10 mb-10 flex flex-row-reverse max-sm:flex-col items-center justify-around px-36 max-sm:px-18  gap-10 rounded-[14px]">
             <div className="flex flex-col w-full items-start max-sm:items-center justify-center">
               <h3 className="text-[30px] font-extrabold text-left mb-4 max-sm:text-center">
@@ -335,7 +372,12 @@ export const TabBar = () => {
   const [activeTab, setActiveTab] = useState(0);
   return (
     <div className="container flex flex-col items-center">
-      <div className="tabs-container flex gap-[6px] bg-[#f1f5f9] p-[4px] px-[8px] rounded-[10px]">
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.3, delay: 0.3, ease: "easeOut" }}
+        className="tabs-container flex gap-[6px] bg-[#f1f5f9] p-[4px] px-[8px] rounded-[10px]"
+      >
         {ServicesTabs.map((tab, index) => {
           return (
             <div
@@ -353,7 +395,7 @@ export const TabBar = () => {
             </div>
           );
         })}
-      </div>
+      </motion.div>
       <div className="active-content mt-10">
         {ServicesTabs[activeTab].tabContent}
       </div>

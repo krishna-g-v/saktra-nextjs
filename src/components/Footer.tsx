@@ -5,7 +5,7 @@ import { NavLinks } from "./NavLinks";
 import { poppins } from "@/components/NavLinks";
 export const Footer = () => {
   return (
-    <div className="h-[60vh] w-full bg-[#28001E] text-[#BBF2FF]">
+    <div className="h-[63vh] w-full bg-[#28001E] text-[#BBF2FF]">
       <div className="container p-10 max-sm:p-4 h-full w-full">
         <div className="flex flex-col">
           <div className="flex items-baseline justify-between">

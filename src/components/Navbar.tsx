@@ -93,20 +93,39 @@ export const Navbar = () => {
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
-            transition={{ type: "tween", duration: 0.3 }}
+            transition={{
+              type: "spring",
+              duration: 0.3,
+              damping: "18",
+              mass: "1",
+            }}
             className="md:hidden px-4 pb-4 absolute top-0 right-0 h-screen w-3/5 bg-[#28001E]/95"
           >
             <ul className="space-y-2 h-1/2 pt-50 w-full flex flex-col items-start justify-around relative">
-              {NavLinks.map((link) => (
-                <li key={link.name}>
-                  <a
-                    href={link.link}
-                    onClick={() => setIsOpen(false)}
-                    className="block py-2 text-[#BBF2FF] hover:text-gray-300 uppercase text-sm"
-                  >
-                    {link.name}
-                  </a>
-                </li>
+              {NavLinks.map((link, index) => (
+                <motion.li key={link.name}>
+                  <div className="overflow-hidden">
+                    <motion.a
+                      initial={{ opacity: 0, y: 70, skewY: 20 }}
+                      animate={{
+                        opacity: isOpen ? 1 : 0,
+                        y: isOpen ? 0 : 70,
+                        skewY: isOpen ? 0 : 20,
+                      }}
+                      exit={{ opacity: !isOpen ? 0 : 1, y: !isOpen ? 20 : 0 }}
+                      transition={{
+                        delay: 0.05 * index,
+                        type: "tween",
+                        ease: "easeInOut",
+                      }}
+                      href={link.link}
+                      onClick={() => setIsOpen(false)}
+                      className="block py-2 text-[#BBF2FF] hover:text-gray-300 uppercase text-lg"
+                    >
+                      {link.name}
+                    </motion.a>
+                  </div>
+                </motion.li>
               ))}
               <CgClose
                 onClick={() => setIsOpen((prev) => !prev)}
