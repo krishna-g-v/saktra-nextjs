@@ -62,8 +62,8 @@ export const HeroSection = () => {
         >
           <motion.div
             key={`${index * 10}-${direction}`}
-            initial={{ scale: 1.2, filter: "blur(5px)" }}
-            animate={{ scale: 1, filter: "blur(0)" }}
+            initial={{ scale: 1.2 }}
+            animate={{ scale: 1 }}
             transition={{ duration: 1.2, ease: "easeOut" }}
             className="relative w-full h-full"
           >
