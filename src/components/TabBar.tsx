@@ -138,6 +138,7 @@ const ServicesTabs: Tabs = [
                 Turn your ideas into market-ready solutions with our expert tech
                 strategy and seamless execution.
               </p>
+              {/* eslint-disable-next-line react/no-unescaped-entities */}
               <p className="max-w-[90%] text-left mt-5 max-sm:text-center">
                 Whether you're launching new digital products, modernizing
                 legacy systems, or improving data and cloud capabilities, we

@@ -1,6 +1,5 @@
 import Image from "next/image";
 import BannerImage from "../../../public/images/servicesBanner.jpg";
-import { TabBar } from "@/components/TabBar";
 import { Footer } from "@/components/Footer";
 
 export default function Home() {
@@ -19,7 +18,7 @@ export default function Home() {
             Contact Us
           </h1>
           <h3 className="text-3xl font-medium text-white mt-5 max-sm:text-[18px] ax-sm:px-2.5 max-sm:text-center">
-            We'd love to hear from you. Get in touch with our team.
+            {"We'd love to hear from you. Get in touch with our team."}
           </h3>
         </div>
       </div>
