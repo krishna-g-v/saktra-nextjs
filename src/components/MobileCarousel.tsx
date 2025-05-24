@@ -55,6 +55,7 @@ export const Carousel = ({ data, hoverColor }: CarouselProps) => {
             className="w-full flex justify-center"
           >
             <HoverCard
+              link=""
               cardContent={data[currIndex].cardContent}
               cardHeader={data[currIndex].header}
               hoverColor={hoverColor ?? "#BBF2FF"}
