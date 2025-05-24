@@ -1,15 +1,18 @@
 import Image, { StaticImageData } from "next/image";
 import { HiArrowLongRight } from "react-icons/hi2";
 import { poppins } from "@/components/NavLinks";
+import Link from "next/link";
 
 export interface HoverCardProps {
   hoverColor: string;
   imgSrc: StaticImageData;
   cardHeader: string;
   cardContent: string;
+  link: string;
 }
 
 export const HoverCard = ({
+  link,
   hoverColor,
   imgSrc,
   cardHeader,
@@ -33,7 +36,7 @@ export const HoverCard = ({
           <p className={`text-[14px] ${poppins.className}`}>{cardContent}</p>
         </div>
         <div className="mt-3 uppercase font-extrabold flex gap-2 items-center link relative">
-          <a href="#">Read More</a>
+          <Link href={link}>Read More</Link>
           <HiArrowLongRight className="font-[300]" />
         </div>
       </div>

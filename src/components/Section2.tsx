@@ -13,18 +13,21 @@ const Section2Data: SectionData[] = [
     cardContent:
       "Scalable and agile talent acquisition strategies built for today’s fast-moving industries. Whether launching a startup or expanding globally, we help you onboard the right skill and talent quickly and cost-effectively, without the fuse",
     imgLink: img1,
+    link: "./talent",
   },
   {
     header: "Technology",
     cardContent:
       "From digital transformation to platform modernization, we engineer future-ready solutions that align technology with business.Our tech expertise fuels growth and enables smarter innovations across Telecom, Insurance, and Supply Chain sectors.",
     imgLink: img2,
+    link: "./technology",
   },
   {
     header: "AI Services",
     cardContent:
       "Transform your business with intelligent solutions that go beyond automation.We harness the power of AI to deliver practical solutions that reduce costs, streamline workflows, and deliver hyper-personalized customer experiences that deliver measurable impact",
     imgLink: img3,
+    link: "./services",
   },
 ];
 

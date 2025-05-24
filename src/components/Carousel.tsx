@@ -86,6 +86,7 @@ export const Carousel = ({
             >
               {cardType === "HoverCard" ? (
                 <HoverCard
+                  link={data[currIndex].link || ""}
                   cardContent={data[currIndex].cardContent}
                   cardHeader={data[currIndex].header}
                   hoverColor={hoverColor ?? "#BBF2FF"}
@@ -115,6 +116,7 @@ export const Carousel = ({
               <div key={i}>
                 {cardType === "HoverCard" ? (
                   <HoverCard
+                    link={d.link || ""}
                     cardContent={d.cardContent}
                     cardHeader={d.header}
                     hoverColor={hoverColor ?? "#BBF2FF"}

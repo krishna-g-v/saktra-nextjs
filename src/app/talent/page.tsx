@@ -1,9 +1,10 @@
 "use client";
 import Image from "next/image";
+import BannerImage from "../../../public/images/servicesBanner.jpg";
 import { TabBar } from "@/components/TabBar";
 import { Footer } from "@/components/Footer";
 import { easeInOut, motion } from "framer-motion";
-import img1 from "../../../public/images/s22.jpg";
+import img1 from "../../../public/images/s21.jpg";
 
 export default function Home() {
   return (
@@ -17,7 +18,7 @@ export default function Home() {
         <Image
           src={img1}
           alt="Services Page Banner"
-          style={{ objectPosition: "center 55%" }}
+          style={{ objectPosition: "center 20%" }}
           fill
           className="object-cover bg-purple-400"
         />
@@ -52,7 +53,7 @@ export default function Home() {
         </div>
       </motion.div>
       <div className="content mt-16 w-full flex justify-center">
-        <TabBar showIndex={2} />
+        <TabBar showIndex={0} />
       </div>
       <Footer />
     </div>

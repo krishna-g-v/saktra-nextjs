@@ -59,18 +59,35 @@ const ServicesTabs: Tabs = [
                 delays or hiring headaches. Our end-to-end Talent Solutions are
                 designed to help you scale quickly and smartly.
               </motion.p>
-              <p className="max-w-[90%] text-left mt-5 max-sm:text-center">
+              <motion.p
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.3, delay: 0.55, ease: "easeOut" }}
+                className="max-w-[90%] text-left mt-5 max-sm:text-center"
+              >
                 Whether you’re growing your team, filling a critical role, or
                 setting up a new offshore operation, we help you find the right
                 talent that aligns perfectly with your project goals and company
                 culture.
-              </p>
+              </motion.p>
             </div>
-            <Image
-              src={BannerImage}
-              className="w-[800px] h-[240px] object-cover rounded-[14px]"
-              alt=""
-            />
+            <motion.div
+              initial={{ clipPath: "polygon(0 0, 0 0, 0 100%, 0% 100%)" }}
+              animate={{ clipPath: " polygon(100% 0, 0 0, 0 100%, 100% 100%)" }}
+              transition={{
+                duration: 0.8,
+                type: "tween",
+                ease: "easeInOut",
+                delay: 0.5,
+              }}
+              className="relative"
+            >
+              <Image
+                src={BannerImage}
+                className="w-[800px] h-[240px] object-cover rounded-[14px]"
+                alt=""
+              />
+            </motion.div>
           </div>
           <GridCard
             cards={[
@@ -167,27 +184,54 @@ const ServicesTabs: Tabs = [
           </motion.p>
           <div className="imageText mt-10 mb-10 flex flex-row-reverse max-sm:flex-col items-center justify-around px-36 max-sm:px-18  gap-10 rounded-[14px]">
             <div className="flex flex-col w-full items-start max-sm:items-center justify-center">
-              <h3 className="text-[30px] font-extrabold text-left mb-4 max-sm:text-center">
+              <motion.h3
+                initial={{ y: 50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.3, delay: 0.5, ease: "easeOut" }}
+                className="text-[30px] font-extrabold text-left mb-4 max-sm:text-center"
+              >
                 Build, Optimize, and Future-Proof Your Digital Ecosystem with
                 Confidence
-              </h3>
-              <p className="max-w-[90%] text-left max-sm:text-center max-sm:max-w-95%">
+              </motion.h3>
+              <motion.p
+                initial={{ y: 50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.3, delay: 0.5, ease: "easeOut" }}
+                className="max-w-[90%] text-left max-sm:text-center max-sm:max-w-95%"
+              >
                 Turn your ideas into market-ready solutions with our expert tech
                 strategy and seamless execution.
-              </p>
-              {/* eslint-disable-next-line react/no-unescaped-entities */}
-              <p className="max-w-[90%] text-left mt-5 max-sm:text-center">
-                Whether you&#39re launching new digital products, modernizing
+              </motion.p>
+
+              <motion.p
+                initial={{ y: 50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.3, delay: 0.5, ease: "easeOut" }}
+                className="max-w-[90%] text-left mt-5 max-sm:text-center"
+              >
+                Whether you are launching new digital products, modernizing
                 legacy systems, or improving data and cloud capabilities, we
                 deliver practical, forward-looking solutions that create real
                 impact and help you stay ahead in a fast-evolving market space..
-              </p>
+              </motion.p>
             </div>
-            <Image
-              src={BannerImage}
-              className="w-[800px] h-[240px] object-cover rounded-[14px]"
-              alt=""
-            />
+            <motion.div
+              initial={{ clipPath: "polygon(0 0, 0 0, 0 100%, 0% 100%)" }}
+              animate={{ clipPath: " polygon(100% 0, 0 0, 0 100%, 100% 100%)" }}
+              transition={{
+                duration: 0.8,
+                type: "tween",
+                ease: "easeInOut",
+                delay: 0.5,
+              }}
+              className="relative"
+            >
+              <Image
+                src={BannerImage}
+                className="w-[800px] h-[240px] object-cover rounded-[14px]"
+                alt=""
+              />
+            </motion.div>
           </div>
           <GridCard
             cards={[
@@ -271,37 +315,76 @@ const ServicesTabs: Tabs = [
     tabContent: (
       <Fragment>
         <div className="tabContent text-center flex flex-col items-center justify-center mb-5">
-          <h3 className="text-[30px] font-extrabold">
-            Artificial Intelligence Services
-          </h3>
-          <p className="text-[16px] max-w-[70%] text-center">
+          <div className="overflow-hidden">
+            <motion.h3
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.3, delay: 0.4, ease: "easeOut" }}
+              className="text-[30px] font-extrabold"
+            >
+              Artificial Intelligence Services
+            </motion.h3>
+          </div>
+          <motion.p
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.3, delay: 0.55, ease: "easeOut" }}
+            className="text-[16px] max-w-[70%] text-center max-sm:max-w-[90%]"
+          >
             Connect your business with the right tech talent to meet your
             project needs and organizational goals. Our staffing services are
             designed to provide skilled professionals across various technology
             domains.
-          </p>
+          </motion.p>
           <div className="imageText mt-10 mb-10 flex flex-row-reverse max-sm:flex-col items-center justify-around px-36 max-sm:px-18  gap-10 rounded-[14px]">
             <div className="flex flex-col w-full items-start max-sm:items-center justify-center">
-              <h3 className="text-[30px] font-extrabold text-left mb-4 max-sm:text-center">
+              <motion.h3
+                initial={{ y: 50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.3, delay: 0.5, ease: "easeOut" }}
+                className="text-[30px] font-extrabold text-left mb-4 max-sm:text-center"
+              >
                 Power Your Business with Smarter AI Solutions
-              </h3>
-              <p className="max-w-[90%] text-left max-sm:text-center max-sm:max-w-95%">
+              </motion.h3>
+              <motion.p
+                initial={{ y: 50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.3, delay: 0.5, ease: "easeOut" }}
+                className="max-w-[90%] text-left max-sm:text-center max-sm:max-w-95%"
+              >
                 Discover what’s possible with AI. Whether you’re looking to
                 boost efficiency, spark innovation, or open new revenue streams,
                 we build tailored AI solutions that help your business move
                 smarter and grow faster.
-              </p>
-              <p className="max-w-[90%] text-left mt-5 max-sm:text-center">
+              </motion.p>
+              <motion.p
+                initial={{ y: 50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.3, delay: 0.5, ease: "easeOut" }}
+                className="max-w-[90%] text-left mt-5 max-sm:text-center"
+              >
                 With an extensive network of tech professionals and rigorous
                 vetting processes, we deliver candidates who excel both
                 technically and culturally.
-              </p>
+              </motion.p>
             </div>
-            <Image
-              src={BannerImage}
-              className="w-[800px] h-[240px] object-cover rounded-[14px]"
-              alt=""
-            />
+            <motion.div
+              initial={{ clipPath: "polygon(0 0, 0 0, 0 100%, 0% 100%)" }}
+              animate={{ clipPath: " polygon(100% 0, 0 0, 0 100%, 100% 100%)" }}
+              transition={{
+                duration: 0.8,
+                type: "tween",
+                ease: "easeInOut",
+                delay: 0.5,
+              }}
+              className="relative"
+            >
+              <Image
+                src={BannerImage}
+                className="w-[800px] h-[240px] object-cover rounded-[14px]"
+                alt=""
+              />
+            </motion.div>
           </div>
           <GridCard
             cards={[
@@ -368,11 +451,10 @@ const ServicesTabs: Tabs = [
   },
 ];
 
-export const TabBar = () => {
-  const [activeTab, setActiveTab] = useState(0);
+export const TabBar = ({ showIndex }: { showIndex: number }) => {
   return (
     <div className="container flex flex-col items-center">
-      <motion.div
+      {/* <motion.div
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.3, delay: 0.3, ease: "easeOut" }}
@@ -395,10 +477,8 @@ export const TabBar = () => {
             </div>
           );
         })}
-      </motion.div>
-      <div className="active-content mt-10">
-        {ServicesTabs[activeTab].tabContent}
-      </div>
+      </motion.div> */}
+      <div className="active-content">{ServicesTabs[showIndex].tabContent}</div>
     </div>
   );
 };
