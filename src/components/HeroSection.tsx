@@ -34,7 +34,7 @@ export const HeroSection = () => {
     "Learn More",
   ];
   const [index, setIndex] = useState(0);
-  const [direction, setDirection] = useState(1);
+  const [direction, setDirection] = useState(4);
 
   const nextImg = () => {
     setDirection(1);
@@ -54,7 +54,7 @@ export const HeroSection = () => {
           className="absolute inset-0 w-full h-full"
           custom={direction}
           initial={{
-            x: direction === 1 ? 0 : direction > 0 ? "100%" : "-100%",
+            x: direction === 4 ? 0 : direction > 0 ? "100%" : "-100%",
           }}
           animate={{ x: 0 }}
           exit={{ x: direction > 0 ? "-100%" : "100%" }}
