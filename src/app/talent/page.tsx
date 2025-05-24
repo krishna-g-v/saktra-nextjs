@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import BannerImage from "../../../public/images/servicesBanner.jpg";
 import { TabBar } from "@/components/TabBar";
 import { Footer } from "@/components/Footer";
 import { easeInOut, motion } from "framer-motion";

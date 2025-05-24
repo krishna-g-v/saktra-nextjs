@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import BannerImage from "../../public/images/servicesBanner.jpg";
 import { GridCard } from "./CardGrid";
 import { motion } from "framer-motion";
