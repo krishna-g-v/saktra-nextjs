@@ -17,7 +17,7 @@ const ServicesTabs: Tabs = [
     tabText: "Talent Solution",
     tabContent: (
       <Fragment>
-        <div className="tabContent text-center flex flex-col items-center justify-center mb-5">
+        <div className="tabContent text-center flex flex-col items-center justify-center mb-5 gilmer-regular">
           <div className="overflow-hidden">
             <motion.h3
               initial={{ y: 50, opacity: 0 }}
@@ -160,7 +160,7 @@ const ServicesTabs: Tabs = [
     tabText: "Technology & Strategy",
     tabContent: (
       <Fragment>
-        <div className="tabContent text-center flex flex-col items-center justify-center mb-5">
+        <div className="tabContent text-center flex flex-col items-center justify-center mb-5 gilmer-regular">
           <div className="overflow-hidden">
             <motion.h3
               initial={{ y: 50, opacity: 0 }}
@@ -314,7 +314,7 @@ const ServicesTabs: Tabs = [
     tabText: "AI",
     tabContent: (
       <Fragment>
-        <div className="tabContent text-center flex flex-col items-center justify-center mb-5">
+        <div className="tabContent text-center flex flex-col items-center justify-center mb-5 gilmer-regular">
           <div className="overflow-hidden">
             <motion.h3
               initial={{ y: 50, opacity: 0 }}

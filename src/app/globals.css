@@ -91,6 +91,11 @@ body {
   background: linear-gradient(to right, rgba(0, 0, 0, 0.5), transparent);
 }
 
+.gilroy-regular {
+  font-family: "Gilroy";
+  font-weight: 400;
+}
+
 .gilroy-bold {
   font-family: "Gilroy";
   font-weight: 900;

@@ -7,7 +7,7 @@ import img1 from "../../../public/images/s22.jpg";
 
 export default function Home() {
   return (
-    <div className="w-[100vw] min-h-[100vh] bg-white absolute top-0 left-0 text-black">
+    <div className="w-[100vw] min-h-[100vh] bg-white absolute top-0 left-0 text-black .gilroy-regular">
       <motion.div
         initial={{ scale: 1.1 }}
         animate={{ scale: 1 }}
