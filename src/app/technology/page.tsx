@@ -20,7 +20,7 @@ export default function Home() {
           fill
           className="object-cover bg-purple-400"
         />
-        <div className="bg-[#453e94] opacity-70 absolute top-0 left-0 w-full h-full"></div>
+        <div className="bg-[#2b0b1d] opacity-70 absolute top-0 left-0 w-full h-full"></div>
         <div className="bannerContent absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center z-10">
           <div className="overflow-hidden">
             <motion.h1
