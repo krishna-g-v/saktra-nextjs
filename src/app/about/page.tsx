@@ -44,12 +44,14 @@ export default function Home() {
               }}
               className="text-3xl font-medium text-white mt-5 max-sm:text-[18px] ax-sm:px-2.5 max-sm:text-center max-sm:px-8"
             >
-              {"We'd love to hear from you. Get in touch with our team."}
+              {
+                "An end-to-end IT solutions provider with a decade-long legacy of delivering innovation and excellence"
+              }
             </motion.h3>
           </div>
         </div>
       </motion.div>
-      <div className="grid md:grid-cols-5 gap-8 md:px-20 px-10 py-10">
+      {/* <div className="grid md:grid-cols-5 gap-8 md:px-20 px-10 py-10">
         <div className="md:col-span-2 space-y-8">
           <motion.div
             initial={{ opacity: 0, x: "-100%" }}
@@ -217,6 +219,134 @@ export default function Home() {
               </button>
             </div>
           </form>
+        </div>
+      </div> */}
+      <div className="mx-auto px-4 py-10">
+        <div className="max-w-4xl mx-auto">
+          <div className="flex flex-col md:flex-row gap-12 mb-12">
+            <motion.div
+              initial={{ clipPath: "polygon(0 0, 0 0, 0 100%, 0% 100%)" }}
+              animate={{ clipPath: " polygon(100% 0, 0 0, 0 100%, 100% 100%)" }}
+              transition={{
+                duration: 0.8,
+                type: "tween",
+                ease: "easeInOut",
+                delay: 0.5,
+              }}
+              className="md:w-1/2"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&amp;w=2070&amp;auto=format&amp;fit=crop"
+                alt="Our Team"
+                className="rounded-lg shadow-md w-full h-auto object-cover"
+              />
+            </motion.div>
+            <div className="md:w-1/2">
+              <motion.h2
+                initial={{ opacity: 0, y: "100%" }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.8,
+                  type: "tween",
+                  ease: "easeInOut",
+                  delay: 0.5,
+                }}
+                className="text-2xl font-semibold mb-4"
+              >
+                Our Story
+              </motion.h2>
+              <motion.p
+                initial={{
+                  opacity: 0,
+                  x: "30%",
+                }}
+                animate={{
+                  opacity: 1,
+                  x: 0,
+                }}
+                transition={{
+                  duration: 0.8,
+                  type: "tween",
+                  ease: "easeInOut",
+                  delay: 0.5,
+                }}
+                className="text-lg text-slate-700"
+              >
+                Founded in 2015, Saktra is a rapidly growing product and
+                information technology service company committed to entrusting
+                business transformation by delivering, Data Management &amp;
+                Analytics and Cloud solutions to Fortune 500 clients across the
+                globe, Saktra was born with a vision to bridge the gap between
+                technology talent and business needs. Our founders, with decades
+                of combined experience in the IT industry, recognized the
+                challenges businesses face in finding the right talent and
+                technology solutions in an increasingly digital world.
+              </motion.p>
+            </div>
+          </div>
+          <h2 className="text-2xl font-semibold pt-4 mb-4">Our Mission</h2>
+          <p className="text-lg text-slate-700 mb-8">
+            At Saktra, our mission is to empower organizations through
+            technology talent and innovative product engineering solutions. We
+            believe in building long-term partnerships based on trust, quality,
+            and results.
+          </p>
+          <div className="flex flex-col md:flex-row gap-12 mb-12">
+            <div className="md:w-1/2 order-2 md:order-1">
+              <h2 className="text-2xl font-semibold mb-4">Our Values</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="bg-slate-50 p-6 rounded-lg">
+                  <h3 className="font-semibold text-xl mb-2">Excellence</h3>
+                  <p>
+                    We strive for excellence in everything we do, delivering the
+                    highest quality solutions and services.
+                  </p>
+                </div>
+                <div className="bg-slate-50 p-6 rounded-lg">
+                  <h3 className="font-semibold text-xl mb-2">Innovation</h3>
+                  <p>
+                    We embrace innovation and continuously seek better ways to
+                    solve complex technology challenges.
+                  </p>
+                </div>
+                <div className="bg-slate-50 p-6 rounded-lg">
+                  <h3 className="font-semibold text-xl mb-2">Integrity</h3>
+                  <p>
+                    We conduct business with the highest level of integrity and
+                    transparency.
+                  </p>
+                </div>
+                <div className="bg-slate-50 p-6 rounded-lg">
+                  <h3 className="font-semibold text-xl mb-2">Partnership</h3>
+                  <p>
+                    We build lasting relationships with our clients,
+                    understanding their unique needs and goals.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="md:w-1/2 order-1 md:order-2">
+              <img
+                src="https://images.unsplash.com/photo-1552581234-26160f608093?q=80&amp;w=2070&amp;auto=format&amp;fit=crop"
+                alt="Our Values"
+                className="rounded-lg shadow-md w-full h-auto object-cover"
+              />
+            </div>
+          </div>
+          <h2 className="text-2xl font-semibold pt-4 mb-4">Our Team</h2>
+          <p className="text-lg text-slate-700 mb-8">
+            Our team consists of industry veterans and talented professionals
+            with expertise across various domains of IT. From staffing
+            specialists to software engineers, designers, and project managers,
+            we bring together diverse skills to deliver comprehensive solutions.
+          </p>
+          <div className="mb-8">
+            <img
+              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&amp;w=2070&amp;auto=format&amp;fit=crop"
+              alt="Team Collaboration"
+              className="rounded-lg shadow-md w-full h-auto object-cover aspect-video"
+            />
+          </div>
         </div>
       </div>
       <Footer />
