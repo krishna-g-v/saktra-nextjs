@@ -3,7 +3,9 @@ import Image from "next/image";
 import BannerImage from "../../../public/images/servicesBanner.jpg";
 import { Footer } from "@/components/Footer";
 import { motion } from "framer-motion";
-import ContactImage from "../../../public/images/contactUs.jpeg";
+import About1 from "../../../public/images/about-1.jpeg";
+import About2 from "../../../public/images/about-2.jpeg";
+import About3 from "../../../public/images/about-3.jpeg";
 
 export default function Home() {
   return (
@@ -235,8 +237,8 @@ export default function Home() {
               }}
               className="md:w-1/2"
             >
-              <img
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&amp;w=2070&amp;auto=format&amp;fit=crop"
+              <Image
+                src={About1}
                 alt="Our Team"
                 className="rounded-lg shadow-md w-full h-auto object-cover"
               />
@@ -326,8 +328,8 @@ export default function Home() {
               </div>
             </div>
             <div className="md:w-1/2 order-1 md:order-2">
-              <img
-                src="https://images.unsplash.com/photo-1552581234-26160f608093?q=80&amp;w=2070&amp;auto=format&amp;fit=crop"
+              <Image
+                src={About2}
                 alt="Our Values"
                 className="rounded-lg shadow-md w-full h-auto object-cover"
               />
@@ -341,8 +343,8 @@ export default function Home() {
             we bring together diverse skills to deliver comprehensive solutions.
           </p>
           <div className="mb-8">
-            <img
-              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&amp;w=2070&amp;auto=format&amp;fit=crop"
+            <Image
+              src={About3}
               alt="Team Collaboration"
               className="rounded-lg shadow-md w-full h-auto object-cover aspect-video"
             />
