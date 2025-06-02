@@ -16,8 +16,12 @@ export const Footer = () => {
                 <div>info@saktra.com</div>
                 <div className="mt-8">
                   <p className="max-w-2/3">
-                    4695 Marine Drive, Suite 104 Bangalore, Karnataka, India
-                    560038
+                    Corporate Head Office, 200 Centennial Ave Suite #206
+                    Piscataway, NJ 08854 West Coast Regional Office
+                  </p>
+                  <p className="max-w-2/3 mt-2">
+                    West Coast Regional Office 5201 Great America Pkwy Suite
+                    #320 Santa Clara, CA 95054
                   </p>
                 </div>
               </div>
