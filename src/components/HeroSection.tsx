@@ -6,12 +6,18 @@ import img3 from "../../public/images/bg-3.jpg";
 import img4 from "../../public/images/bg-4.jpg";
 import img5 from "../../public/images/bg-5.jpg";
 import { Navigator } from "@/components/Navigator";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Button } from "./Button";
 
 export const HeroSection = () => {
   const Images = [img1, img2, img3, img4, img5];
+  useEffect(() => {
+    Images.forEach((img) => {
+      const i = new window.Image();
+      i.src = img.src;
+    });
+  }, []);
   const Headers1 = [
     "Leading the new",
     "Accelerating Growth with Top-Tier",
@@ -68,7 +74,7 @@ export const HeroSection = () => {
             className="relative w-full h-full"
           >
             <Image
-              src={Images[index]}
+              src={Images[index].src}
               alt={`Background ${index}`}
               fill
               style={{ objectPosition: "58% center" }}
