@@ -22,7 +22,7 @@ export const Card = ({
   const sizes =
     width !== undefined && height !== undefined
       ? `h-[${height}] w-${width}`
-      : "h-60 w-[500px]";
+      : "h-70 w-[500px]";
   const cardType1 = (
     <div
       className={`${classes.card} h-65 max-sm:h-50 md:w-60 w-90 flex flex-col text-black items-left justify-center relative cursor-pointer overflow-hidden bg-[#e8e8e8] p-2.5 ${poppins.className}`}
