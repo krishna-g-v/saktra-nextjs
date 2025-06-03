@@ -21,8 +21,7 @@ export const Footer = () => {
                   </p>
                   <p className="max-w-2/3 mt-2">West Coast Regional Office,</p>
                   <p className="max-w-2/3">
-                    West Coast Regional Office, 5201 Great America Pkwy Suite
-                    #320 Santa Clara, CA 95054
+                    5201 Great America Pkwy Suite #320 Santa Clara, CA 95054
                   </p>
                 </div>
               </div>
