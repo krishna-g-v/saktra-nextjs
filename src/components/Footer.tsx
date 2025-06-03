@@ -15,12 +15,13 @@ export const Footer = () => {
                 <div>+1 925 644 0118</div>
                 <div>info@saktra.com</div>
                 <div className="mt-8">
+                  <p className="max-w-2/3">Corporate Head Office,</p>
                   <p className="max-w-2/3">
-                    Corporate Head Office, 200 Centennial Ave Suite #206
-                    Piscataway, NJ 08854 West Coast Regional Office
+                    200 Centennial Ave Suite #206 Piscataway, NJ 08854
                   </p>
-                  <p className="max-w-2/3 mt-2">
-                    West Coast Regional Office 5201 Great America Pkwy Suite
+                  <p className="max-w-2/3 mt-2">West Coast Regional Office,</p>
+                  <p className="max-w-2/3">
+                    West Coast Regional Office, 5201 Great America Pkwy Suite
                     #320 Santa Clara, CA 95054
                   </p>
                 </div>
