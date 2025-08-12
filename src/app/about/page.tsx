@@ -1,39 +1,53 @@
 "use client";
-import Image from "next/image";
-import BannerImage from "../../../public/images/servicesBanner.jpg";
+import Image, { StaticImageData } from "next/image";
+import img1 from "../../../public/images/image-2.jpg";
+import banner from "@/../public/images/banner1.png";
 import { Footer } from "@/components/Footer";
-import { motion } from "framer-motion";
-import About1 from "../../../public/images/about-1.jpeg";
-import About2 from "../../../public/images/about-2.jpeg";
-import About3 from "../../../public/images/about-3.jpeg";
+import { easeInOut, motion } from "framer-motion";
+import { Button } from "@/components/Button";
 
-export default function Home() {
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+import Image1 from "@/../public/images/ServiceCards/ServiceCard1.png";
+import Image2 from "@/../public/images/ServiceCards/ServiceCard2.png";
+import Image3 from "@/../public/images/ServiceCards/ServiceCard3.png";
+import Image4 from "@/../public/images/ServiceCards/ServiceCard4.png";
+import { HiArrowSmallLeft, HiArrowSmallRight } from "react-icons/hi2";
+
+import Team1 from "@/../public/images/teamImage.png";
+import PageCTA from "@/components/PageCTA";
+import { cleanHTMLContent } from "../page";
+
+export default function About() {
+  const [data, setData] = useState<any>({});
+  useEffect(() => {
+    const getData = async () => {
+      const res = await fetch(
+        "http://157.173.218.78:8080/wp-json/wl/v1/about-us"
+      );
+      const about = await res.json();
+      setData(about);
+    };
+    getData();
+  }, []);
+  console.log(data);
   return (
-    <div className="w-[100vw] min-h-[100vh] bg-white absolute top-0 left-0 text-black overflow-hidden">
+    <div className="gilroy-regular text-black">
       <motion.div
-        initial={{ scale: 1.1, filter: "blur(2px)" }}
-        animate={{ scale: 1, filter: "blur(0)" }}
-        transition={{ duration: 1.1, ease: "easeInOut" }}
-        className="banner w-full h-[45vh] relative"
+        initial={{ scale: 1.1 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 1.1, ease: easeInOut }}
+        className="banner w-full h-[65vh] max-sm:h-[100vh] relative bg-[#28001e] z-1"
       >
         <Image
-          src={BannerImage}
+          src={img1}
           alt="Services Page Banner"
           fill
-          className="object-cover bg-purple-400 w-full"
+          className="object-cover opacity-100 mix-blend-color z-2"
         />
-        <div className="bg-[#2b0b1d] opacity-70 absolute top-0 left-0 w-full h-full"></div>
-        <div className="bannerContent absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center z-10">
-          <div className="overflow-hidden">
-            <motion.h1
-              initial={{ y: 100 }}
-              animate={{ y: 0 }}
-              transition={{ duration: 0.7, type: "tween", ease: "easeInOut" }}
-              className="text-6xl font-extrabold text-white max-sm:text-4xl"
-            >
-              About Us
-            </motion.h1>
-          </div>
+        <div className="bannerContent absolute top-0 left-0 w-full h-full flex flex-col items-start max-sm:items-center px-10 justify-center z-10">
           <div className="overflow-hidden">
             <motion.h3
               initial={{ y: 100 }}
@@ -44,314 +58,358 @@ export default function Home() {
                 ease: "easeInOut",
                 delay: 0.1,
               }}
-              className="text-3xl font-medium text-white mt-5 max-sm:text-[18px] ax-sm:px-2.5 max-sm:text-center max-sm:px-8"
+              className="text-[18px] font-medium text-white mt-5 max-sm:text-[16px] max-sm:px-2.5 max-sm:text-center"
             >
-              {
-                "An end-to-end IT solutions provider with a decade-long legacy of delivering innovation and excellence"
-              }
+              {data["hero_section"]?.subtitle || "About Us"}
             </motion.h3>
+          </div>
+          <div className="overflow-hidden">
+            <motion.h1
+              initial={{ y: 100 }}
+              animate={{ y: 0 }}
+              transition={{ duration: 0.7, type: "tween", ease: "easeInOut" }}
+              className="text-6xl tracking-tight font-extrabold text-white max-sm:text-4xl max-sm:max-w-[98%] max-sm:text-center py-2 max-w-[60%] text-blue-gradient"
+            >
+              {data["hero_section"]?.title || "A global technology provider"}
+            </motion.h1>
+          </div>
+          <div className="overflow-hidden">
+            <Button
+              text={
+                data["hero_section"]?.button.text || "LET'S GET YOU STARTED"
+              }
+              bgColor="#BBF2FF"
+            />
           </div>
         </div>
       </motion.div>
-      {/* <div className="grid md:grid-cols-5 gap-8 md:px-20 px-10 py-10">
-        <div className="md:col-span-2 space-y-8">
-          <motion.div
-            initial={{ opacity: 0, x: "-100%" }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.3, ease: "easeIn", delay: 0.5 }}
-            className="bg-white p-6 rounded-lg shadow-sm"
-          >
-            <div className="flex items-start space-x-4">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="lucide lucide-map-pin h-6 w-6 text-indigo-600 mt-1"
-              >
-                <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path>
-                <circle cx="12" cy="10" r="3"></circle>
-              </svg>
-              <div>
-                <h3 className="font-medium text-lg">Corporate Head Office</h3>
-                <p className="text-slate-600 mt-1">
-                  200 Centennial Ave Suite #206 Piscataway, NJ 08854
-                </p>
-                <h3 className="font-medium text-lg mt-4">
-                  West Coast Regional Office
-                </h3>
-                <p className="text-slate-600 mt-1">
-                  5201 Great America Pkwy Suite #320 Santa Clara, CA 95054
-                </p>
-              </div>
-            </div>
-          </motion.div>
-          <motion.div
-            initial={{ clipPath: "polygon(0 0, 0 0, 0 100%, 0% 100%)" }}
-            animate={{ clipPath: " polygon(100% 0, 0 0, 0 100%, 100% 100%)" }}
-            transition={{
-              duration: 0.8,
-              type: "tween",
-              ease: "easeInOut",
-              delay: 0.5,
-            }}
-            className="bg-white p-6 rounded-lg shadow-sm relative"
-          >
-            <Image
-              fill
-              src={ContactImage}
-              alt="Office"
-              className="w-full h-auto rounded-lg mb-6"
-            />
-            <div className="flex items-start space-x-4 mb-4">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="lucide lucide-mail h-6 w-6 text-indigo-600 mt-1"
-              >
-                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-              </svg>
-              <div>
-                <h3 className="font-medium text-lg">Email Us</h3>
-                <p className="text-slate-600 mt-1">info@saktra.com</p>
-              </div>
-            </div>
-            <div className="flex items-start space-x-4">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="lucide lucide-phone h-6 w-6 text-indigo-600 mt-1"
-              >
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-              </svg>
-              <div>
-                <h3 className="font-medium text-lg">Call Us</h3>
-                <p className="text-slate-600 mt-1">+1 (732) 361-4246</p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-        <div className="md:col-span-3">
-          <form className="bg-white p-6 rounded-lg shadow-sm">
-            <div className="space-y-4">
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
-                  Your Name
-                </label>
-                <input
-                  className="flex h-10 w-full rounded-md border border-input bg-gray-200 px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
-                  id="name"
-                  name="name"
-                  // value=""
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
-                  Your Email
-                </label>
-                <input
-                  type="email"
-                  className="flex h-10 w-full rounded-md border border-input bg-gray-200 px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
-                  id="email"
-                  name="email"
-                  // value=""
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="subject"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
-                  Subject
-                </label>
-                <input
-                  className="flex h-10 w-full rounded-md border border-input bg-gray-200 px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
-                  id="subject"
-                  name="subject"
-                  required={true}
-                  // value=""
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
-                  Your Message
-                </label>
-                <textarea
-                  className="flex min-h-[80px] w-full rounded-md border border-input bg-gray-200 px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 resize-none"
-                  id="message"
-                  name="message"
-                  rows={6}
-                  required={true}
-                ></textarea>
-              </div>
-              <button
-                className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-gray-800 text-white text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 w-full"
-                type="submit"
-              >
-                Send Message
-              </button>
-            </div>
-          </form>
-        </div>
-      </div> */}
-      <div className="mx-auto px-4 py-10">
-        <div className="max-w-4xl mx-auto">
-          <div className="flex flex-col md:flex-row gap-12 mb-12">
-            <motion.div
-              initial={{ clipPath: "polygon(0 0, 0 0, 0 100%, 0% 100%)" }}
-              animate={{ clipPath: " polygon(100% 0, 0 0, 0 100%, 100% 100%)" }}
-              transition={{
-                duration: 0.8,
-                type: "tween",
-                ease: "easeInOut",
-                delay: 0.5,
-              }}
-              className="md:w-1/2"
-            >
-              <Image
-                src={About1}
-                alt="Our Team"
-                className="rounded-lg shadow-md w-full h-auto object-cover"
-              />
-            </motion.div>
-            <div className="md:w-1/2">
-              <motion.h2
-                initial={{ opacity: 0, y: "100%" }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.8,
-                  type: "tween",
-                  ease: "easeInOut",
-                  delay: 0.5,
-                }}
-                className="text-2xl font-semibold mb-4"
-              >
-                Our Story
-              </motion.h2>
-              <motion.p
-                initial={{
-                  opacity: 0,
-                  x: "30%",
-                }}
-                animate={{
-                  opacity: 1,
-                  x: 0,
-                }}
-                transition={{
-                  duration: 0.8,
-                  type: "tween",
-                  ease: "easeInOut",
-                  delay: 0.5,
-                }}
-                className="text-lg text-slate-700"
-              >
-                Founded in 2015, Saktra is a rapidly growing product and
-                information technology service company committed to entrusting
-                business transformation by delivering, Data Management &amp;
-                Analytics and Cloud solutions to Fortune 500 clients across the
-                globe, Saktra was born with a vision to bridge the gap between
-                technology talent and business needs. Our founders, with decades
-                of combined experience in the IT industry, recognized the
-                challenges businesses face in finding the right talent and
-                technology solutions in an increasingly digital world.
-              </motion.p>
-            </div>
-          </div>
-          <h2 className="text-2xl font-semibold pt-4 mb-4">Our Mission</h2>
-          <p className="text-lg text-slate-700 mb-8">
-            At Saktra, our mission is to empower organizations through
-            technology talent and innovative product engineering solutions. We
-            believe in building long-term partnerships based on trust, quality,
-            and results.
-          </p>
-          <div className="flex flex-col md:flex-row gap-12 mb-12">
-            <div className="md:w-1/2 order-2 md:order-1">
-              <h2 className="text-2xl font-semibold mb-4">Our Values</h2>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-slate-50 p-6 rounded-lg">
-                  <h3 className="font-semibold text-xl mb-2">Excellence</h3>
-                  <p>
-                    We strive for excellence in everything we do, delivering the
-                    highest quality solutions and services.
-                  </p>
-                </div>
-                <div className="bg-slate-50 p-6 rounded-lg">
-                  <h3 className="font-semibold text-xl mb-2">Innovation</h3>
-                  <p>
-                    We embrace innovation and continuously seek better ways to
-                    solve complex technology challenges.
-                  </p>
-                </div>
-                <div className="bg-slate-50 p-6 rounded-lg">
-                  <h3 className="font-semibold text-xl mb-2">Integrity</h3>
-                  <p>
-                    We conduct business with the highest level of integrity and
-                    transparency.
-                  </p>
-                </div>
-                <div className="bg-slate-50 p-6 rounded-lg">
-                  <h3 className="font-semibold text-xl mb-2">Partnership</h3>
-                  <p>
-                    We build lasting relationships with our clients,
-                    understanding their unique needs and goals.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="md:w-1/2 order-1 md:order-2">
-              <Image
-                src={About2}
-                alt="Our Values"
-                className="rounded-lg shadow-md w-full h-auto object-cover"
-              />
-            </div>
-          </div>
-          <h2 className="text-2xl font-semibold pt-4 mb-4">Our Team</h2>
-          <p className="text-lg text-slate-700 mb-8">
-            Our team consists of industry veterans and talented professionals
-            with expertise across various domains of IT. From staffing
-            specialists to software engineers, designers, and project managers,
-            we bring together diverse skills to deliver comprehensive solutions.
-          </p>
-          <div className="mb-8">
-            <Image
-              src={About3}
-              alt="Team Collaboration"
-              className="rounded-lg shadow-md w-full h-auto object-cover aspect-video"
-            />
-          </div>
-        </div>
-      </div>
+      <ServicesSection2 data={data} />
+      <MidBanner
+        title={data["page_banner"]?.title}
+        description={data["page_banner"]?.description}
+        url={data["page_banner"]?.image?.url || banner}
+      />
+      <ScrollSplitSection
+        items={data["about_subsection_items"]}
+        left_title={data["about_subsection_tilte"]}
+      />
+      <EndToEnd teamData={data["team_section"]} />
+      <PageCTA
+        background="[#28001E]"
+        title="Let's Build the Next Together"
+        description="Whether you're looking to strengthen your digital footprint, expand your capabilities, or reimagine your operations — at Saktra, we can help.
+        Partner with us and turn today’s possibilities into tomorrow’s results."
+      />
       <Footer />
     </div>
   );
 }
+
+const ServicesSection2 = ({ data }: { data: any }) => {
+  return (
+    <div className="min-h-[60vh] flex flex-col items-center justify-center text-center bg-[#F5F5F5] overflow-x-hidden max-sm:py-5">
+      <h1 className="text-6xl text-purple-gradient max-w-[50%] py-2 max-sm:text-4xl max-sm:max-w-[95%]">
+        {data["page_heading"]?.title || "Technology + Talent"}
+      </h1>
+      <p
+        className="text-black max-w-[70%] max-sm:max-w-[95%] font-medium text-[18px]"
+        dangerouslySetInnerHTML={{
+          __html: data["page_heading"]?.description as string,
+        }}
+      ></p>
+    </div>
+  );
+};
+
+const MidBanner = ({
+  url,
+  title,
+  description,
+}: {
+  url: string;
+  title: string;
+  description: string;
+}) => {
+  return (
+    <div className="w-full h-[40vh] max-sm:h-[70vh] relative">
+      <Image
+        src={url}
+        fill
+        alt="banner-image"
+        className="absolute top-0 left-0 object-cover"
+      />
+      <div
+        className="overlay absolute top-0 left-0 w-full h-full flex flex-col justify-center px-30 max-sm:px-5"
+        style={{
+          background: "linear-gradient(to right,rgba(0,0,0,1),rgba(0,0,0,0))",
+        }}
+      >
+        <h1 className="text-blue-gradient text-6xl max-sm:text-4xl">
+          {title || "Our Mission"}
+        </h1>
+        <p className="mt-4 text-white text-xl max-w-[40%] max-sm:max-w-[80%]">
+          {description}
+        </p>
+      </div>
+    </div>
+  );
+};
+
+// const VerticalCardsData: ServiceVerticalCardProps[] = [
+//   {
+//     title: "Excellence",
+//     description:
+//       "With a focus on quality, we constantly push the boundaries of performance and strive to deliver superior results for our clients, stakeholders, and partners.",
+//     image: Image1,
+//   },
+//   {
+//     title: "Innovation",
+//     description:
+//       "Technology is always evolving – and so are we. We challenge norms, leverage cutting-edge technologies, and bring fresh perspectives to the table – that solve complex problems and drive meaningful results.",
+//     image: Image2,
+//   },
+//   {
+//     title: "Integrity",
+//     description:
+//       "Integrity is at the heart of how we work. We establish clear objectives, set transparent goals, ensure accountability, and stick to our deadlines and promises.",
+//     image: Image3,
+//   },
+//   {
+//     title: "Partnership",
+//     description:
+//       "We prioritize collaboration and open communication. We have established a culture that fosters teamwork, mutual respect, shared success – where everyone feels valued and empowered to contribute.",
+//     image: Image4,
+//   },
+// ];
+
+gsap.registerPlugin(ScrollTrigger);
+
+export const ScrollSplitSection = ({
+  left_title,
+  items,
+}: {
+  left_title: string;
+  items: [
+    {
+      title: string;
+      description: string;
+      image: {
+        url: string;
+      };
+    }
+  ];
+}) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const leftRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const isDesktop = window.innerWidth > 640; // Tailwind's "sm" breakpoint (640px)
+    const ctx = gsap.context(() => {
+      if (isDesktop) {
+        // Only pin left section on desktop
+        ScrollTrigger.create({
+          trigger: containerRef.current,
+          start: "top top",
+          end: "bottom bottom",
+          pin: leftRef.current,
+          pinSpacing: false,
+          scrub: false,
+        });
+      }
+
+      // Animate cards on scroll for all screen sizes
+      gsap.utils.toArray<HTMLElement>(".card").forEach((card, i) => {
+        gsap.from(card, {
+          opacity: 0,
+          x: i % 2 === 0 ? 50 : -50,
+          duration: 0.6,
+          scrollTrigger: {
+            trigger: card,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        });
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, [items]);
+
+  return (
+    <div
+      ref={containerRef}
+      className="flex max-sm:flex-col min-h-[180vh] bg-[#F5F5F5] relative overflow-hidden max-sm:py-5"
+    >
+      {/* Left Side (Pinned) */}
+      <div
+        ref={leftRef}
+        className="w-1/2 max-sm:w-full h-screen max-sm:h-auto bg-[#F5F5F5] flex flex-col items-start px-10 max-sm:px-2 max-sm:text-center justify-center font-bold sticky max-sm:static top-0 max-sm:flex max-sm:flex-col max-sm:items-center"
+      >
+        <h1 className="text-6xl max-sm:text-4xl max-sm:text-center text-purple-gradient">
+          {left_title}
+        </h1>
+        <p className="max-w-[80%] max-sm:max-w-[98%] text-[22px] max-sm:text-[18px]">
+          Turn your tech innovations into real-world impact with our tailored AI
+          solutions. By mixing smart planning with the right technology, we turn
+          AI’s promises into results you can count on.
+        </p>
+        <Button bgColor="transparent" text="GET STARTED" />
+      </div>
+
+      {/* Right Side (Scrolling Content) */}
+      <div className="w-1/2 max-sm:w-full max-sm:p-2 max-sm:mt-5 p-10 space-y-2">
+        {items &&
+          items.map((vc, i) => (
+            <ServiceVerticalCard
+              key={vc.title}
+              reverse={i % 2 !== 0}
+              title={vc.title}
+              description={cleanHTMLContent(vc.description) as string}
+              image={vc.image.url}
+            />
+          ))}
+      </div>
+    </div>
+  );
+};
+
+type ServiceVerticalCardProps = {
+  title: string;
+  description: string;
+  image: string;
+  reverse?: boolean;
+};
+const ServiceVerticalCard = ({
+  title,
+  description,
+  image,
+  reverse = false,
+}: ServiceVerticalCardProps) => {
+  return (
+    <div
+      className={`card border p-4 bg-white h-[40vh] border-[#d9d9d9] flex ${
+        reverse ? "flex-row-reverse" : ""
+      } items-center w-full gap-5 justify-between`}
+    >
+      <div className="serviceImage h-full w-[150%] max-sm:w-[300%] relative pl-4">
+        <Image
+          width={150}
+          height={150}
+          src={image}
+          alt="Services Image"
+          className="opacity-100 absolute top-0 left-0 h-full w-full object-cover"
+        />
+      </div>
+      <div className="serviceContent flex flex-col">
+        <h2 className="text-3xl mb-3 max-sm:text-xl">{title}</h2>
+        <p className="max-sm:text-[14px]">{description}</p>
+      </div>
+    </div>
+  );
+};
+
+const HorizontalCardData = [
+  {
+    title: "Reduced Operational Costs",
+    description:
+      "Automate time-consuming tasks across departments. Our custom AI solutions help you cut through inefficiencies, maximize team output, and scale your business without growing your headcount.",
+    image: Team1,
+  },
+  {
+    title: "Improved Customer Experience",
+    description:
+      "Provide real-time support to your customers and teams with AI-powered agents. From resolving queries to guiding decisions, AI delivers round-the-clock assistance and a consistent brand experience at every touchpoint.",
+    image: Team1,
+  },
+  {
+    title: "Better Decision Making",
+    description:
+      "Leverage the power of AI to turn data into actionable insights. From forecasting trends to identifying risks, our AI solutions empower your teams to make smarter decisions, faster.",
+    image: Team1,
+  },
+];
+
+const EndToEnd = ({
+  teamData,
+}: {
+  teamData: {
+    title: string;
+    description: string;
+    members: [
+      {
+        name: string;
+        description: string;
+        featured_image: string;
+        designation: string;
+      }
+    ];
+  };
+}) => {
+  // console.log(teamData);
+  return (
+    <div className="min-h-screen bg-[#F5f5f5] flex flex-col items-center justify-center">
+      <h1 className="text-6xl text-purple-gradient mt-4 max-sm:text-center max-sm:text-4xl">
+        {teamData?.title || "Meet Our Team"}
+      </h1>
+      <div className="flex max-sm:flex-col gap-5 max-w-[90%] mt-6">
+        {teamData &&
+          teamData.members.map((h, i) => {
+            return (
+              <HorizontalCard
+                key={h.name}
+                title={h.name}
+                description={cleanHTMLContent(h.description) as string}
+                image={h.featured_image}
+                index={i + 1}
+              />
+            );
+          })}
+      </div>
+      <div className="w-full flex gap-2 items-center justify-end max-w-[90%] mt-4">
+        <button
+          className="max-sm:size-6 h-10 w-10 bg-[#BBF2FF] arrow-button arrow-button-left rounded-[50%] flex items-center justify-center cursor-pointer text-[#28001E]"
+          onClick={() => {}}
+        >
+          <HiArrowSmallLeft />
+        </button>
+        <button
+          className="max-sm:size-6 h-10 w-10 bg-[#BBF2FF] arrow-button arrow-button-left rounded-[50%] flex items-center justify-center cursor-pointer text-[#28001E]"
+          onClick={() => {}}
+        >
+          <HiArrowSmallRight />
+        </button>
+      </div>
+    </div>
+  );
+};
+
+type HorizontalCardProps = {
+  index: number;
+  title: string;
+  description: string;
+  image: StaticImageData | string;
+};
+
+const HorizontalCard = ({ title, description, image }: HorizontalCardProps) => {
+  return (
+    <div className="min-h-[60vh] max-sm:min-h-[30vh] max-sm:w-[90vw] w-[30vw] flex flex-col items-center justify-center shadow-lg overflow-auto max-sm:overflow-hidden rounded-xl relative">
+      <Image
+        className="absolute top-0 left-0 w-full h-full object-cover"
+        width={30}
+        height={30}
+        src={image}
+        alt="card-image"
+      />
+      <div
+        className="content text-white absolute top-0 left-0 w-full h-1/2 mt-[60%] max-sm:mt-[35%] pt-16 max-sm:pt-2 px-5"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1))",
+        }}
+      >
+        <h2>{title}</h2>
+        <p>{description}</p>
+      </div>
+    </div>
+  );
+};

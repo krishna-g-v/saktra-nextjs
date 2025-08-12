@@ -17,7 +17,13 @@ const Section5Data: SectionData[] = [
   },
 ];
 
-export const Section5 = () => {
+export const Section5 = ({
+  header,
+  description,
+}: {
+  header: string;
+  description: string;
+}) => {
   const [isMobile, setIsMobile] = useState(false);
 
   // Media query detection
@@ -36,20 +42,13 @@ export const Section5 = () => {
           </div>
           <div className="gradient flex flex-col gilmer-regular max-sm:mt-20">
             <h1 className="gradient2 text-transparent bg-clip-text">
-              Real-World Impact.
-            </h1>
-            <h1 className="gradient2 text-transparent bg-clip-text pb-2">
-              Proven Results.
+              {header}
             </h1>
             <div
               className={`mt-5 max-w-2/3 max-sm:max-w-[80%] ${poppins.className}`}
             >
               <p className="text-[18px] text-black  max-sm:text-[16px] ">
-                From AI-driven automation to global talent acquisition, we
-                create solutions to solve real-world problems for businesses
-                around the globe. Explore how we help industry leaders
-                streamline operations, enhance customer experiences, and drive
-                growth through technology and talent
+                {description}
               </p>
             </div>
           </div>

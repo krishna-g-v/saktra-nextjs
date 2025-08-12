@@ -81,12 +81,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* .section1 {
-  background-image: url("../../public/images/bg-1.jpg");
-  background-position: center;
-  background-size: cover;
-} */
-
 .overlay {
   position: absolute;
   top: 0;
@@ -181,4 +175,18 @@ input {
   height: 2px;
   background-color: black;
   transition: all 0.6s ease-in;
+}
+
+.text-blue-gradient {
+  background: linear-gradient(59deg, #bbf2ff 39%, white);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-purple-gradient {
+  background: linear-gradient(71deg, #8e006b, #28001e);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

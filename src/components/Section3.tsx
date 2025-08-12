@@ -47,7 +47,7 @@ const Section3Data: SectionData[] = [
   },
 ];
 
-export const Section3 = () => {
+export const Section3 = ({ header }: { header: string }) => {
   return (
     <div className="section3 h-[100vh] w-full relative bg-[#F5F5F5] overflow-hidden">
       <div className="h-[70vh] overflow-hidden relative">
@@ -67,11 +67,8 @@ export const Section3 = () => {
             Industries
           </div>
           <div className="gradient flex flex-col gilmer-regular">
-            <h1 className="gradient text-transparent bg-clip-text">
-              Building What’s Next for
-            </h1>
-            <h1 className="gradient text-transparent bg-clip-text">
-              the World’s Top Industries
+            <h1 className="gradient text-transparent bg-clip-text max-w-[70%]">
+              {header}
             </h1>
           </div>
         </div>

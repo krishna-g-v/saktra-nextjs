@@ -6,32 +6,57 @@ import img1 from "../../public/images/s21.jpg";
 import img2 from "../../public/images/s22.jpg";
 import img3 from "../../public/images/s23.jpg";
 import { SectionData } from "./NavLinks";
+import { useEffect, useState } from "react";
 
-const Section2Data: SectionData[] = [
-  {
-    header: "Talent Solutions",
-    cardContent:
-      "Scalable and agile talent acquisition strategies built for today’s fast-moving industries. Whether launching a startup or expanding globally, we help you onboard the right skill and talent quickly and cost-effectively, without the fuse",
-    imgLink: img1,
-    link: "./talent",
-  },
-  {
-    header: "Technology",
-    cardContent:
-      "From digital transformation to platform modernization, we engineer future-ready solutions that align technology with business.Our tech expertise fuels growth and enables smarter innovations across Telecom, Insurance, and Supply Chain sectors.",
-    imgLink: img2,
-    link: "./technology",
-  },
-  {
-    header: "AI Services",
-    cardContent:
-      "Transform your business with intelligent solutions that go beyond automation.We harness the power of AI to deliver practical solutions that reduce costs, streamline workflows, and deliver hyper-personalized customer experiences that deliver measurable impact",
-    imgLink: img3,
-    link: "./services",
-  },
-];
+// const Section2Data: SectionData[] = [
+//   {
+//     header: "Talent Solutions",
+//     cardContent:
+//       "Scalable and agile talent acquisition strategies built for today’s fast-moving industries. Whether launching a startup or expanding globally, we help you onboard the right skill and talent quickly and cost-effectively, without the fuse",
+//     imgLink: img1,
+//     link: "./talent",
+//   },
+//   {
+//     header: "Technology",
+//     cardContent:
+//       "From digital transformation to platform modernization, we engineer future-ready solutions that align technology with business.Our tech expertise fuels growth and enables smarter innovations across Telecom, Insurance, and Supply Chain sectors.",
+//     imgLink: img2,
+//     link: "./technology",
+//   },
+//   {
+//     header: "AI Services",
+//     cardContent:
+//       "Transform your business with intelligent solutions that go beyond automation.We harness the power of AI to deliver practical solutions that reduce costs, streamline workflows, and deliver hyper-personalized customer experiences that deliver measurable impact",
+//     imgLink: img3,
+//     link: "./services",
+//   },
+// ];
 
-export const Section2 = () => {
+const images = [img1, img2, img3];
+const links = ["/talent", "/technology", "/services"];
+
+export const Section2 = ({ header }: { header: string }) => {
+  const [sectionData, setSectionData] = useState<SectionData[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch(
+        "http://157.173.218.78:8080/wp-json/wl/v1/services"
+      );
+      const data = await res.json();
+      const services: SectionData[] = data.services.map(
+        (service: any, i: number) => ({
+          header: service.homepage_section.title,
+          cardContent: service.homepage_section.description,
+          imgLink: i < images.length ? images[i] : images[0],
+          link: i < links.length ? links[i] : links[0],
+        })
+      );
+      setSectionData(services);
+    };
+    fetchData();
+  }, []);
+
   return (
     <div className="section2 h-[100vh] w-full relative overflow-hidden">
       <div className="absolute top-0 left-0 h-full w-full z-1 bg-[#28001e]"></div>
@@ -47,15 +72,12 @@ export const Section2 = () => {
             Services
           </div>
           <div className="gradient flex flex-col gilmer-regular">
-            <h1 className="gradient text-transparent bg-clip-text p-2">
-              Empowering Innovation with Talent,
-            </h1>
-            <h1 className="gradient text-transparent bg-clip-text p-2">
-              Technology, and Intelligence
+            <h1 className="gradient text-transparent bg-clip-text p-2 max-w-[70%]">
+              {header}
             </h1>
           </div>
         </div>
-        <Carousel data={Section2Data} />
+        <Carousel data={sectionData} />
       </div>
     </div>
   );

@@ -4,8 +4,121 @@ import BannerImage from "../../../public/images/servicesBanner.jpg";
 import { Footer } from "@/components/Footer";
 import { motion } from "framer-motion";
 import ContactImage from "../../../public/images/contactUs.jpeg";
+import { MouseEvent, useState } from "react";
+import Modal from "@/components/Modal";
 
-export default function Home() {
+type FormData = {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+};
+
+export default function Contact() {
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalStatus, setModalStatus] = useState<
+    "success" | "loading" | "error"
+  >("success");
+  const [modalMessage, setModalMessage] = useState("");
+
+  const showLoading = () => {
+    setModalStatus("loading");
+    setModalMessage("Sending your contact details...");
+    setModalOpen(true);
+  };
+
+  const showSuccess = () => {
+    setModalStatus("success");
+    setModalMessage(
+      "Your contact details were sent successfully! Please wait for our team to get back to you."
+    );
+    setModalOpen(true);
+  };
+
+  const showError = (msg?: string) => {
+    setModalStatus("error");
+    setModalMessage(msg || "Something went wrong. Please try again.");
+    setModalOpen(true);
+  };
+
+  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    showLoading();
+    const fields: (keyof FormData)[] = Object.keys(
+      formData
+    ) as (keyof FormData)[];
+
+    // Basic validation: check if any field is empty
+    const hasEmptyField = fields.some((field) => formData[field].trim() === "");
+
+    if (hasEmptyField) {
+      showError("Please fill in all the fields.");
+      console.log("Please fill in all fields.");
+      return;
+    }
+
+    // Construct the body as application/x-www-form-urlencoded (required by Contact Form 7 API)
+    const formFields = new FormData();
+    formFields.append("your-name", formData.name.trim());
+    formFields.append("your-email", formData.email.trim());
+    formFields.append("your-subject", formData.subject.trim());
+    formFields.append("your-message", formData.message.trim());
+
+    // Add CF7 specific fields
+    formFields.append("_wpcf7", "95"); // Form ID
+    formFields.append("_wpcf7_version", "5.7.7"); // CF7 version (adjust if needed)
+    formFields.append("_wpcf7_locale", "en_US");
+    formFields.append("_wpcf7_unit_tag", "wpcf7-f669341-p123-o1"); // Updated unit tag with correct form ID
+    formFields.append("_wpcf7_container_post", "123"); // Post ID where form is embedded
+
+    // API URL - use your WordPress site's actual domain [contact-form-7 id="f669341" title="Contact form 1"]
+    const apiUrl =
+      "http://157.173.218.78:8080/wp-json/contact-form-7/v1/contact-forms/95/feedback";
+
+    try {
+      const res = await fetch(apiUrl, {
+        method: "POST",
+        body: formFields,
+        mode: "cors", // Explicitly set CORS mode
+        // Don't set Content-Type header - let browser set it with boundary for FormData
+        // headers: {
+        //   "X-Requested-With": "XMLHttpRequest",
+        // },
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        console.log("Submission successful:", data);
+        // Reset form after successful submission
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+        showSuccess();
+      } else {
+        showError();
+        console.error("Submission failed:", data);
+      }
+    } catch (error) {
+      console.error("Submission failed:", error);
+    }
+  };
+
+  const handleChange = (field: keyof FormData, val: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      [field]: val,
+    }));
+  };
   return (
     <div className="w-[100vw] min-h-[100vh] bg-white absolute top-0 left-0 text-black overflow-hidden">
       <motion.div
@@ -158,7 +271,9 @@ export default function Home() {
                   Your Name
                 </label>
                 <input
-                  className="flex h-10 w-full rounded-md border border-input bg-gray-200 px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+                  className="!text-black !text-[16px] flex h-10 w-full rounded-md border border-input bg-gray-200 px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+                  value={formData.name}
+                  onChange={(e) => handleChange("name", e.target.value)}
                   id="name"
                   name="name"
                   // value=""
@@ -173,10 +288,11 @@ export default function Home() {
                 </label>
                 <input
                   type="email"
-                  className="flex h-10 w-full rounded-md border border-input bg-gray-200 px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+                  className="!text-black !text-[16px] flex h-10 w-full rounded-md border border-input bg-gray-200 px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
                   id="email"
+                  onChange={(e) => handleChange("email", e.target.value)}
                   name="email"
-                  // value=""
+                  value={formData.email}
                 />
               </div>
               <div>
@@ -187,11 +303,12 @@ export default function Home() {
                   Subject
                 </label>
                 <input
-                  className="flex h-10 w-full rounded-md border border-input bg-gray-200 px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+                  className="!text-black !text-[16px] flex h-10 w-full rounded-md border border-input bg-gray-200 px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
                   id="subject"
+                  onChange={(e) => handleChange("subject", e.target.value)}
                   name="subject"
                   required={true}
-                  // value=""
+                  value={formData.subject}
                 />
               </div>
               <div>
@@ -202,8 +319,10 @@ export default function Home() {
                   Your Message
                 </label>
                 <textarea
-                  className="flex min-h-[80px] w-full rounded-md border border-input bg-gray-200 px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 resize-none"
+                  className="!text-black !text-[16px] flex min-h-[80px] w-full rounded-md border border-input bg-gray-200 px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 resize-none"
+                  value={formData.message}
                   id="message"
+                  onChange={(e) => handleChange("message", e.target.value)}
                   name="message"
                   rows={6}
                   required={true}
@@ -211,6 +330,7 @@ export default function Home() {
               </div>
               <button
                 className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-gray-800 text-white text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 w-full"
+                onClick={(e) => handleSubmit(e)}
                 type="submit"
               >
                 Send Message
@@ -219,6 +339,12 @@ export default function Home() {
           </form>
         </div>
       </div>
+      <Modal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        status={modalStatus}
+        message={modalMessage}
+      />
       <Footer />
     </div>
   );

@@ -36,7 +36,13 @@ const Section6Data: SectionData[] = [
   },
 ];
 
-export const Section6 = () => {
+export const Section6 = ({
+  header,
+  description,
+}: {
+  header: string;
+  description: string;
+}) => {
   return (
     <div className="section3 h-[100vh] w-full relative bg-[#bbf2ff] overflow-hidden">
       <div className="content absolute top-0 left-0 h-full w-full z-5  max-sm:pt-7 pt-15 max-sm:pl-5 pl-25 flex-col">
@@ -47,15 +53,12 @@ export const Section6 = () => {
             </div>
             <div className="gradient flex flex-col">
               <h1 className="gradient2 text-transparent bg-clip-text p-2 gilmer-regular">
-                Expert Insights
+                {header}
               </h1>
               <p
                 className={`ml-2 mt-2.5 text-[18px] text-black max-w-2/3 max-sm:max-w-[90%] pb-2 ${poppins.className}`}
               >
-                Unlock the latest trends, thought leadership, and actionable
-                strategies in technology, talent, and AI. Our insights help you
-                navigate today’s fast-changing digital landscape and make
-                smarter, faster business decisions.
+                {description}
               </p>
             </div>
           </div>

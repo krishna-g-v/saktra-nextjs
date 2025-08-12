@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import Lenis from "@studio-freight/lenis";
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,6 +21,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const pathName = usePathname();
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
@@ -39,9 +41,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}
       >
-        <Navbar />
+        <Navbar
+          isTransparent={
+            !pathName.startsWith("/caseStudy") &&
+            !pathName.startsWith("/insights")
+          }
+        />
         {children}
       </body>
     </html>

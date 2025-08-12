@@ -35,7 +35,9 @@ export const Button = ({
       animate="animate"
       exit={{ opacity: 0, x: 30 }}
       transition={{ duration: 0.3, delay: 0.3, ease: "circOut" }}
-      className={`uppercase bg-[${bgColor}] text-black font-bold text-[10px] md:text-[14px] p-2 mt-5 px-7 rounded-3xl flex items-center justify-center gap-2 cursor-pointer ${
+      className={`uppercase bg-[${bgColor}]
+      ${bgColor === "transparent" ? "border border-[#28001E]" : ""}
+      text-[#28001E] gilroy-bold font-bold text-[10px] md:text-[14px] p-2 mt-5 px-7 rounded-3xl flex items-center justify-center gap-2 cursor-pointer ${
         border ? "border-1 border-black" : ""
       }relative ${classes.button}`}
     >

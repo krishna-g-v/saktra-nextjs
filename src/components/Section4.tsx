@@ -1,3 +1,4 @@
+import { cleanHTMLContent } from "@/app/page";
 import { Button } from "./Button";
 import { Carousel } from "./Carousel";
 import { SectionData } from "./NavLinks";
@@ -21,7 +22,22 @@ const Section4Data: SectionData[] = [
   },
 ];
 
-export const Section4 = () => {
+const mapData = (items: any[]) => {
+  return items.map((i) => ({
+    header: i.title as string,
+    cardContent: cleanHTMLContent(i.description) as string,
+  }));
+};
+
+export const Section4 = ({
+  header,
+  description,
+  items,
+}: {
+  header: string;
+  description: string;
+  items: [{ title: string; description: string }];
+}) => {
   return (
     <div className="section3 h-[100vh] w-full relative bg-[#F5F5F5] overflow-hidden card">
       <div className="content absolute top-0 left-0 h-full w-full z-5 pt-4 max-sm:pt-7 pl-25 max-sm:pl-5 flex-col">
@@ -31,19 +47,13 @@ export const Section4 = () => {
           </div>
           <div className="gradient flex flex-col gilmer-regular">
             <h1 className="gradient2 text-transparent bg-clip-text p-2 max-sm:max-w-[90%]">
-              Shaping the Future of Business,
-            </h1>
-            <h1 className="gradient2 text-transparent bg-clip-text pb-2">
-              Together
+              {header}
             </h1>
             <div className="mt-5">
               <p
                 className={`text-[18px] max-sm:text-[16px] max-sm:max-w-[90%] text-black md:max-w-[90%] ${poppins.className}`}
               >
-                We’re a global technology and talent solutions company enabling
-                digital disruption across today’s most dynamic industries. From
-                FinTech to Telecom, we empower businesses to scale smarter,
-                innovate faster, and lead with confidence
+                {description}
               </p>
             </div>
             <div className="mt-3">
@@ -57,7 +67,11 @@ export const Section4 = () => {
               <Button text="Read More" bgColor="#BBF2FF" />
               <Button text="Our Solutions" bgColor="#F5F5F5" border={true} />
             </div>
-            <Carousel section="section4" data={Section4Data} cardType="Card" />
+            <Carousel
+              section="section4"
+              data={mapData(items)}
+              cardType="Card"
+            />
           </div>
         </div>
       </div>
