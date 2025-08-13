@@ -6,33 +6,9 @@ import { Section4 } from "@/components/Section4";
 import { Section5 } from "@/components/Section5";
 import { Section6 } from "@/components/Section6";
 
-export function cleanHTMLContent(html: string | undefined) {
-  if (html === undefined) {
-    return html;
-  }
+import { cleanHTMLContent } from "./utils/utility";
 
-  return (
-    html
-      // Remove <a> tags and their contents
-      .replace(/<[^>]+>/g, "")
-      .replace(/<a\b[^>]*>.*?<\/a>/gi, "")
-      // Remove &nbsp;
-      .replace(/&nbsp;/g, " ")
-      // Remove <p> and </p> tags but keep inner text
-      .replace(/<\/?p[^>]*>/gi, "")
-      // Remove <span> and </span> tags but keep inner text
-      .replace(/<\/?span[^>]*>/gi, "")
-      // Collapse multiple spaces
-      .replace(/\s+/g, " ")
-      .trim()
-  );
-}
-
-export async function getData(url: string) {
-  const res = await fetch(url);
-  const data = await res.json();
-  return data;
-}
+import { getData } from "./utils/utility";
 
 export default async function Home() {
   const data = await getData(

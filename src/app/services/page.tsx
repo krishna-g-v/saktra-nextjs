@@ -155,7 +155,7 @@ const ServicesSection2 = () => {
 
 gsap.registerPlugin(ScrollTrigger);
 
-export const ScrollSplitSection = () => {
+const ScrollSplitSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const leftRef = useRef<HTMLDivElement>(null);
 

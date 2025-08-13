@@ -1,4 +1,4 @@
-import { cleanHTMLContent } from "@/app/page";
+import { cleanHTMLContent } from "@/app/utils/utility";
 import { Button } from "./Button";
 import { Carousel } from "./Carousel";
 import { poppins } from "@/components/NavLinks";
