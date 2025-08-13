@@ -4,7 +4,7 @@ import BannerImage from "../../../public/images/servicesBanner.jpg";
 import { Footer } from "@/components/Footer";
 import { motion } from "framer-motion";
 import ContactImage from "../../../public/images/contactUs.jpeg";
-import { MouseEvent, useState } from "react";
+import { useState } from "react";
 import Modal from "@/components/Modal";
 
 type FormData = {

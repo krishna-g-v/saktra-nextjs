@@ -1,26 +1,7 @@
 import { cleanHTMLContent } from "@/app/page";
 import { Button } from "./Button";
 import { Carousel } from "./Carousel";
-import { SectionData } from "./NavLinks";
 import { poppins } from "@/components/NavLinks";
-
-const Section4Data: SectionData[] = [
-  {
-    header: "Global Reach, Cross-Functional Expertise",
-    cardContent:
-      "Our teams blend strategy, engineering, and design to deliver end-to-end value to global enterprises.",
-  },
-  {
-    header: "Scalable Solutions, Tech-Forward Approach",
-    cardContent:
-      "Whether you're launching a new platform or modernizing legacy systems, we bring the people and technology, at scale, to turn bold ideas into real results.",
-  },
-  {
-    header: "Client-Centric Approach, Future-Ready Thinking",
-    cardContent:
-      "We partner with you at every step, solving today’s problems with tomorrow in mind. Our agile, adaptive approach moves your business forward",
-  },
-];
 
 const mapData = (items: any[]) => {
   return items.map((i) => ({

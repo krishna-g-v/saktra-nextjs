@@ -10,13 +10,8 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
-import Image1 from "@/../public/images/ServiceCards/ServiceCard1.png";
-import Image2 from "@/../public/images/ServiceCards/ServiceCard2.png";
-import Image3 from "@/../public/images/ServiceCards/ServiceCard3.png";
-import Image4 from "@/../public/images/ServiceCards/ServiceCard4.png";
 import { HiArrowSmallLeft, HiArrowSmallRight } from "react-icons/hi2";
 
-import Team1 from "@/../public/images/teamImage.png";
 import PageCTA from "@/components/PageCTA";
 import { cleanHTMLContent } from "../page";
 
@@ -307,27 +302,6 @@ const ServiceVerticalCard = ({
     </div>
   );
 };
-
-const HorizontalCardData = [
-  {
-    title: "Reduced Operational Costs",
-    description:
-      "Automate time-consuming tasks across departments. Our custom AI solutions help you cut through inefficiencies, maximize team output, and scale your business without growing your headcount.",
-    image: Team1,
-  },
-  {
-    title: "Improved Customer Experience",
-    description:
-      "Provide real-time support to your customers and teams with AI-powered agents. From resolving queries to guiding decisions, AI delivers round-the-clock assistance and a consistent brand experience at every touchpoint.",
-    image: Team1,
-  },
-  {
-    title: "Better Decision Making",
-    description:
-      "Leverage the power of AI to turn data into actionable insights. From forecasting trends to identifying risks, our AI solutions empower your teams to make smarter decisions, faster.",
-    image: Team1,
-  },
-];
 
 const EndToEnd = ({
   teamData,

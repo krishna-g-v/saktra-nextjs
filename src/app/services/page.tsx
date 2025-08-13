@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
@@ -17,11 +17,10 @@ import HImage3 from "@/../public/images/ServiceCards/HorizontalCard3.png";
 
 import Image, { StaticImageData } from "next/image";
 import { Footer } from "@/components/Footer";
-import { easeInOut, motion, Tween } from "framer-motion";
+import { easeInOut, motion } from "framer-motion";
 import img1 from "../../../public/images/image-2.jpg";
 import { Button } from "@/components/Button";
 import { HiArrowSmallLeft, HiArrowSmallRight } from "react-icons/hi2";
-import { SectionData } from "@/components/NavLinks";
 import { Section5 } from "@/components/Section5";
 import PageCTA from "@/components/PageCTA";
 
@@ -347,19 +346,6 @@ const HorizontalCard = ({ title, description, image }: HorizontalCardProps) => {
     </div>
   );
 };
-
-// const Results: SectionData[] = [
-//   {
-//     header: "Rapid Platform Modernization for a FinTech Company",
-//     cardContent:
-//       "Our team migrated a legacy banking platform to the cloud. Within 6 months, we helped the client achieve 3x faster transaction processing and seamless integration with digital payment systems.",
-//   },
-//   {
-//     header: "AI-Powered Claims Automation for an Insurance Provider",
-//     cardContent:
-//       "We helped a leading insurer implement an AI-driven claims processing system, reducing cycle time by 40% and improving customer satisfaction by 60%. Our intelligent workflows and predictive analytics helped minimize fraud and manual effort.",
-//   },
-// ];
 
 const ResultsSection = () => {
   return (

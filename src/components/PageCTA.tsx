@@ -9,8 +9,6 @@ type CTAProps = {
 };
 
 export default function PageCTA({
-  background = "slate-50",
-  color = "text-black",
   title = "Let’s Build the Right Tech Together",
   description = "Whether you're building a new platform or optimizing an existing one, our experts are ready to support your growth with strategy, execution, and scale.",
   buttonText = "Schedule a Consultation",
