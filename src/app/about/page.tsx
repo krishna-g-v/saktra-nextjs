@@ -19,14 +19,13 @@ export default function About() {
   useEffect(() => {
     const getData = async () => {
       const res = await fetch(
-        "http://157.173.218.78:8080/wp-json/wl/v1/about-us"
+        "http://75.119.142.187:8081/wp-json/wl/v1/about-us"
       );
       const about = await res.json();
       setData(about);
     };
     getData();
   }, []);
-  console.log(data);
   return (
     <div className="gilroy-regular text-black">
       <motion.div
@@ -192,7 +191,6 @@ const EndToEnd = ({
     ];
   };
 }) => {
-  // console.log(teamData);
   return (
     <div className="min-h-screen bg-[#F5f5f5] flex flex-col items-center justify-center">
       <h1 className="text-6xl text-purple-gradient mt-4 max-sm:text-center max-sm:text-4xl">

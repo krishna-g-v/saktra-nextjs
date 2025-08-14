@@ -63,7 +63,7 @@ export const Navbar = ({ isTransparent }: { isTransparent: boolean }) => {
         isTransparent ? "bg-[#28001E]/50" : "bg-[#28001E]"
       } max-sm:h-13 w-full text-white absolute gilroy-bold flex items-center justify-between z-999`}
     >
-      <div className="mx-auto max-sm:h-full w-full flex justify-between items-center">
+      <div className="mx-auto relative max-sm:h-full w-full flex justify-between items-center">
         {/* Logo */}
         <div className="text-black font-extrabold text-2xl bg-[#BBF2FF] max-sm:p-0 max-sm:h-full h-full p-4 px-12 grid items-center md:min-h-[9vh]">
           <Link href="/">
@@ -77,7 +77,7 @@ export const Navbar = ({ isTransparent }: { isTransparent: boolean }) => {
 
         {/* Desktop Nav */}
         <div
-          className="relative max-sm:hidden"
+          className=" max-sm:hidden"
           onMouseEnter={() => setIsMenuVisible(true)}
           onMouseLeave={() => setIsMenuVisible(false)}
         >
@@ -126,7 +126,7 @@ export const Navbar = ({ isTransparent }: { isTransparent: boolean }) => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.2, ease: "easeInOut", type: "tween" }}
-                className="absolute -left-[105%] top-[104%] w-screen bg-black/90 text-white p-8 grid grid-cols-5 gap-8 z-50 backdrop-blur-md"
+                className="absolute left-0 top-full w-screen bg-black/90 text-white p-8 grid grid-cols-5 gap-8 z-50 backdrop-blur-md"
               >
                 {MegaMenu.map((head) => (
                   <div key={head.name}>

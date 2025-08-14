@@ -60,7 +60,6 @@ export default function Contact() {
 
     if (hasEmptyField) {
       showError("Please fill in all the fields.");
-      console.log("Please fill in all fields.");
       return;
     }
 
@@ -80,7 +79,7 @@ export default function Contact() {
 
     // API URL - use your WordPress site's actual domain [contact-form-7 id="f669341" title="Contact form 1"]
     const apiUrl =
-      "http://157.173.218.78:8080/wp-json/contact-form-7/v1/contact-forms/95/feedback";
+      "http://75.119.142.187:8081/wp-json/contact-form-7/v1/contact-forms/95/feedback";
 
     try {
       const res = await fetch(apiUrl, {
@@ -95,7 +94,6 @@ export default function Contact() {
 
       const data = await res.json();
       if (res.ok) {
-        console.log("Submission successful:", data);
         // Reset form after successful submission
         setFormData({
           name: "",

@@ -41,7 +41,7 @@ export const Section2 = ({ header }: { header: string }) => {
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch(
-        "http://157.173.218.78:8080/wp-json/wl/v1/services"
+        "http://75.119.142.187:8081/wp-json/wl/v1/services"
       );
       const data = await res.json();
       const services: SectionData[] = data.services.map(

@@ -12,9 +12,8 @@ import { getData } from "./utils/utility";
 
 export default async function Home() {
   const data = await getData(
-    "http://157.173.218.78:8080/wp-json/wl/v1/home-page"
+    "http://75.119.142.187:8081/wp-json/wl/v1/home-page"
   );
-  console.log(data);
   return (
     <div>
       <HeroSection />

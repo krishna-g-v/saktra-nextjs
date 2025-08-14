@@ -5,14 +5,13 @@ import { GoArrowUpRight, GoArrowRight } from "react-icons/go";
 import placeHolderImage from "@/../public/images/s22.jpg";
 
 const getData = async () => {
-  const res = await fetch("http://157.173.218.78:8080/wp-json/wl/v1/posts");
+  const res = await fetch("http://75.119.142.187:8081/wp-json/wl/v1/posts");
   const data = await res.json();
   return data;
 };
 
 export default async function Insights() {
   const casesData = await getData();
-  //console.log(casesData);
   return (
     <div className="min-h-screen bg-white text-black pt-20">
       <div className="max-w-[80%] max-sm:max-w-[95%] mx-auto text-center">

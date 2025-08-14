@@ -5,7 +5,7 @@ import { GoArrowUpRight } from "react-icons/go";
 
 const getData = async () => {
   const res = await fetch(
-    "http://157.173.218.78:8080/wp-json/wl/v1/posts?category=use-cases"
+    "http://75.119.142.187:8081/wp-json/wl/v1/posts?category=use-cases"
   );
   const data = await res.json();
   return data;

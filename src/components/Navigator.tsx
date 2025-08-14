@@ -24,7 +24,6 @@ export const Navigator = ({
   navigatorPosition = false,
   section = "other",
 }: NavigatorProps) => {
-  console.log(buttonColor);
   return (
     <div
       className={`absolute h-20  w-full flex items-center justify-left 

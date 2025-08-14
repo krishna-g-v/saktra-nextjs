@@ -6,7 +6,7 @@ type Params = Promise<{
 
 const getData = async (slug: string) => {
   const res = await fetch(
-    `http://157.173.218.78:8080/wp-json/wl/v1/posts/${slug}`
+    `http://75.119.142.187:8081/wp-json/wl/v1/posts/${slug}`
   );
   const data = await res.json();
   return data;
@@ -19,7 +19,6 @@ export default async function CaseStudyDetailPage({
 }) {
   const { slug } = await params;
   const caseData = await getData(slug);
-  console.log(caseData);
   return (
     <div className=" bg-white pt-20">
       <div className="flex flex-col min-h-[70vh] w-full px-[10%] max-sm:px-[4%] text-center gilroy-regular">
