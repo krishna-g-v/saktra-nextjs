@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Logo from "../../public/images/logo.svg";
-import { NavLinks } from "./NavLinks";
+import { MobileNavLinks, NavLinks } from "./NavLinks";
 import { useState } from "react";
 import { CgClose } from "react-icons/cg";
 import { AnimatePresence, motion } from "framer-motion";
@@ -210,7 +210,7 @@ export const Navbar = ({ isTransparent }: { isTransparent: boolean }) => {
             className="md:hidden px-4 pb-4 absolute top-0 right-0 h-screen w-3/5 bg-[#28001E]/95"
           >
             <ul className="space-y-2 h-1/2 pt-50 w-full flex flex-col items-start justify-around relative">
-              {NavLinks.map((link, index) => (
+              {MobileNavLinks.map((link, index) => (
                 <motion.li key={link.name}>
                   <div className="overflow-hidden">
                     <motion.a

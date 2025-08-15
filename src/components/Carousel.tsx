@@ -86,11 +86,11 @@ export const Carousel = ({
             >
               {cardType === "HoverCard" ? (
                 <HoverCard
-                  link={data[currIndex].link || ""}
-                  cardContent={data[currIndex].cardContent}
-                  cardHeader={data[currIndex].header}
+                  link={data[currIndex]?.link || ""}
+                  cardContent={data[currIndex]?.cardContent}
+                  cardHeader={data[currIndex]?.header}
                   hoverColor={hoverColor ?? "#BBF2FF"}
-                  imgSrc={data[currIndex].imgLink ?? hover1}
+                  imgSrc={data[currIndex]?.imgLink ?? hover1}
                 />
               ) : (
                 <Card

@@ -10,6 +10,17 @@ export const NavLinks = [
   { name: "Contact Us", link: "/contact" },
 ];
 
+export const MobileNavLinks = [
+  { name: "Company", link: "/about" },
+  { name: "Talent Solutions", link: "/talent" },
+  { name: "Technology", link: "/technology" },
+  { name: "AI Services", link: "/services" },
+  { name: "Resources", link: "#" },
+  { name: "Contact Us", link: "/contact" },
+  { name: "Blog", link: "/caseStudy" },
+  { name: "Insights", link: "/insights" },
+];
+
 export const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
