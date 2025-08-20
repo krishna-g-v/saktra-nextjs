@@ -12,12 +12,14 @@ export const Card = ({
   cardType,
   width,
   height,
+  enableLink = true,
 }: {
   cardHeader: string;
   cardContent: string;
   cardType: SecondaryCardType;
   width?: number;
   height?: string;
+  enableLink?: boolean;
 }) => {
   const sizes =
     width !== undefined && height !== undefined
@@ -32,14 +34,16 @@ export const Card = ({
         <div>
           <p className="text-[14px]">{cardContent}</p>
         </div>
-        <div
-          className={`mt-3 uppercase max-w-fit font-extrabold flex gap-2 items-center ${classes.link} relative`}
-        >
-          <a className="text-[14px]" href="#">
-            Read More
-          </a>
-          <HiArrowLongRight className={`${classes.arrow} text-2xl`} />
-        </div>
+        {enableLink && (
+          <div
+            className={`mt-3 uppercase max-w-fit font-extrabold flex gap-2 items-center ${classes.link} relative`}
+          >
+            <a className="text-[14px]" href="#">
+              Read More
+            </a>
+            <HiArrowLongRight className={`${classes.arrow} text-2xl`} />
+          </div>
+        )}
       </section>
     </div>
   );
@@ -55,14 +59,16 @@ export const Card = ({
         <div>
           <p className="text-[14px]">{cardContent}</p>
         </div>
-        <div
-          className={`mt-3 uppercase max-w-fit font-extrabold flex gap-2 items-center ${classes.linkWhite}  relative`}
-        >
-          <a className="text-[14px]" href="#">
-            Read More
-          </a>
-          <HiArrowLongRight className="font-medium" />
-        </div>
+        {enableLink && (
+          <div
+            className={`mt-3 uppercase max-w-fit font-extrabold flex gap-2 items-center ${classes.linkWhite}  relative`}
+          >
+            <a className="text-[14px]" href="#">
+              Read More
+            </a>
+            <HiArrowLongRight className="font-medium" />
+          </div>
+        )}
       </div>
     </div>
   );

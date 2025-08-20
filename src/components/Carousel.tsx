@@ -18,9 +18,11 @@ export interface CarouselProps {
   height?: string;
   navigatorPosition?: boolean;
   section?: string;
+  enableLink?: boolean;
 }
 
 export const Carousel = ({
+  enableLink = true,
   data,
   hoverColor,
   cardType = "HoverCard",
@@ -94,6 +96,7 @@ export const Carousel = ({
                 />
               ) : (
                 <Card
+                  enableLink={enableLink}
                   cardType={secondaryCardType}
                   key={currIndex}
                   cardContent={data[currIndex].cardContent}
@@ -124,6 +127,7 @@ export const Carousel = ({
                   />
                 ) : (
                   <Card
+                    enableLink={enableLink}
                     cardType={secondaryCardType}
                     key={i}
                     cardContent={d.cardContent}

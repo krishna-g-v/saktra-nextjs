@@ -23,7 +23,7 @@ export const Section4 = ({
     <div className="section3 h-[100vh] w-full relative bg-[#F5F5F5] overflow-hidden card">
       <div className="content absolute top-0 left-0 h-full w-full z-5 pt-4 max-sm:pt-7 pl-25 max-sm:pl-5 flex-col">
         <div className="container text-5xl max-sm:text-[35px] text-white flex max-sm:gap-10 gap-20 items-start max-sm:flex-col">
-          <div className="services text-[16px] text-[#28001E] w-[150px] uppercase gilroy-bold max-sm:ml-2">
+          <div className="services text-[16px] text-[#28001E] w-[150px] uppercase gilroy-bold max-sm:ml-2 whitespace-nowrap mt-[15px]">
             About Us
           </div>
           <div className="gradient flex flex-col gilmer-regular">
@@ -49,6 +49,7 @@ export const Section4 = ({
               <Button text="Our Solutions" bgColor="#F5F5F5" border={true} />
             </div>
             <Carousel
+              enableLink={false}
               section="section4"
               data={mapData(items)}
               cardType="Card"
