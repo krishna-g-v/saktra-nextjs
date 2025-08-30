@@ -1,9 +1,118 @@
+"use client";
 import Image from "next/image";
 import Logo from "../../public/images/logo-blue.svg";
 import { HiArrowSmallRight } from "react-icons/hi2";
 import { NavLinks } from "./NavLinks";
 import { poppins } from "@/components/NavLinks";
+import Link from "next/link";
+import { useState } from "react";
+import Modal from "./Modal";
+
+type FormData = {
+  name: string;
+  email: string;
+};
 export const Footer = () => {
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    email: "",
+  });
+
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalStatus, setModalStatus] = useState<
+    "success" | "loading" | "error"
+  >("success");
+  const [modalMessage, setModalMessage] = useState("");
+
+  const showLoading = () => {
+    setModalStatus("loading");
+    setModalMessage("Sending your contact details...");
+    setModalOpen(true);
+  };
+
+  const showSuccess = () => {
+    setModalStatus("success");
+    setModalMessage(
+      "Your contact details were sent successfully! Please wait for our team to get back to you."
+    );
+    setModalOpen(true);
+  };
+
+  const showError = (msg?: string) => {
+    setModalStatus("error");
+    setModalMessage(msg || "Something went wrong. Please try again.");
+    setModalOpen(true);
+  };
+
+  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    console.log("clicked");
+    //e.preventDefault();
+    showLoading();
+    const fields: (keyof FormData)[] = Object.keys(
+      formData
+    ) as (keyof FormData)[];
+
+    // Basic validation: check if any field is empty
+    const hasEmptyField = fields.some((field) => formData[field].trim() === "");
+
+    if (hasEmptyField) {
+      showError("Please fill in all the fields.");
+      return;
+    }
+
+    // Construct the body as application/x-www-form-urlencoded (required by Contact Form 7 API)
+    const formFields = new FormData();
+    formFields.append("your-name", formData.name.trim());
+    formFields.append("your-email", formData.email.trim());
+    // formFields.append("your-subject", formData.subject.trim());
+    // formFields.append("your-message", formData.message.trim());
+
+    // Add CF7 specific fields
+    formFields.append("_wpcf7", "95"); // Form ID
+    formFields.append("_wpcf7_version", "5.7.7"); // CF7 version (adjust if needed)
+    formFields.append("_wpcf7_locale", "en_US");
+    formFields.append("_wpcf7_unit_tag", "wpcf7-f669341-p123-o1"); // Updated unit tag with correct form ID
+    formFields.append("_wpcf7_container_post", "123"); // Post ID where form is embedded
+
+    // API URL - use your WordPress site's actual domain [contact-form-7 id="f669341" title="Contact form 1"]
+    const apiUrl =
+      "http://75.119.142.187:8081/wp-json/contact-form-7/v1/contact-forms/95/feedback";
+
+    try {
+      const res = await fetch(apiUrl, {
+        method: "POST",
+        body: formFields,
+        mode: "cors", // Explicitly set CORS mode
+        // Don't set Content-Type header - let browser set it with boundary for FormData
+        // headers: {
+        //   "X-Requested-With": "XMLHttpRequest",
+        // },
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        // Reset form after successful submission
+        setFormData({
+          name: "",
+          email: "",
+        });
+        showSuccess();
+      } else {
+        showError();
+        console.error("Submission failed:", data);
+      }
+    } catch (error) {
+      console.error("Submission failed:", error);
+    }
+  };
+
+  const handleChange = (field: keyof FormData, val: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      [field]: val,
+    }));
+  };
+
   return (
     <div className="h-[63vh] max-sm:h-[70vh] w-full bg-black text-[#BBF2FF]">
       <div className="container p-10 max-sm:p-4 h-full w-full">
@@ -32,9 +141,9 @@ export const Footer = () => {
                 {NavLinks.map((link) => {
                   return (
                     <li key={link.name}>
-                      <a className="text-[14px]" href="#">
+                      <Link className="text-[14px]" href={link?.link ?? "/"}>
                         {link.name}
-                      </a>
+                      </Link>
                     </li>
                   );
                 })}
@@ -50,6 +159,7 @@ export const Footer = () => {
                   name="name"
                   id="name"
                   placeholder="Name"
+                  onChange={(e) => handleChange("name", e.target.value)}
                   className="placeholder-[#bbf2ff] max-sm:w-3/5"
                 />
                 <div className="flex gap-1 items-center justify-between mt-2.5 ">
@@ -57,10 +167,12 @@ export const Footer = () => {
                     type="email"
                     name="email"
                     id="email"
+                    onChange={(e) => handleChange("email", e.target.value)}
                     className="w-[80%] placeholder-[#bbf2ff]"
                     placeholder="Email"
                   />
                   <button
+                    onClick={(e) => handleSubmit(e)}
                     className={`h-10 w-10 bg-[#BBF2FF] rounded-[50%] flex items-center justify-center cursor-pointer text-black
                                 }`}
                   >
@@ -86,6 +198,7 @@ export const Footer = () => {
                 name="name"
                 id="name"
                 placeholder="Name"
+                onChange={(e) => handleChange("name", e.target.value)}
                 className="placeholder-[#bbf2ff] max-sm:w-3/5"
               />
               <div className="flex gap-1 items-center justify-between mt-2.5 ">
@@ -94,9 +207,11 @@ export const Footer = () => {
                   name="email"
                   id="email"
                   className="w-[80%] placeholder-[#bbf2ff]"
+                  onChange={(e) => handleChange("email", e.target.value)}
                   placeholder="Email"
                 />
                 <button
+                  onClick={(e) => handleSubmit(e)}
                   className={`h-10 w-10 bg-[#BBF2FF] rounded-[50%] flex items-center justify-center cursor-pointer text-black
                                 }`}
                 >
@@ -118,6 +233,12 @@ export const Footer = () => {
           </div>
         </div>
       </div>
+      <Modal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        status={modalStatus}
+        message={modalMessage}
+      />
     </div>
   );
 };

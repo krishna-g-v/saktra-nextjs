@@ -6,7 +6,7 @@ export const NavLinks = [
   { name: "Talent Solutions", link: "/talent" },
   { name: "Technology", link: "/technology" },
   { name: "AI Services", link: "/services" },
-  { name: "Resources", link: "#" },
+  { name: "Resources", link: "/" },
   { name: "Contact Us", link: "/contact" },
 ];
 
