@@ -159,7 +159,7 @@ const ServicesSection2 = () => {
         Building Future-Ready Ecosystems, Tailored to Your Goals
       </h1>
       <p className="text-black max-w-[60%] max-sm:max-w-[95%] font-medium">
-        Whether you're launching new products, modernizing your legacy systems,
+        Whether you are launching new products, modernizing your legacy systems,
         or improving data and cloud capabilities, we can help you build
         solutions that are practical, future-ready, and built for real results.
       </p>
