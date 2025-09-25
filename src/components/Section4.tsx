@@ -46,7 +46,12 @@ export const Section4 = ({
             </div>
             <div className="mt-5 flex gap-3">
               <Button text="Read More" bgColor="#BBF2FF" />
-              <Button text="Our Solutions" bgColor="#F5F5F5" border={true} />
+              <Button
+                text="Our Solutions"
+                bgColor="#F5F5F5"
+                border={true}
+                link="/talent"
+              />
             </div>
             <Carousel
               enableLink={false}

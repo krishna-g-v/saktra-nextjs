@@ -19,9 +19,10 @@ export default function About() {
   useEffect(() => {
     const getData = async () => {
       const res = await fetch(
-        "http://75.119.142.187:8081/wp-json/wl/v1/about-us"
+        "https://saktra.gmasoftinc.com/wp-json/wl/v1/about-us"
       );
       const about = await res.json();
+      console.log(about);
       setData(about);
     };
     getData();
@@ -71,6 +72,7 @@ export default function About() {
               text={
                 data["hero_section"]?.button.text || "LET'S GET YOU STARTED"
               }
+              link="/contact"
               bgColor="#BBF2FF"
             />
           </div>

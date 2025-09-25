@@ -2,18 +2,22 @@
 import { HiArrowLongRight } from "react-icons/hi2";
 import classes from "./Button.module.css";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 export const Button = ({
   text,
   bgColor,
   border = false,
   motionIndex,
+  link,
 }: {
   text: string;
   bgColor: string;
   border?: boolean;
+  link?: string;
   motionIndex?: number;
 }) => {
+  const router = useRouter();
   const buttonVariants = {
     rest: { opacity: 0, x: -90 },
     animate: { opacity: 1, x: 0 },
@@ -29,6 +33,7 @@ export const Button = ({
   return (
     <motion.button
       key={motionIndex}
+      onClick={link !== undefined ? () => router.push(link) : () => {}}
       whileHover="hover"
       variants={buttonVariants}
       initial="rest"

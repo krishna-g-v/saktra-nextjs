@@ -39,6 +39,9 @@ export const HeroSection = () => {
     "Hire Smart",
     "Learn More",
   ];
+
+  const links = ["/about", "/services", "/technology", "/talent", "/contact"];
+
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(4);
 
@@ -130,6 +133,7 @@ export const HeroSection = () => {
             motionIndex={(index + 1) * 5}
             text={linkTexts[index]}
             bgColor="#BBF2FF"
+            link={links[index]}
           />
         </div>
         <Navigator

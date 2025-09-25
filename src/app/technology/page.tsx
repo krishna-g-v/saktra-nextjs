@@ -130,7 +130,11 @@ export default function Services() {
             >
               Smart, scalable systems, crafted to power your next big leap.
             </motion.h3>
-            <Button text={"Schedule Free Consultation"} bgColor="#BBF2FF" />
+            <Button
+              text={"Schedule Free Consultation"}
+              bgColor="#BBF2FF"
+              link="/contact"
+            />
           </div>
         </div>
       </motion.div>
@@ -227,7 +231,7 @@ const ScrollSplitSection = () => {
           technology, and execution. Our services are designed to support you
           through every step of your digital transformation.
         </p>
-        <Button bgColor="transparent" text="GET STARTED" />
+        <Button bgColor="transparent" text="GET STARTED" link="/contact" />
       </div>
 
       {/* Right Side */}

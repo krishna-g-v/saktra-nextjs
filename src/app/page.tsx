@@ -12,7 +12,7 @@ import { getData } from "./utils/utility";
 
 export default async function Home() {
   const data = await getData(
-    "http://75.119.142.187:8081/wp-json/wl/v1/home-page"
+    "https://saktra.gmasoftinc.com/wp-json/wl/v1/home-page"
   );
   return (
     <div>

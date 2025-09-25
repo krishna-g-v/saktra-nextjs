@@ -119,7 +119,11 @@ export default function Services() {
               Innovate, accelerate, and fuel your business growth with
               insight-driven AI technologies
             </motion.h3>
-            <Button text={"LET'S GET YOU STARTED"} bgColor="#BBF2FF" />
+            <Button
+              text={"LET'S GET YOU STARTED"}
+              bgColor="#BBF2FF"
+              link="/contact"
+            />
           </div>
         </div>
       </motion.div>
@@ -217,7 +221,7 @@ const ScrollSplitSection = () => {
           solutions. By mixing smart planning with the right technology, we turn
           AI’s promises into results you can count on.
         </p>
-        <Button bgColor="transparent" text="GET STARTED" />
+        <Button bgColor="transparent" text="GET STARTED" link="/contact" />
       </div>
 
       {/* Right Side */}
@@ -288,9 +292,33 @@ const HorizontalCardData = [
       "Leverage the power of AI to turn data into actionable insights. From forecasting trends to identifying risks, our AI solutions empower your teams to make smarter decisions, faster.",
     image: HImage3,
   },
+  {
+    title: "Reduced Operational Costs",
+    description:
+      "Automate time-consuming tasks across departments. Our custom AI solutions help you cut through inefficiencies, maximize team output, and scale your business without growing your headcount.",
+    image: HImage1,
+  },
+  {
+    title: "Improved Customer Experience",
+    description:
+      "Provide real-time support to your customers and teams with AI-powered agents. From resolving queries to guiding decisions, AI delivers round-the-clock assistance and a consistent brand experience at every touchpoint.",
+    image: HImage2,
+  },
 ];
 
 const EndToEnd = () => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: "left" | "right") => {
+    if (scrollRef.current) {
+      const { clientWidth } = scrollRef.current;
+      scrollRef.current.scrollBy({
+        left: direction === "left" ? -clientWidth : clientWidth,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#F5f5f5] flex flex-col items-center justify-center">
       <h1 className="text-6xl max-sm:text-4xl max-sm:text-center text-purple-gradient mt-4">
@@ -299,29 +327,34 @@ const EndToEnd = () => {
       <h1 className="text-6xl text-purple-gradient max-sm:text-4xl max-sm:text-center">
         Our End-to-End AI Support
       </h1>
-      <div className="flex gap-5 max-w-[90%] mt-6 overflow-x-auto scrollbar-hide">
-        {HorizontalCardData.map((h, i) => {
-          return (
-            <HorizontalCard
-              key={h.title}
-              title={h.title}
-              description={h.description}
-              image={h.image}
-              index={i + 1}
-            />
-          );
-        })}
+
+      {/* Scrollable container */}
+      <div
+        ref={scrollRef}
+        className="flex gap-5 max-w-[90%] mt-6 overflow-x-auto scrollbar-hide pb-3 scroll-smooth"
+      >
+        {HorizontalCardData.map((h, i) => (
+          <HorizontalCard
+            key={i}
+            title={h.title}
+            description={h.description}
+            image={h.image}
+            index={i + 1}
+          />
+        ))}
       </div>
+
+      {/* Navigation buttons */}
       <div className="w-full flex gap-2 items-center justify-end max-w-[90%] mt-4">
         <button
-          className="max-sm:size-6 h-10 w-10 bg-[#BBF2FF] arrow-button arrow-button-left rounded-[50%] flex items-center justify-center cursor-pointer text-[#28001E]"
-          onClick={() => {}}
+          className="max-sm:size-6 h-10 w-10 bg-[#BBF2FF] rounded-full flex items-center justify-center cursor-pointer text-[#28001E] hover:bg-black hover:text-white"
+          onClick={() => scroll("left")}
         >
           <HiArrowSmallLeft />
         </button>
         <button
-          className="max-sm:size-6 h-10 w-10 bg-[#BBF2FF] arrow-button arrow-button-left rounded-[50%] flex items-center justify-center cursor-pointer text-[#28001E]"
-          onClick={() => {}}
+          className="max-sm:size-6 h-10 w-10 bg-[#BBF2FF] rounded-full flex items-center justify-center cursor-pointer text-[#28001E] hover:bg-black hover:text-white"
+          onClick={() => scroll("right")}
         >
           <HiArrowSmallRight />
         </button>
@@ -339,7 +372,12 @@ type HorizontalCardProps = {
 
 const HorizontalCard = ({ title, description, image }: HorizontalCardProps) => {
   return (
-    <div className="bg-[#f7f7f7] min-h-[70vh] w-[36%] max-sm:min-w-[90vw] max-sm:mb-5 p-4 flex flex-col items-center justify-center shadow-lg overflow-auto rounded-xl">
+    <div
+      className="bg-[#f7f7f7] min-h-[70vh] min-w-[400px] max-w-[400px] flex-shrink-0
+                    max-sm:min-w-[90vw] max-sm:mb-5 
+                    p-4 flex flex-col items-center justify-center 
+                    shadow-lg overflow-auto rounded-xl"
+    >
       <Image src={image} alt="card-image" />
       <h2 className="text-center text-2xl mb-2">{title}</h2>
       <p className="text-center">{description}</p>

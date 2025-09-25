@@ -6,7 +6,7 @@ type Params = Promise<{
 
 const getData = async (slug: string) => {
   const res = await fetch(
-    `http://75.119.142.187:8081/wp-json/wl/v1/posts/${slug}`
+    `https://saktra.gmasoftinc.com/wp-json/wl/v1/posts/${slug}`
   );
   const data = await res.json();
   return data;

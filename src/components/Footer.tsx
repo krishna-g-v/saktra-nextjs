@@ -75,7 +75,8 @@ export const Footer = () => {
     formFields.append("_wpcf7_container_post", "123"); // Post ID where form is embedded
 
     // API URL - use your WordPress site's actual domain [contact-form-7 id="f669341" title="Contact form 1"]
-    const apiUrl = "api/contact-forms/95/feedback";
+    const apiUrl =
+      "https://saktra.gmasoftinc.com/wp-json/contact-form-7/v1/contact-forms/95/feedback";
 
     try {
       const res = await fetch(apiUrl, {

@@ -1,6 +1,6 @@
 // components/Modal.tsx
-import React from "react";
 import { FaCheckCircle, FaTimesCircle, FaSpinner } from "react-icons/fa";
+import { useRef } from "react";
 
 type ModalProps = {
   isOpen: boolean;
@@ -15,17 +15,32 @@ export default function Modal({
   status,
   message,
 }: ModalProps) {
+  const modalRef = useRef<HTMLDivElement>(null);
+
   if (!isOpen) return null;
 
   const isLoading = status === "loading";
 
+  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    // if user clicks outside modal content -> close
+    if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
+      onClose();
+    }
+  };
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm bg-black/30">
-      <div className="bg-white rounded-xl shadow-xl p-6 w-full max-w-sm relative">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm bg-black/30"
+      onClick={handleOverlayClick}
+    >
+      <div
+        ref={modalRef}
+        className="bg-white shadow-xl p-6 w-full max-w-sm relative"
+      >
         {!isLoading && (
           <button
             onClick={onClose}
-            className="absolute top-2 right-2 text-gray-400 hover:text-black text-xl"
+            className="absolute top-0 right-0 cursor-pointer bg-red-400 px-[8px] py-[1px] text-gray-100 hover:text-black text-2xl"
           >
             &times;
           </button>
@@ -38,10 +53,12 @@ export default function Modal({
             <FaTimesCircle className="w-12 h-12 text-red-500" />
           )}
           {isLoading && (
-            <FaSpinner className="w-10 h-10 text-blue-500 animate-spin" />
+            <FaSpinner className="w-10 h-10 text-blue-800 animate-spin" />
           )}
 
-          <h2 className="text-lg font-semibold capitalize">{status}</h2>
+          <h2 className="text-lg font-semibold capitalize text-gray-700">
+            {status}
+          </h2>
           <p className="text-gray-700">{message}</p>
         </div>
       </div>

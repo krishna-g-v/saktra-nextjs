@@ -77,7 +77,7 @@ export const ScrollSplitSection = ({
           solutions. By mixing smart planning with the right technology, we turn
           AI’s promises into results you can count on.
         </p>
-        <Button bgColor="transparent" text="GET STARTED" />
+        <Button bgColor="transparent" text="GET STARTED" link="/contact" />
       </div>
 
       {/* Right Side (Scrolling Content) */}

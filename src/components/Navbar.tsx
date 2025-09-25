@@ -6,38 +6,38 @@ import { useState } from "react";
 import { CgClose } from "react-icons/cg";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
-import Img1 from "../../public/images/menu-images/Cpu.png";
-import Img2 from "../../public/images/menu-images/Bookmark.png";
-import Img3 from "../../public/images/menu-images/Radio.png";
 import Img4 from "../../public/images/menu-images/Box.png";
 import Img5 from "../../public/images/menu-images/File.png";
 import { useRouter } from "next/navigation";
 
+const MegaMenuLinks = ["Resources"];
+
 const MegaMenu = [
+  // {
+  //   name: "Menu Head 1",
+  //   items: ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"],
+  //   image: Img1,
+  // },
+  // {
+  //   name: "Menu Head 2",
+  //   items: ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"],
+  //   image: Img2,
+  // },
+  // {
+  //   name: "Menu Head 3",
+  //   items: ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"],
+  //   image: Img3,
+  // },
   {
-    name: "Menu Head 1",
-    items: ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"],
-    image: Img1,
-  },
-  {
-    name: "Menu Head 2",
-    items: ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"],
-    image: Img2,
-  },
-  {
-    name: "Menu Head 3",
-    items: ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"],
-    image: Img3,
-  },
-  {
-    name: "Blog",
-    items: ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"],
+    name: "Use-Cases",
+    // items: ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"],
+    items: [],
     image: Img4,
     link: "/caseStudy",
   },
   {
     name: "Insights",
-    items: ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"],
+    items: [],
     image: Img5,
     link: "/insights",
   },
@@ -46,7 +46,7 @@ const MegaMenu = [
 export const Navbar = ({ isTransparent }: { isTransparent: boolean }) => {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
-  const [isMenuVisible, setIsMenuVisible] = useState(false);
+  const [isMenuVisible, setIsMenuVisible] = useState<string | null>(null);
 
   const spanVariants = {
     rest: { y: 0 },
@@ -76,20 +76,24 @@ export const Navbar = ({ isTransparent }: { isTransparent: boolean }) => {
         </div>
 
         {/* Desktop Nav */}
-        <div
-          className=" max-sm:hidden"
-          onMouseEnter={() => setIsMenuVisible(true)}
-          onMouseLeave={() => setIsMenuVisible(false)}
-        >
-          <ul className="flex space-x-4 p-4 pr-12 max-sm:hidden">
+        <div className="max-sm:hidden">
+          <ul className="flex space-x-4 p-4 pr-12">
             {NavLinks.map((link, index) => {
               return (
-                <li key={index} className="relative group">
+                <li
+                  key={index}
+                  className="relative group"
+                  onMouseEnter={() =>
+                    MegaMenuLinks.includes(link.name) &&
+                    setIsMenuVisible(link.name)
+                  }
+                  onMouseLeave={() => setIsMenuVisible(null)}
+                >
                   <Link
                     href={link.link}
                     className="text-[#BBF2FF] uppercase text-[14px] transition-all duration-300"
                   >
-                    {/* Your existing hover animation spans */}
+                    {/* Hover animation */}
                     <motion.span
                       className="inline-block p-1 rounded-sm overflow-hidden relative"
                       initial="rest"
@@ -113,57 +117,62 @@ export const Navbar = ({ isTransparent }: { isTransparent: boolean }) => {
                   </Link>
                   {/* Animated underline */}
                   <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-[#BBF2FF] transition-all duration-300 group-hover:w-full origin-left group-hover:origin-right"></span>
+
+                  {/* Mega Menu (relative to this link) */}
+                  <AnimatePresence>
+                    {isMenuVisible === link.name && (
+                      <motion.div
+                        key="mega-menu"
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{
+                          duration: 0.2,
+                          ease: "easeInOut",
+                          type: "tween",
+                        }}
+                        className="absolute -left-1/2 -translate-x-1/2 top-full mt-2 bg-black/90 text-white p-6 grid grid-cols-2 gap-6 z-50 backdrop-blur-md rounded-lg w-auto min-w-[350px] shadow-lg"
+                      >
+                        {MegaMenu.map((head) => (
+                          <div key={head.name}>
+                            <h4
+                              onClick={
+                                head.link
+                                  ? () => {
+                                      setIsOpen(false);
+                                      router.push(head.link);
+                                    }
+                                  : () => {}
+                              }
+                              className="font-bold mb-2 flex items-center gap-2 hover:underline hover:text-[#BBF2FF] cursor-pointer"
+                            >
+                              <span>
+                                <Image
+                                  className="w-5 h-5"
+                                  src={head.image}
+                                  alt="menu-image"
+                                />
+                              </span>
+                              {head.name}
+                            </h4>
+                            {head.items.map((item) => (
+                              <a
+                                key={item}
+                                href="#"
+                                className="block py-1 hover:underline"
+                              >
+                                {item}
+                              </a>
+                            ))}
+                          </div>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </li>
               );
             })}
           </ul>
-          {/* Mega Menu (Desktop only) */}
-          <AnimatePresence>
-            {isMenuVisible && (
-              <motion.div
-                key="mega-menu"
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.2, ease: "easeInOut", type: "tween" }}
-                className="absolute left-0 top-full w-screen bg-black/90 text-white p-8 grid grid-cols-5 gap-8 z-50 backdrop-blur-md"
-              >
-                {MegaMenu.map((head) => (
-                  <div key={head.name}>
-                    <h4
-                      onClick={
-                        head.link
-                          ? () => {
-                              setIsOpen(false);
-                              router.push(head.link);
-                            }
-                          : () => {}
-                      }
-                      className="font-bold mb-2 flex items-center gap-2 hover:underline hover:text-[#BBF2FF] cursor-pointer"
-                    >
-                      <span>
-                        <Image
-                          className="w-5 h-5"
-                          src={head.image}
-                          alt="menu-image"
-                        />
-                      </span>
-                      {head.name}
-                    </h4>
-                    {head.items.map((item) => (
-                      <a
-                        key={item}
-                        href="#"
-                        className="block py-1 hover:underline"
-                      >
-                        {item}
-                      </a>
-                    ))}
-                  </div>
-                ))}
-              </motion.div>
-            )}
-          </AnimatePresence>
         </div>
 
         {/* Mobile menu toggle */}
@@ -230,7 +239,7 @@ export const Navbar = ({ isTransparent }: { isTransparent: boolean }) => {
                         ease: "easeInOut",
                       }}
                       href={link.link}
-                      onClick={() => setIsMenuVisible(false)}
+                      onClick={() => setIsMenuVisible(null)}
                       className="block py-2 text-[#BBF2FF] hover:text-gray-300 uppercase text-lg"
                     >
                       {link.name}

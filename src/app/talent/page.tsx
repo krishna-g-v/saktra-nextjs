@@ -180,7 +180,11 @@ export default function Services() {
               End-to-end Talent Solutions, designed to help you scale quickly
               and smartly.
             </motion.h3>
-            <Button text={"Book Free Consultation"} bgColor="#BBF2FF" />
+            <Button
+              text={"Book Free Consultation"}
+              bgColor="#BBF2FF"
+              link="/contact"
+            />
           </div>
         </div>
       </motion.div>
@@ -279,7 +283,7 @@ const ScrollSplitSection = () => {
           technology, and execution. Our services are designed to support you
           through every step of your digital transformation.
         </p>
-        <Button bgColor="transparent" text="GET STARTED" />
+        <Button bgColor="transparent" text="GET STARTED" link="/contact" />
       </div>
 
       {/* Right Side */}

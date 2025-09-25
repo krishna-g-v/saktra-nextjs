@@ -79,7 +79,7 @@ export default function Contact() {
 
     // API URL - use your WordPress site's actual domain [contact-form-7 id="f669341" title="Contact form 1"]
     const apiUrl =
-      "http://75.119.142.187:8081/wp-json/contact-form-7/v1/contact-forms/95/feedback";
+      "https://saktra.gmasoftinc.com/wp-json/contact-form-7/v1/contact-forms/95/feedback";
 
     try {
       const res = await fetch(apiUrl, {
