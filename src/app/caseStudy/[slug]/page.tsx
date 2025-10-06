@@ -23,7 +23,7 @@ export default async function CaseStudyDetailPage({
     <div className=" bg-white pt-20">
       <div className="flex flex-col min-h-[70vh] w-full px-[10%] max-sm:px-[4%] text-center gilroy-regular">
         <h1 className="text-6xl max-sm:text-3xl text-purple-gradient mt-8 gilroy-regular">
-          Case-Study - {slug}
+          {caseData.title}
         </h1>
         <p className="text-purple-gradient">
           Authored by - {caseData.author.name}

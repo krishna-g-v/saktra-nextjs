@@ -4,19 +4,6 @@ import { SectionData } from "./NavLinks";
 import { Carousel } from "./Carousel";
 import { useEffect, useState } from "react";
 
-const Section5Data: SectionData[] = [
-  {
-    header: "Rapid Platform Modernization for a FinTech Company",
-    cardContent:
-      "Our team migrated a legacy banking platform to the cloud. Within 6 months, we helped the client achieve 3x faster transaction processing and seamless integration with digital payment systems.",
-  },
-  {
-    header: "AI-Powered Claims Automation for an Insurance Provider",
-    cardContent:
-      "We helped a leading insurer implement an AI-driven claims processing system, reducing cycle time by 40% and improving customer satisfaction by 60%. Our intelligent workflows and predictive analytics helped minimize fraud and manual effort.",
-  },
-];
-
 export const Section5 = ({
   header,
   description,
@@ -25,6 +12,31 @@ export const Section5 = ({
   description: string;
 }) => {
   const [isMobile, setIsMobile] = useState(false);
+  const [useCases, setUseCases] = useState<SectionData[]>([]);
+
+  //get use-cases data
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch(
+        "https://saktra.gmasoftinc.com/wp-json/wl/v1/posts?category=use-cases"
+      );
+      const data = await res.json();
+      //console.log(data);
+      setUseCases(
+        data.map((item: any) => {
+          return {
+            header: item.title,
+            cardContent: item.excerpt,
+            imgLink: item.featured_image.url,
+            link: "/caseStudy/" + item.slug,
+          };
+        })
+      );
+    };
+    fetchData();
+  }, []);
+
+  //console.log(useCases);
 
   // Media query detection
   useEffect(() => {
@@ -54,7 +66,8 @@ export const Section5 = ({
           </div>
         </div>
         <Carousel
-          data={Section5Data}
+          link="/caseStudy"
+          data={useCases}
           cardType="Card"
           secondaryCardType="card2"
           width={isMobile ? 56 : undefined}

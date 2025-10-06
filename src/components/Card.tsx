@@ -1,12 +1,14 @@
 import { HiArrowLongRight } from "react-icons/hi2";
 import Bg2 from "../../public/images/cardBg2.jpg";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import classes from "./Card.module.css";
 import { poppins } from "@/components/NavLinks";
 
 export type SecondaryCardType = "card1" | "card2";
 
 export const Card = ({
+  link = "#",
+  imgLink = Bg2,
   cardHeader,
   cardContent,
   cardType,
@@ -16,10 +18,12 @@ export const Card = ({
 }: {
   cardHeader: string;
   cardContent: string;
+  imgLink?: StaticImageData;
   cardType: SecondaryCardType;
   width?: number;
   height?: string;
   enableLink?: boolean;
+  link?: string;
 }) => {
   const sizes =
     width !== undefined && height !== undefined
@@ -38,7 +42,7 @@ export const Card = ({
           <div
             className={`mt-3 uppercase max-w-fit font-extrabold flex gap-2 items-center ${classes.link} relative`}
           >
-            <a className="text-[14px]" href="#">
+            <a className="text-[14px]" href={link}>
               Read More
             </a>
             <HiArrowLongRight className={`${classes.arrow} text-2xl`} />
@@ -52,7 +56,7 @@ export const Card = ({
     <div
       className={`card ${sizes} flex flex-col text-black items-left justify-center relative cursor-pointer overflow-hidden p-2.5`}
     >
-      <Image src={Bg2} alt="cardBackground" fill className="object-cover" />
+      <Image src={imgLink} alt="cardBackground" fill className="object-cover" />
       <div className={classes.overlay}></div>
       <div className="content z-10 text-white mt-15">
         <h1 className="text-2xl mb-2">{cardHeader}</h1>
@@ -63,7 +67,7 @@ export const Card = ({
           <div
             className={`mt-3 uppercase max-w-fit font-extrabold flex gap-2 items-center ${classes.linkWhite}  relative`}
           >
-            <a className="text-[14px]" href="#">
+            <a className="text-[14px]" href={link}>
               Read More
             </a>
             <HiArrowLongRight className="font-medium" />

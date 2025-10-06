@@ -182,7 +182,7 @@ export const Footer = () => {
               </div>
               <div className="mt-2.5 text-[12px]">
                 By signing up you agree with our{" "}
-                <a className="underline" href="#">
+                <a className="underline" href="/privacy-policy">
                   Privacy Policy
                 </a>
               </div>
