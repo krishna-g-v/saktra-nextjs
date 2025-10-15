@@ -23,7 +23,7 @@ export default function PageCTA({
             {title}
           </h2>
           <p className={`text-xl text-white mb-8`}>{description}</p>
-          <Button bgColor="#BBF2FF" text={buttonText} />
+          <Button bgColor="#BBF2FF" text={buttonText} link="/contact" />
         </div>
       </div>
     </section>
