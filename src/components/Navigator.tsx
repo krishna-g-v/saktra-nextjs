@@ -10,6 +10,8 @@ interface NavigatorProps {
   total?: number;
   buttonColor?: string;
   screenSize?: ScreenSize;
+  disableNext: boolean;
+  disablePrev: boolean;
   navigatorPosition?: boolean;
   section?: string;
 }
@@ -21,6 +23,8 @@ export const Navigator = ({
   total,
   buttonColor = "#bbf2ff",
   screenSize,
+  disableNext,
+  disablePrev,
   navigatorPosition = false,
   section = "other",
 }: NavigatorProps) => {
@@ -56,20 +60,35 @@ export const Navigator = ({
             {total?.toString().padStart(2, "0")}
           </div>
         )}
-        <div className="flex gap-2  text-black text-[19px] font-extrabold max-sm:mr-3.5">
+        <div className="flex gap-2 text-black text-[19px] font-extrabold max-sm:mr-3.5">
           <button
-            className={`max-sm:size-6 h-10 w-10 bg-[${buttonColor}] arrow-button arrow-button-left rounded-[50%] flex items-center justify-center cursor-pointer ${
-              buttonColor === "white" ? "button-white" : ""
-            }`}
+            disabled={disablePrev}
             onClick={prevImg}
+            className={`max-sm:size-6 h-10 w-10 rounded-full flex items-center justify-center
+      ${
+        disablePrev
+          ? "opacity-40 cursor-not-allowed"
+          : "cursor-pointer hover:scale-110"
+      }
+      ${buttonColor === "white" ? "bg-white" : ""}
+    `}
+            style={{ backgroundColor: buttonColor }}
           >
             <HiArrowSmallLeft />
           </button>
+
           <button
-            className={`max-sm:size-6 h-10 w-10 bg-[${buttonColor}] arrow-button rounded-[50%] flex items-center justify-center cursor-pointer ${
-              buttonColor === "white" ? "button-white" : ""
-            }`}
+            disabled={disableNext}
             onClick={nextImg}
+            className={`max-sm:size-6 h-10 w-10 rounded-full flex items-center justify-center
+      ${
+        disableNext
+          ? "opacity-40 cursor-not-allowed"
+          : "cursor-pointer hover:scale-110 hover:text-black hover:border-black hover:border-2"
+      }
+      ${buttonColor === "white" ? "bg-white" : buttonColor}
+    `}
+            style={{ backgroundColor: buttonColor }}
           >
             <HiArrowSmallRight />
           </button>

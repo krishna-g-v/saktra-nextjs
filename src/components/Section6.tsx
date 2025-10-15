@@ -1,48 +1,66 @@
 import { Carousel } from "./Carousel";
 import { SectionData } from "./NavLinks";
 import s6Image1 from "../../public/images/s61.png";
-import s6Image2 from "../../public/images/s62.png";
-import s6Image3 from "../../public/images/s63.jpg";
 import { poppins } from "@/components/NavLinks";
 
-const Section6Data: SectionData[] = [
-  {
-    header: "How AI Powers Digital Transformation Across Industries",
-    cardContent:
-      "Discover how Artificial intelligence is reshaping industries – driving efficiency and superior customer experiences across diverse sectors.",
-    imgLink: s6Image1,
-  },
-  {
-    header: "4 Talent Acquisition Strategies for a Future-Proof Workforce",
-    cardContent:
-      "Find everything you need to know about talent acquisition – why it is important, how to build a powerful talent acquisition strategy, and why partnering with experts matter.",
-    imgLink: s6Image2,
-  },
-  {
-    header: "Card Header",
-    cardContent:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque fugiat odio incidunt sunt unde voluptatum provident recusandae mollitia officia ratione. Repellendus vitae doloremque, nobis eum nam molestiae et error aliquid.",
-    imgLink: s6Image3,
-  },
-  {
-    header: "Card Header",
-    cardContent:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque fugiat odio incidunt sunt unde voluptatum provident recusandae mollitia officia ratione. Repellendus vitae doloremque, nobis eum nam molestiae et error aliquid.",
-  },
-  {
-    header: "Card Header",
-    cardContent:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque fugiat odio incidunt sunt unde voluptatum provident recusandae mollitia officia ratione. Repellendus vitae doloremque, nobis eum nam molestiae et error aliquid.",
-  },
-];
+// const Section6Data: SectionData[] = [
+//   {
+//     header: "How AI Powers Digital Transformation Across Industries",
+//     cardContent:
+//       "Discover how Artificial intelligence is reshaping industries – driving efficiency and superior customer experiences across diverse sectors.",
+//     imgLink: s6Image1,
+//   },
+//   {
+//     header: "4 Talent Acquisition Strategies for a Future-Proof Workforce",
+//     cardContent:
+//       "Find everything you need to know about talent acquisition – why it is important, how to build a powerful talent acquisition strategy, and why partnering with experts matter.",
+//     imgLink: s6Image2,
+//   },
+//   {
+//     header: "Card Header",
+//     cardContent:
+//       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque fugiat odio incidunt sunt unde voluptatum provident recusandae mollitia officia ratione. Repellendus vitae doloremque, nobis eum nam molestiae et error aliquid.",
+//     imgLink: s6Image3,
+//   },
+//   {
+//     header: "Card Header",
+//     cardContent:
+//       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque fugiat odio incidunt sunt unde voluptatum provident recusandae mollitia officia ratione. Repellendus vitae doloremque, nobis eum nam molestiae et error aliquid.",
+//   },
+//   {
+//     header: "Card Header",
+//     cardContent:
+//       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque fugiat odio incidunt sunt unde voluptatum provident recusandae mollitia officia ratione. Repellendus vitae doloremque, nobis eum nam molestiae et error aliquid.",
+//   },
+// ];
 
-export const Section6 = ({
+const transformData = (data: any[]): SectionData[] => {
+  return data.map((item) => ({
+    header: item.title,
+    cardContent: item.excerpt,
+    imgLink: item.featured_image?.url || s6Image1, // Fallback to img1 if no image
+    link: `/insights/${item.slug}`,
+  }));
+};
+
+// fetch industries home section data
+const getData = async () => {
+  const res = await fetch(
+    "https://saktra.gmasoftinc.com/wp-json/wl/v1/posts?category=insights"
+  );
+  const data = await res.json();
+  const section3Data = transformData(data);
+  return section3Data;
+};
+
+export async function Section6({
   header,
   description,
 }: {
   header: string;
   description: string;
-}) => {
+}) {
+  const Section6Data = await getData();
   return (
     <div className="section3 h-[100vh] w-full relative bg-[#bbf2ff] overflow-hidden">
       <div className="content absolute top-0 left-0 h-full w-full z-5  max-sm:pt-7 pt-15 max-sm:pl-5 pl-25 flex-col">
@@ -63,10 +81,10 @@ export const Section6 = ({
             </div>
           </div>
           <div>
-            <Carousel hoverColor="white" data={Section6Data} />
+            <Carousel maxCards={2} hoverColor="white" data={Section6Data} />
           </div>
         </div>
       </div>
     </div>
   );
-};
+}

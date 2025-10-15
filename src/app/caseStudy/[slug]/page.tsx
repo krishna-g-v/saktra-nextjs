@@ -4,6 +4,14 @@ type Params = Promise<{
   slug: string;
 }>;
 
+const cleanHTML = (html: string) => {
+  // remove excessive newlines, script tags, etc.
+  return html
+    .replace(/(\r\n|\n|\r)/gm, "")
+    .replace(/<script[\s\S]*?>[\s\S]*?<\/script>/gi, "")
+    .trim();
+};
+
 const getData = async (slug: string) => {
   const res = await fetch(
     `https://saktra.gmasoftinc.com/wp-json/wl/v1/posts/${slug}`
@@ -28,10 +36,12 @@ export default async function CaseStudyDetailPage({
         <p className="text-purple-gradient">
           Authored by - {caseData.author.name}
         </p>
-        <p
+        <div
           className="text-black mt-5"
-          dangerouslySetInnerHTML={{ __html: caseData.content as string }}
-        ></p>
+          dangerouslySetInnerHTML={{
+            __html: cleanHTML(caseData.content) as string,
+          }}
+        ></div>
       </div>
       <Footer />
     </div>

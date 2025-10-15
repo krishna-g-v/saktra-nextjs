@@ -9,9 +9,11 @@ export interface HoverCardProps {
   cardHeader: string;
   cardContent: string;
   link: string;
+  showReadMore?: boolean;
 }
 
 export const HoverCard = ({
+  showReadMore = true,
   link,
   hoverColor,
   imgSrc,
@@ -36,8 +38,8 @@ export const HoverCard = ({
           <p className={`text-[14px] ${poppins.className}`}>{cardContent}</p>
         </div>
         <div className="mt-3 uppercase font-extrabold flex gap-2 items-center link relative">
-          <Link href={link}>Read More</Link>
-          <HiArrowLongRight className="font-[300]" />
+          {showReadMore && <Link href={link}>Read More</Link>}
+          {showReadMore && <HiArrowLongRight className="font-[300]" />}
         </div>
       </div>
     </div>

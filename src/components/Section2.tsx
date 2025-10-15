@@ -46,7 +46,7 @@ export const Section2 = ({ header }: { header: string }) => {
             </h1>
           </div>
         </div>
-        <Carousel data={sectionData} />
+        <Carousel id="services-home" data={sectionData} />
       </div>
     </div>
   );

@@ -61,7 +61,7 @@
 
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
@@ -73,8 +73,6 @@ import Image5 from "@/../public/images/ServiceCards/ServiceCard5.png";
 import Image6 from "@/../public/images/ServiceCards/ServiceCard6.png";
 
 import HImage1 from "@/../public/images/ServiceCards/HorizontalCard1.png";
-import HImage2 from "@/../public/images/ServiceCards/HorizontalCard2.png";
-import HImage3 from "@/../public/images/ServiceCards/HorizontalCard3.png";
 
 import Image, { StaticImageData } from "next/image";
 import { Footer } from "@/components/Footer";
@@ -335,28 +333,101 @@ const ServiceVerticalCard = ({
   );
 };
 
-const HorizontalCardData = [
-  {
-    title: "Faster Time-to-Hire",
-    description:
-      "Our streamlined recruitment workflows and ready talent pool help you reduce hiring time and get the right talent on board quickly, efficiently, and when you need them the most.",
-    image: HImage1,
-  },
-  {
-    title: "Flexible & Scalable Deployment",
-    description:
-      "Scale resources up or down as per your budget and project requirements. Our staffing models give you the flexibility to onboard resources with/ without long-term commitments.",
-    image: HImage2,
-  },
-  {
-    title: "Global Talent Pool",
-    description:
-      "Build cross-border teams with confidence. We connect you with skilled professionals from around the world – minus legal, cultural, or logistical challenges.",
-    image: HImage3,
-  },
-];
+// const HorizontalCardData = [
+//   {
+//     title: "Faster Time-to-Hire",
+//     description:
+//       "Our streamlined recruitment workflows and ready talent pool help you reduce hiring time and get the right talent on board quickly, efficiently, and when you need them the most.",
+//     image: HImage1,
+//   },
+//   {
+//     title: "Flexible & Scalable Deployment",
+//     description:
+//       "Scale resources up or down as per your budget and project requirements. Our staffing models give you the flexibility to onboard resources with/ without long-term commitments.",
+//     image: HImage2,
+//   },
+//   {
+//     title: "Global Talent Pool",
+//     description:
+//       "Build cross-border teams with confidence. We connect you with skilled professionals from around the world – minus legal, cultural, or logistical challenges.",
+//     image: HImage3,
+//   },
+// ];
 
+const plainText = (htmlString: string) =>
+  htmlString.replace(/<[^>]*>/g, "").trim();
+
+const transformData = (data: any[]) => {
+  return data.map((item) => ({
+    title: item.title,
+    description: plainText(item.content),
+    image: item.featured_image?.url || HImage1, // Fallback to img1 if no image
+  }));
+};
 const EndToEnd = () => {
+  const [horizontalCardData, setHorizontalCardData] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [disableLeft, setDisableLeft] = useState(true);
+  const [disableRight, setDisableRight] = useState(false);
+
+  // Fetch data
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      const res = await fetch(
+        "https://saktra.gmasoftinc.com/wp-json/wl/v1/services/talent-solutions"
+      );
+      const data = await res.json();
+      const subItems = transformData(data?.service?.related_sub_items) || [];
+      setHorizontalCardData(subItems);
+      setLoading(false);
+    };
+    fetchData();
+  }, []);
+
+  // Scroll handling
+  const handleScroll = (direction: "left" | "right") => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    const cardWidth = container.firstElementChild
+      ? (container.firstElementChild as HTMLElement).offsetWidth
+      : 300; // fallback
+    const scrollAmount = cardWidth + 20; // include some gap
+
+    container.scrollBy({
+      left: direction === "right" ? scrollAmount : -scrollAmount,
+      behavior: "smooth",
+    });
+  };
+
+  // Detect scroll position to disable/enable arrows
+  const updateArrowState = () => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    const { scrollLeft, scrollWidth, clientWidth } = container;
+    const maxScrollLeft = scrollWidth - clientWidth - 5; // small buffer
+
+    setDisableLeft(scrollLeft <= 5);
+    setDisableRight(scrollLeft >= maxScrollLeft);
+  };
+
+  // Attach listener
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    container.addEventListener("scroll", updateArrowState);
+    updateArrowState();
+
+    return () => {
+      container.removeEventListener("scroll", updateArrowState);
+    };
+  }, [horizontalCardData]);
+
   return (
     <div className="min-h-screen bg-[#F5f5f5] flex flex-col items-center justify-center">
       <h1 className="text-6xl max-sm:text-4xl max-sm:text-center text-purple-gradient mt-4">
@@ -365,9 +436,14 @@ const EndToEnd = () => {
       <h1 className="text-6xl text-purple-gradient max-sm:text-4xl max-sm:text-center">
         That Help You Scale Faster
       </h1>
-      <div className="flex gap-5 max-w-[90%] mt-6 overflow-x-auto scrollbar-hide">
-        {HorizontalCardData.map((h, i) => {
-          return (
+
+      <div
+        ref={scrollRef}
+        className="flex gap-5 max-w-[90%] mt-6 overflow-x-auto scrollbar-hide scroll-smooth snap-x snap-mandatory"
+      >
+        {loading && <p className="mt-10 text-black text-3xl">Loading...</p>}
+        {!loading &&
+          horizontalCardData.map((h, i) => (
             <HorizontalCard
               key={h.title}
               title={h.title}
@@ -375,19 +451,26 @@ const EndToEnd = () => {
               image={h.image}
               index={i + 1}
             />
-          );
-        })}
+          ))}
       </div>
+
       <div className="w-full flex gap-2 items-center justify-end max-w-[90%] mt-4">
         <button
-          className="max-sm:size-6 h-10 w-10 bg-[#BBF2FF] arrow-button arrow-button-left rounded-[50%] flex items-center justify-center cursor-pointer text-[#28001E]"
-          onClick={() => {}}
+          disabled={disableLeft}
+          className={`max-sm:size-6 h-10 w-10 bg-[#BBF2FF] rounded-[50%] flex items-center justify-center cursor-pointer text-[#28001E] transition-opacity ${
+            disableLeft ? "opacity-50 cursor-not-allowed" : ""
+          }`}
+          onClick={() => handleScroll("left")}
         >
           <HiArrowSmallLeft />
         </button>
+
         <button
-          className="max-sm:size-6 h-10 w-10 bg-[#BBF2FF] arrow-button arrow-button-left rounded-[50%] flex items-center justify-center cursor-pointer text-[#28001E]"
-          onClick={() => {}}
+          disabled={disableRight}
+          className={`max-sm:size-6 h-10 w-10 bg-[#BBF2FF] rounded-[50%] flex items-center justify-center cursor-pointer text-[#28001E] transition-opacity ${
+            disableRight ? "opacity-50 cursor-not-allowed" : ""
+          }`}
+          onClick={() => handleScroll("right")}
         >
           <HiArrowSmallRight />
         </button>
@@ -405,7 +488,7 @@ type HorizontalCardProps = {
 
 const HorizontalCard = ({ title, description, image }: HorizontalCardProps) => {
   return (
-    <div className="bg-[#f7f7f7] min-h-[70vh] w-[36%] max-sm:min-w-[90vw] max-sm:mb-5 p-4 flex flex-col items-center justify-center shadow-lg overflow-auto rounded-xl">
+    <div className="bg-[#f7f7f7] min-h-[70vh] max-sm:min-w-[90vw] max-sm:mb-5 p-4 py-2 flex flex-col items-center justify-center shadow-lg overflow-auto rounded-xl flex-shrink-0 w-[calc(33.333%-1.25rem)] snap-start">
       <Image src={image} alt="card-image" />
       <h2 className="text-center text-2xl mb-2">{title}</h2>
       <p className="text-center">{description}</p>

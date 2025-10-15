@@ -45,7 +45,7 @@ export const Section4 = ({
               </p>
             </div>
             <div className="mt-5 flex gap-3">
-              <Button text="Read More" bgColor="#BBF2FF" />
+              <Button text="Read More" bgColor="#BBF2FF" link="/about" />
               <Button
                 text="Our Solutions"
                 bgColor="#F5F5F5"

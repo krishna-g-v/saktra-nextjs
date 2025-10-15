@@ -20,23 +20,33 @@ export interface CarouselProps {
   section?: string;
   enableLink?: boolean;
   link?: string;
+  id?: string;
+  maxCards?: number;
+  showReadMore?: boolean;
 }
 
 export const Carousel = ({
+  showReadMore = true,
   link = "#",
   enableLink = true,
+  id = undefined,
   data,
   hoverColor,
   cardType = "HoverCard",
   secondaryCardType = "card1",
   width,
   height,
+  maxCards = 3,
   navigatorPosition = false,
   section = "other",
 }: CarouselProps) => {
   const [currIndex, setCurrIndex] = useState(0);
   const [direction, setDirection] = useState<"left" | "right">("right");
   const [isMobile, setIsMobile] = useState(false);
+
+  // Derived state: can we go next or previous?
+  const canNext = currIndex + maxCards < data.length - 1;
+  const canPrev = currIndex > 0;
 
   // Media query detection
   useEffect(() => {
@@ -47,16 +57,18 @@ export const Carousel = ({
   }, []);
 
   const nextImg = () => {
+    if (!canNext) return; // stop at end
     setDirection("right");
-    setCurrIndex((prev) => (prev + 1) % data.length);
+    setCurrIndex((prev) => prev + 1);
   };
 
   const prevImg = () => {
+    if (!canPrev) return; // stop at start
     setDirection("left");
-    setCurrIndex((prev) => (prev - 1 + data.length) % data.length);
+    setCurrIndex((prev) => prev - 1);
   };
 
-  // Framer Motion variants for mobile view
+  // Framer Motion variants (same as before)
   const variants = {
     enter: (dir: "left" | "right") => ({
       x: dir === "right" ? "100%" : "-100%",
@@ -90,6 +102,7 @@ export const Carousel = ({
             >
               {cardType === "HoverCard" ? (
                 <HoverCard
+                  showReadMore={showReadMore}
                   link={data[currIndex]?.link || ""}
                   cardContent={data[currIndex]?.cardContent}
                   cardHeader={data[currIndex]?.header}
@@ -123,6 +136,7 @@ export const Carousel = ({
               <div key={i}>
                 {cardType === "HoverCard" ? (
                   <HoverCard
+                    showReadMore={showReadMore}
                     link={d.link || ""}
                     cardContent={d.cardContent}
                     cardHeader={d.header}
@@ -147,6 +161,7 @@ export const Carousel = ({
           </motion.div>
         )}
       </div>
+      {id === "services-home" && <div className="h-14"></div>}
       <Navigator
         screenSize={isMobile ? "mobile" : "desktop"}
         buttonColor={hoverColor}
@@ -154,6 +169,8 @@ export const Carousel = ({
         prevImg={prevImg}
         navigatorPosition={navigatorPosition}
         section={section}
+        disableNext={!canNext}
+        disablePrev={!canPrev}
       />
     </div>
   );

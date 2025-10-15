@@ -5,7 +5,9 @@ import { GoArrowUpRight, GoArrowRight } from "react-icons/go";
 import placeHolderImage from "@/../public/images/s22.jpg";
 
 const getData = async () => {
-  const res = await fetch("https://saktra.gmasoftinc.com/wp-json/wl/v1/posts");
+  const res = await fetch(
+    "https://saktra.gmasoftinc.com/wp-json/wl/v1/posts?category=insights"
+  );
   const data = await res.json();
   return data;
 };
