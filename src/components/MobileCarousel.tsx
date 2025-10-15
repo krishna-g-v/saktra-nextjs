@@ -64,7 +64,13 @@ export const Carousel = ({ data, hoverColor }: CarouselProps) => {
           </motion.div>
         </AnimatePresence>
       </div>
-      <Navigator buttonColor={hoverColor} nextImg={nextImg} prevImg={prevImg} />
+      <Navigator
+        disableNext={false}
+        disablePrev={false}
+        buttonColor={hoverColor}
+        nextImg={nextImg}
+        prevImg={prevImg}
+      />
     </div>
   );
 };

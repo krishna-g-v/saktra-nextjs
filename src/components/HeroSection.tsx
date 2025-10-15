@@ -137,6 +137,8 @@ export const HeroSection = () => {
           />
         </div>
         <Navigator
+          disableNext={false}
+          disablePrev={false}
           index={index + 1}
           total={Images.length}
           nextImg={nextImg}
