@@ -6,7 +6,7 @@ import { Footer } from "@/components/Footer";
 import { easeInOut, motion } from "framer-motion";
 import { Button } from "@/components/Button";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ScrollSplitSection } from "@/components/ScrollSplit";
 
 import { HiArrowSmallLeft, HiArrowSmallRight } from "react-icons/hi2";
@@ -150,33 +150,6 @@ const MidBanner = ({
   );
 };
 
-// const VerticalCardsData: ServiceVerticalCardProps[] = [
-//   {
-//     title: "Excellence",
-//     description:
-//       "With a focus on quality, we constantly push the boundaries of performance and strive to deliver superior results for our clients, stakeholders, and partners.",
-//     image: Image1,
-//   },
-//   {
-//     title: "Innovation",
-//     description:
-//       "Technology is always evolving – and so are we. We challenge norms, leverage cutting-edge technologies, and bring fresh perspectives to the table – that solve complex problems and drive meaningful results.",
-//     image: Image2,
-//   },
-//   {
-//     title: "Integrity",
-//     description:
-//       "Integrity is at the heart of how we work. We establish clear objectives, set transparent goals, ensure accountability, and stick to our deadlines and promises.",
-//     image: Image3,
-//   },
-//   {
-//     title: "Partnership",
-//     description:
-//       "We prioritize collaboration and open communication. We have established a culture that fosters teamwork, mutual respect, shared success – where everyone feels valued and empowered to contribute.",
-//     image: Image4,
-//   },
-// ];
-
 const EndToEnd = ({
   teamData,
 }: {
@@ -193,12 +166,60 @@ const EndToEnd = ({
     ];
   };
 }) => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [disableLeft, setDisableLeft] = useState(true);
+  const [disableRight, setDisableRight] = useState(false);
+
+  // Scroll handling
+  const handleScroll = (direction: "left" | "right") => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    const cardWidth = container.firstElementChild
+      ? (container.firstElementChild as HTMLElement).offsetWidth + 50
+      : 300; // fallback
+    const scrollAmount = cardWidth + 20; // include some gap
+
+    container.scrollBy({
+      left: direction === "right" ? scrollAmount : -scrollAmount,
+      behavior: "smooth",
+    });
+  };
+
+  // Detect scroll position to disable/enable arrows
+  const updateArrowState = () => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    const { scrollLeft, scrollWidth, clientWidth } = container;
+    const maxScrollLeft = scrollWidth - clientWidth - 5; // small buffer
+    //console.log({ scrollLeft, maxScrollLeft });
+    setDisableLeft(scrollLeft <= 5);
+    setDisableRight(scrollLeft >= maxScrollLeft);
+  };
+
+  // Attach listener
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    container.addEventListener("scroll", updateArrowState);
+    updateArrowState();
+
+    return () => {
+      container.removeEventListener("scroll", updateArrowState);
+    };
+  }, [teamData]);
+
   return (
     <div className="min-h-screen bg-[#F5f5f5] flex flex-col items-center justify-center">
       <h1 className="text-6xl text-purple-gradient mt-4 max-sm:text-center max-sm:text-4xl">
         {teamData?.title || "Meet Our Team"}
       </h1>
-      <div className="flex max-sm:flex-col gap-5 max-w-[90%] mt-6">
+      <div
+        ref={scrollRef}
+        className="flex overflow-x-auto max-sm:flex-col gap-5 max-w-[90%] mt-6"
+      >
         {teamData &&
           teamData.members.map((h, i) => {
             return (
@@ -214,14 +235,28 @@ const EndToEnd = ({
       </div>
       <div className="w-full flex gap-2 items-center justify-end max-w-[90%] mt-4">
         <button
-          className="max-sm:size-6 h-10 w-10 bg-[#BBF2FF] arrow-button arrow-button-left rounded-[50%] flex items-center justify-center cursor-pointer text-[#28001E]"
-          onClick={() => {}}
+          disabled={disableLeft}
+          className={`max-sm:size-6 h-10 w-10 ${
+            disableLeft ? "bg-gray-400" : "bg-[#BBF2FF]"
+          }  rounded-[50%] flex items-center justify-center cursor-pointer text-[#28001E] transition-opacity ${
+            disableLeft ? "opacity-50 cursor-none" : ""
+          }`}
+          onClick={() => {
+            handleScroll("left");
+          }}
         >
           <HiArrowSmallLeft />
         </button>
         <button
-          className="max-sm:size-6 h-10 w-10 bg-[#BBF2FF] arrow-button arrow-button-left rounded-[50%] flex items-center justify-center cursor-pointer text-[#28001E]"
-          onClick={() => {}}
+          disabled={disableRight}
+          className={`max-sm:size-6 h-10 w-10 ${
+            disableRight ? "bg-gray-400" : "bg-[#BBF2FF]"
+          } rounded-[50%] flex items-center justify-center cursor-pointer text-[#28001E] transition-opacity ${
+            disableRight ? "opacity-50 cursor-not-allowed" : ""
+          }`}
+          onClick={() => {
+            handleScroll("right");
+          }}
         >
           <HiArrowSmallRight />
         </button>
@@ -239,7 +274,7 @@ type HorizontalCardProps = {
 
 const HorizontalCard = ({ title, description, image }: HorizontalCardProps) => {
   return (
-    <div className="min-h-[60vh] max-sm:min-h-[30vh] max-sm:w-[90vw] w-[30vw] flex flex-col items-center justify-center shadow-lg overflow-auto max-sm:overflow-hidden rounded-xl relative">
+    <div className="min-h-[60vh] flex-shrink-0 max-sm:min-h-[30vh] max-sm:w-[90vw] w-[30vw] flex flex-col items-center justify-center shadow-lg overflow-auto max-sm:overflow-hidden rounded-xl relative">
       <Image
         className="absolute top-0 left-0 w-full h-full object-cover"
         width={30}
@@ -248,10 +283,10 @@ const HorizontalCard = ({ title, description, image }: HorizontalCardProps) => {
         alt="card-image"
       />
       <div
-        className="content text-white absolute top-0 left-0 w-full h-1/2 mt-[60%] max-sm:mt-[35%] pt-16 max-sm:pt-2 px-5"
+        className="content text-white absolute top-0 left-0 w-full h-full p-4 flex flex-col justify-end rounded-xl"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1))",
+            "linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.7))",
         }}
       >
         <h2>{title}</h2>

@@ -457,8 +457,10 @@ const EndToEnd = () => {
       <div className="w-full flex gap-2 items-center justify-end max-w-[90%] mt-4">
         <button
           disabled={disableLeft}
-          className={`max-sm:size-6 h-10 w-10 bg-[#BBF2FF] rounded-[50%] flex items-center justify-center cursor-pointer text-[#28001E] transition-opacity ${
-            disableLeft ? "opacity-50 cursor-not-allowed" : ""
+          className={`max-sm:size-6 h-10 w-10 ${
+            disableLeft ? "bg-gray-400" : "bg-[#BBF2FF]"
+          }  rounded-[50%] flex items-center justify-center cursor-pointer text-[#28001E] transition-opacity ${
+            disableLeft ? "opacity-50 cursor-none" : ""
           }`}
           onClick={() => handleScroll("left")}
         >
@@ -467,7 +469,9 @@ const EndToEnd = () => {
 
         <button
           disabled={disableRight}
-          className={`max-sm:size-6 h-10 w-10 bg-[#BBF2FF] rounded-[50%] flex items-center justify-center cursor-pointer text-[#28001E] transition-opacity ${
+          className={`max-sm:size-6 h-10 w-10 ${
+            disableRight ? "bg-gray-400" : "bg-[#BBF2FF]"
+          } rounded-[50%] flex items-center justify-center cursor-pointer text-[#28001E] transition-opacity ${
             disableRight ? "opacity-50 cursor-not-allowed" : ""
           }`}
           onClick={() => handleScroll("right")}
