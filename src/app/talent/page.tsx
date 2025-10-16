@@ -361,7 +361,7 @@ const transformData = (data: any[]) => {
   return data.map((item) => ({
     title: item.title,
     description: plainText(item.content),
-    image: item.featured_image?.url || HImage1, // Fallback to img1 if no image
+    image: item.image?.url || HImage1, // Fallback to img1 if no image
   }));
 };
 const EndToEnd = () => {
@@ -489,7 +489,7 @@ type HorizontalCardProps = {
 const HorizontalCard = ({ title, description, image }: HorizontalCardProps) => {
   return (
     <div className="bg-[#f7f7f7] min-h-[70vh] max-sm:min-w-[90vw] max-sm:mb-5 p-4 py-2 flex flex-col items-center justify-center shadow-lg overflow-auto rounded-xl flex-shrink-0 w-[calc(33.333%-1.25rem)] snap-start">
-      <Image src={image} alt="card-image" />
+      <Image width={300} height={700} src={image} alt="card-image" />
       <h2 className="text-center text-2xl mb-2">{title}</h2>
       <p className="text-center">{description}</p>
     </div>

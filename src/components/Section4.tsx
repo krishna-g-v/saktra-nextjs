@@ -54,6 +54,7 @@ export const Section4 = ({
               />
             </div>
             <Carousel
+              id="about-us"
               enableLink={false}
               section="section4"
               data={mapData(items)}

@@ -81,7 +81,12 @@ export async function Section6({
             </div>
           </div>
           <div>
-            <Carousel maxCards={2} hoverColor="white" data={Section6Data} />
+            <Carousel
+              id="insights"
+              maxCards={2}
+              hoverColor="white"
+              data={Section6Data}
+            />
           </div>
         </div>
       </div>

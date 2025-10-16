@@ -5,7 +5,8 @@ import { GoArrowUpRight } from "react-icons/go";
 
 const getData = async () => {
   const res = await fetch(
-    "https://saktra.gmasoftinc.com/wp-json/wl/v1/posts?category=use-cases"
+    "https://saktra.gmasoftinc.com/wp-json/wl/v1/posts?category=use-cases",
+    { cache: "no-store" }
   );
   const data = await res.json();
   return data;

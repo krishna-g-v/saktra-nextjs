@@ -89,7 +89,7 @@ export async function Section3({ header }: { header: string }) {
             </h1>
           </div>
         </div>
-        <Carousel showReadMore={false} data={Section3Data} />
+        <Carousel id="industries" showReadMore={false} data={Section3Data} />
       </div>
     </div>
   );

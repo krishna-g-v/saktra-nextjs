@@ -161,7 +161,15 @@ export const Carousel = ({
           </motion.div>
         )}
       </div>
-      {id === "services-home" && <div className="h-14"></div>}
+      {id === "services-home" ? (
+        <div className="h-14"></div>
+      ) : id === "industries" ? (
+        <div className="h-14"></div>
+      ) : id === "insights" ? (
+        <div className="h-14"></div>
+      ) : id === "about-us" ? (
+        <div className="h-8"></div>
+      ) : null}
       <Navigator
         screenSize={isMobile ? "mobile" : "desktop"}
         buttonColor={hoverColor}
