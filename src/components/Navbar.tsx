@@ -9,25 +9,11 @@ import Link from "next/link";
 import Img4 from "../../public/images/menu-images/Box.png";
 import Img5 from "../../public/images/menu-images/File.png";
 import { useRouter } from "next/navigation";
+import { FaChevronDown } from "react-icons/fa";
 
 const MegaMenuLinks = ["Resources"];
 
 const MegaMenu = [
-  // {
-  //   name: "Menu Head 1",
-  //   items: ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"],
-  //   image: Img1,
-  // },
-  // {
-  //   name: "Menu Head 2",
-  //   items: ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"],
-  //   image: Img2,
-  // },
-  // {
-  //   name: "Menu Head 3",
-  //   items: ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"],
-  //   image: Img3,
-  // },
   {
     name: "Use-Cases",
     // items: ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"],
@@ -47,6 +33,12 @@ export const Navbar = ({ isTransparent }: { isTransparent: boolean }) => {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [isMenuVisible, setIsMenuVisible] = useState<string | null>(null);
+
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+
+  const toggleDropdown = (name: string) => {
+    setOpenDropdown(openDropdown === name ? null : name);
+  };
 
   const spanVariants = {
     rest: { y: 0 },
@@ -216,34 +208,76 @@ export const Navbar = ({ isTransparent }: { isTransparent: boolean }) => {
               damping: 18,
               mass: 1,
             }}
-            className="md:hidden px-4 pb-4 absolute top-0 right-0 h-screen w-3/5 bg-[#28001E]/95"
+            className="md:hidden px-4 pb-4 absolute top-0 right-0 h-screen w-3/5 bg-[#28001E]/95 z-50"
           >
-            <ul className="space-y-2 h-1/2 pt-50 w-full flex flex-col items-start justify-around relative">
+            <ul className="space-y-2 pt-20 w-full flex flex-col items-start relative">
               {MobileNavLinks.map((link, index) => (
-                <motion.li key={link.name}>
-                  <div className="overflow-hidden">
-                    <motion.a
-                      initial={{ opacity: 0, y: 70, skewY: 20 }}
-                      animate={{
-                        opacity: isOpen ? 1 : 0,
-                        y: isOpen ? 0 : 70,
-                        skewY: isOpen ? 0 : 20,
-                      }}
-                      exit={{
-                        opacity: !isOpen ? 0 : 1,
-                        y: !isOpen ? 20 : 0,
-                      }}
-                      transition={{
-                        delay: 0.05 * index,
-                        type: "tween",
-                        ease: "easeInOut",
-                      }}
-                      href={link.link}
-                      onClick={() => setIsMenuVisible(null)}
-                      className="block py-2 text-[#BBF2FF] hover:text-gray-300 uppercase text-lg"
-                    >
-                      {link.name}
-                    </motion.a>
+                <motion.li key={link.name} className="w-full">
+                  <div className="overflow-hidden w-full">
+                    {/* If link has subLinks, make it expandable */}
+                    {link.subLinks ? (
+                      <>
+                        <button
+                          onClick={() => toggleDropdown(link.name)}
+                          className="flex items-center justify-between w-full py-2 text-[#BBF2FF] hover:text-gray-300 uppercase text-lg"
+                        >
+                          {link.name}
+                          <FaChevronDown
+                            className={`ml-2 transition-transform ${
+                              openDropdown === link.name ? "rotate-180" : ""
+                            }`}
+                          />
+                        </button>
+
+                        {/* Dropdown animation */}
+                        <AnimatePresence>
+                          {openDropdown === link.name && (
+                            <motion.ul
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: "auto", opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.3 }}
+                              className="pl-3 flex flex-col gap-2"
+                            >
+                              {link.subLinks.map((sub) => (
+                                <motion.li key={sub.name}>
+                                  <Link
+                                    href={sub.link}
+                                    onClick={() => setIsMenuVisible(null)}
+                                    className="block text-[#D4F9FF] text-base hover:text-gray-300 uppercase"
+                                  >
+                                    {sub.name}
+                                  </Link>
+                                </motion.li>
+                              ))}
+                            </motion.ul>
+                          )}
+                        </AnimatePresence>
+                      </>
+                    ) : (
+                      <motion.a
+                        initial={{ opacity: 0, y: 70, skewY: 20 }}
+                        animate={{
+                          opacity: isOpen ? 1 : 0,
+                          y: isOpen ? 0 : 70,
+                          skewY: isOpen ? 0 : 20,
+                        }}
+                        exit={{
+                          opacity: !isOpen ? 0 : 1,
+                          y: !isOpen ? 20 : 0,
+                        }}
+                        transition={{
+                          delay: 0.05 * index,
+                          type: "tween",
+                          ease: "easeInOut",
+                        }}
+                        href={link.link}
+                        onClick={() => setIsMenuVisible(null)}
+                        className="block py-2 text-[#BBF2FF] hover:text-gray-300 uppercase text-lg"
+                      >
+                        {link.name}
+                      </motion.a>
+                    )}
                   </div>
                 </motion.li>
               ))}

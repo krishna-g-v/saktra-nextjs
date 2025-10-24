@@ -15,10 +15,14 @@ export const MobileNavLinks = [
   { name: "Talent Solutions", link: "/talent" },
   { name: "Technology", link: "/technology" },
   { name: "AI Services", link: "/services" },
-  { name: "Resources", link: "#" },
+  {
+    name: "Resources",
+    subLinks: [
+      { name: "Case Study", link: "/caseStudy" },
+      { name: "Insights", link: "/insights" },
+    ],
+  },
   { name: "Contact Us", link: "/contact" },
-  { name: "Blog", link: "/caseStudy" },
-  { name: "Insights", link: "/insights" },
 ];
 
 export const poppins = Poppins({
