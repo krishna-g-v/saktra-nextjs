@@ -7,6 +7,14 @@ import { useEffect, useState } from "react";
 
 export const Section2 = ({ header }: { header: string }) => {
   const [sectionData, setSectionData] = useState<SectionData[]>([]);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,7 +35,7 @@ export const Section2 = ({ header }: { header: string }) => {
   }, []);
 
   return (
-    <div className="section2 h-[100vh] w-full relative overflow-hidden">
+    <div className="section2 h-[100vh] max-sm:h-[120vh] w-full relative overflow-hidden">
       <div className="absolute top-0 left-0 h-full w-full z-1 bg-[#28001e]"></div>
       <Image
         src={bgImage}
@@ -46,7 +54,11 @@ export const Section2 = ({ header }: { header: string }) => {
             </h1>
           </div>
         </div>
-        <Carousel id="services-home" data={sectionData} />
+        <Carousel
+          maxCards={isMobile ? 2 : 3}
+          id="services-home"
+          data={sectionData}
+        />
       </div>
     </div>
   );

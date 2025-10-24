@@ -47,8 +47,12 @@ export const Carousel = ({
   const [isMobile, setIsMobile] = useState(false);
 
   // Derived state: can we go next or previous?
-  const canNext = currIndex + maxCards < data.length - 1;
+  const canNext = isMobile
+    ? currIndex < data.length - 1
+    : currIndex + maxCards < data.length - 1;
   const canPrev = currIndex > 0;
+
+  console.log(data);
 
   // Media query detection
   useEffect(() => {
@@ -59,9 +63,14 @@ export const Carousel = ({
   }, []);
 
   const nextImg = () => {
-    if (!canNext) return; // stop at end
-    setDirection("right");
-    setCurrIndex((prev) => prev + 1);
+    if (isMobile) {
+      setCurrIndex((prev) => Math.min(prev + 1, data.length - 1));
+      return;
+    } else {
+      if (!canNext) return; // stop at end
+      setDirection("right");
+      setCurrIndex((prev) => prev + 1);
+    }
   };
 
   const prevImg = () => {
@@ -89,83 +98,87 @@ export const Carousel = ({
   return (
     <div className="flex flex-col gilmer-regular w-full relative overflow-hidden">
       {/* Wrapper for cards */}
-      <div className="relative w-full h-[400px] mt-10">
-        {isMobile ? (
-          <AnimatePresence custom={direction} mode="wait">
-            <motion.div
-              key={currIndex}
-              custom={direction}
-              variants={variants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="w-full flex justify-center"
-            >
-              {cardType === "HoverCard" ? (
-                <HoverCard
-                  showReadMore={showReadMore}
-                  link={data[currIndex]?.link || ""}
-                  cardContent={data[currIndex]?.cardContent}
-                  cardHeader={data[currIndex]?.header}
-                  hoverColor={hoverColor ?? "#BBF2FF"}
-                  imgSrc={data[currIndex]?.imgLink ?? hover1}
-                />
-              ) : (
-                <Card
-                  link={data[currIndex]?.link || link}
-                  enableLink={enableLink}
-                  cardType={secondaryCardType}
-                  key={currIndex}
-                  cardContent={data[currIndex].cardContent}
-                  cardHeader={data[currIndex].header}
-                  imgLink={data[currIndex]?.imgLink}
-                  width={width}
-                  height={height}
-                />
-              )}
-            </motion.div>
-          </AnimatePresence>
-        ) : (
-          <motion.div
-            className="flex gap-4 transition-transform ease-in-out duration-500 md:pl-[200px]"
-            style={{
-              width: `${data.length * 100}%`,
-              transform:
-                shiftDistance === "100%"
-                  ? `translateX(-${currIndex * (100 / data.length)}%)`
-                  : `translateX(-${currIndex * 20}%)`,
-            }}
-          >
-            {data.map((d, i) => (
-              <div key={i}>
+      {data.length > 0 ? (
+        <div className="relative w-full h-[400px] mt-10">
+          {isMobile ? (
+            <AnimatePresence custom={direction} mode="wait">
+              <motion.div
+                key={currIndex}
+                custom={direction}
+                variants={variants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className="w-full flex justify-center"
+              >
                 {cardType === "HoverCard" ? (
                   <HoverCard
                     showReadMore={showReadMore}
-                    link={d.link || ""}
-                    cardContent={d.cardContent}
-                    cardHeader={d.header}
+                    link={data[currIndex]?.link || ""}
+                    cardContent={data[currIndex]?.cardContent}
+                    cardHeader={data[currIndex]?.header}
                     hoverColor={hoverColor ?? "#BBF2FF"}
-                    imgSrc={d.imgLink ?? hover1}
+                    imgSrc={data[currIndex]?.imgLink ?? hover1}
                   />
                 ) : (
                   <Card
-                    link={d.link || link}
+                    link={data[currIndex]?.link || link}
                     enableLink={enableLink}
                     cardType={secondaryCardType}
-                    imgLink={d.imgLink}
-                    key={i}
-                    cardContent={d.cardContent}
-                    cardHeader={d.header}
+                    key={currIndex}
+                    cardContent={data[currIndex].cardContent}
+                    cardHeader={data[currIndex].header}
+                    imgLink={data[currIndex]?.imgLink}
                     width={width}
                     height={height}
                   />
                 )}
-              </div>
-            ))}
-          </motion.div>
-        )}
-      </div>
+              </motion.div>
+            </AnimatePresence>
+          ) : (
+            <motion.div
+              className="flex gap-4 transition-transform ease-in-out duration-500 md:pl-[200px]"
+              style={{
+                width: `${data.length * 100}%`,
+                transform:
+                  shiftDistance === "100%"
+                    ? `translateX(-${currIndex * (100 / data.length)}%)`
+                    : `translateX(-${currIndex * 20}%)`,
+              }}
+            >
+              {data.map((d, i) => (
+                <div key={i}>
+                  {cardType === "HoverCard" ? (
+                    <HoverCard
+                      showReadMore={showReadMore}
+                      link={d.link || ""}
+                      cardContent={d.cardContent}
+                      cardHeader={d.header}
+                      hoverColor={hoverColor ?? "#BBF2FF"}
+                      imgSrc={d.imgLink ?? hover1}
+                    />
+                  ) : (
+                    <Card
+                      link={d.link || link}
+                      enableLink={enableLink}
+                      cardType={secondaryCardType}
+                      imgLink={d.imgLink}
+                      key={i}
+                      cardContent={d.cardContent}
+                      cardHeader={d.header}
+                      width={width}
+                      height={height}
+                    />
+                  )}
+                </div>
+              ))}
+            </motion.div>
+          )}
+        </div>
+      ) : (
+        <div>Loading...</div>
+      )}
       {id === "services-home" ? (
         <div className="h-14"></div>
       ) : id === "industries" ? (

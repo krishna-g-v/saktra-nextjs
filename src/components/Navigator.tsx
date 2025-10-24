@@ -30,7 +30,7 @@ export const Navigator = ({
 }: NavigatorProps) => {
   return (
     <div
-      className={`absolute h-20  w-full flex items-center justify-left 
+      className={`absolute h-20 z-10  w-full flex items-center justify-left 
         ${
           section === "section4" && screenSize === "mobile"
             ? "max-sm:bottom-44"

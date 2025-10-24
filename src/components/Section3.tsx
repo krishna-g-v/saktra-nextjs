@@ -66,7 +66,7 @@ const getData = async () => {
 export async function Section3({ header }: { header: string }) {
   const Section3Data = await getData();
   return (
-    <div className="section3 h-[100vh] w-full relative bg-[#F5F5F5] overflow-hidden">
+    <div className="section3 h-[100vh] max-sm:h-[120vh] w-full relative bg-[#F5F5F5] overflow-hidden">
       <div className="h-[70vh] overflow-hidden relative">
         <div className="absolute top-0 left-0 h-full w-full bg-black opacity-40 z-4 md:hidden"></div>
         <Image

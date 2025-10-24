@@ -46,7 +46,7 @@ export const Section5 = ({
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
   return (
-    <div className="section3 h-[100vh] w-full relative bg-[#e8e8e8] overflow-hidden">
+    <div className="section3 h-[100vh] max-sm:h-[120vh] w-full relative bg-[#e8e8e8] overflow-hidden">
       <div className="content absolute top-0 left-0 h-full w-full z-5 max-sm:pt-7 pt-20 max-sm:pl-5 pl-25 flex-col">
         <div className="container text-5xl max-sm:text-[35px] text-white flex max-sm:flex-col max-sm:gap:30 md:gap-35 items-start">
           <div className="services text-[16px] text-[#28001E] min-w-fit uppercase gilroy-bold">
