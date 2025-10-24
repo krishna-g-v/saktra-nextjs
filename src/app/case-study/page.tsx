@@ -73,7 +73,7 @@ const CaseStudyCard = ({
       >
         <h3 className="mt-[100px] ml-[50px]">{title}</h3>
       </div>
-      <Link href={`/caseStudy/${slug}`}>
+      <Link href={`/case-study/${slug}`}>
         <div className="absolute bottom-7 right-8 z-[100] flex items-center justify-center rounded-full border border-white p-1 cursor-pointer hover:bg-purple-800">
           <GoArrowUpRight className=" font-extrabold text-white text-[24px]" />
         </div>

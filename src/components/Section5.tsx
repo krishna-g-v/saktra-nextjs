@@ -28,7 +28,7 @@ export const Section5 = ({
             header: item.title,
             cardContent: item.excerpt,
             imgLink: item.featured_image.url,
-            link: "/caseStudy/" + item.slug,
+            link: "/case-study/" + item.slug,
           };
         })
       );
@@ -68,7 +68,7 @@ export const Section5 = ({
         <Carousel
           shiftDistance="33%"
           maxCards={1}
-          link="/caseStudy"
+          link="/case-study"
           data={useCases}
           cardType="Card"
           secondaryCardType="card2"

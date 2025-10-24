@@ -18,7 +18,7 @@ export const MobileNavLinks = [
   {
     name: "Resources",
     subLinks: [
-      { name: "Case Study", link: "/caseStudy" },
+      { name: "Case Study", link: "/case-study" },
       { name: "Insights", link: "/insights" },
     ],
   },

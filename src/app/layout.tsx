@@ -44,7 +44,7 @@ export default function RootLayout({
       >
         <Navbar
           isTransparent={
-            !pathName.startsWith("/caseStudy") &&
+            !pathName.startsWith("/case-study") &&
             !pathName.startsWith("/insights")
           }
         />
