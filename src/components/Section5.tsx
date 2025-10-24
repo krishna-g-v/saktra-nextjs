@@ -66,6 +66,8 @@ export const Section5 = ({
           </div>
         </div>
         <Carousel
+          shiftDistance="33%"
+          maxCards={1}
           link="/caseStudy"
           data={useCases}
           cardType="Card"

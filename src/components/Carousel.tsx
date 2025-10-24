@@ -10,6 +10,7 @@ import { Card, SecondaryCardType } from "./Card";
 type CardType = "HoverCard" | "Card";
 
 export interface CarouselProps {
+  shiftDistance?: string;
   data: SectionData[];
   hoverColor?: string;
   cardType?: CardType;
@@ -26,6 +27,7 @@ export interface CarouselProps {
 }
 
 export const Carousel = ({
+  shiftDistance = "100%",
   showReadMore = true,
   link = "#",
   enableLink = true,
@@ -129,7 +131,10 @@ export const Carousel = ({
             className="flex gap-4 transition-transform ease-in-out duration-500 md:pl-[200px]"
             style={{
               width: `${data.length * 100}%`,
-              transform: `translateX(-${currIndex * (100 / data.length)}%)`,
+              transform:
+                shiftDistance === "100%"
+                  ? `translateX(-${currIndex * (100 / data.length)}%)`
+                  : `translateX(-${currIndex * 20}%)`,
             }}
           >
             {data.map((d, i) => (
