@@ -22,7 +22,7 @@ export const Section2 = ({ header }: { header: string }) => {
         "https://saktra.gmasoftinc.com/wp-json/wl/v1/services"
       );
       const data = await res.json();
-      console.log(data.services);
+      //console.log(data.services);
       const services: SectionData[] = data.services.map((service: any) => ({
         header: service.homepage_section.title,
         cardContent: service.homepage_section.description,

@@ -5,7 +5,7 @@ export const NavLinks = [
   { name: "Company", link: "/about" },
   { name: "Talent Solutions", link: "/talent" },
   { name: "Technology", link: "/technology" },
-  { name: "AI Services", link: "/services" },
+  { name: "AI Services", link: "/ai-services" },
   { name: "Resources", link: "/" },
   { name: "Contact Us", link: "/contact" },
 ];
@@ -14,7 +14,7 @@ export const MobileNavLinks = [
   { name: "Company", link: "/about" },
   { name: "Talent Solutions", link: "/talent" },
   { name: "Technology", link: "/technology" },
-  { name: "AI Services", link: "/services" },
+  { name: "AI Services", link: "/ai-services" },
   {
     name: "Resources",
     subLinks: [

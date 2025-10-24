@@ -40,7 +40,13 @@ export const HeroSection = () => {
     "Learn More",
   ];
 
-  const links = ["/about", "/services", "/technology", "/talent", "/contact"];
+  const links = [
+    "/about",
+    "/ai-services",
+    "/technology",
+    "/talent",
+    "/contact",
+  ];
 
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(4);
