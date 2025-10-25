@@ -52,7 +52,7 @@ export const Carousel = ({
     : currIndex + maxCards < data.length - 1;
   const canPrev = currIndex > 0;
 
-  console.log(data);
+  //console.log(data);
 
   // Media query detection
   useEffect(() => {
@@ -144,7 +144,7 @@ export const Carousel = ({
                 transform:
                   shiftDistance === "100%"
                     ? `translateX(-${currIndex * (100 / data.length)}%)`
-                    : `translateX(-${currIndex * 20}%)`,
+                    : `translateX(-${currIndex * parseInt(shiftDistance)}%)`,
               }}
             >
               {data.map((d, i) => (

@@ -82,6 +82,7 @@ export async function Section6({
           </div>
           <div>
             <Carousel
+              shiftDistance="10%"
               id="insights"
               maxCards={2}
               hoverColor="white"
